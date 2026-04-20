@@ -7,7 +7,8 @@
       "Bash(cp /Users/mohamed.alteneiji/Proj/x.html /Users/mohamed.alteneiji/Proj/x.original.html)",
       "Bash(cp /Users/mohamed.alteneiji/Proj/x.html /Users/mohamed.alteneiji/Proj/index.html)",
       "Bash(mkdir -p /Users/mohamed.alteneiji/Proj/public/assets /Users/mohamed.alteneiji/Proj/styles /Users/mohamed.alteneiji/Proj/scripts /Users/mohamed.alteneiji/Proj/data /Users/mohamed.alteneiji/Proj/components/merch-svgs)",
-      "Bash(touch /Users/mohamed.alteneiji/Proj/public/assets/.gitkeep /Users/mohamed.alteneiji/Proj/styles/.gitkeep /Users/mohamed.alteneiji/Proj/scripts/.gitkeep /Users/mohamed.alteneiji/Proj/data/.gitkeep /Users/mohamed.alteneiji/Proj/components/merch-svgs/.gitkeep)"
+      "Bash(touch /Users/mohamed.alteneiji/Proj/public/assets/.gitkeep /Users/mohamed.alteneiji/Proj/styles/.gitkeep /Users/mohamed.alteneiji/Proj/scripts/.gitkeep /Users/mohamed.alteneiji/Proj/data/.gitkeep /Users/mohamed.alteneiji/Proj/components/merch-svgs/.gitkeep)",
+      "Bash(python3 *)"
     ]
   }
 }
