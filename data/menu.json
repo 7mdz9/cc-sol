@@ -1,0 +1,304 @@
+{
+  "categories": [
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "items": [
+        {
+          "id": "sparkling-fruit-drink",
+          "name": "Sparkling Fruit Drink",
+          "subtitle": null,
+          "calories": 85,
+          "priceAed": 35,
+          "image": "https://images.unsplash.com/photo-1625444520903-d3a4d1e9a765?w=700&q=85"
+        },
+        {
+          "id": "iced-fruit-tea",
+          "name": "Iced Fruit Tea",
+          "subtitle": null,
+          "calories": 60,
+          "priceAed": 32,
+          "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=700&q=85"
+        },
+        {
+          "id": "acai-smoothie",
+          "name": "Açaí Smoothie",
+          "subtitle": null,
+          "calories": 180,
+          "priceAed": 45,
+          "image": "https://images.unsplash.com/photo-1638176066960-c1b9cc9cb96f?w=700&q=85"
+        },
+        {
+          "id": "kiwi-lime-juice",
+          "name": "Kiwi Lime Juice",
+          "subtitle": null,
+          "calories": 95,
+          "priceAed": 38,
+          "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=700&q=85"
+        },
+        {
+          "id": "avocado-smoothie",
+          "name": "Avocado Smoothie",
+          "subtitle": null,
+          "calories": 220,
+          "priceAed": 48,
+          "image": "https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=700&q=85"
+        },
+        {
+          "id": "dragon-fruit-juice",
+          "name": "Dragon Fruit Juice",
+          "subtitle": null,
+          "calories": 110,
+          "priceAed": 42,
+          "image": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=700&q=85"
+        }
+      ]
+    },
+    {
+      "id": "berry-fruity",
+      "name": "Berry & Fruity",
+      "items": [
+        {
+          "id": "strawberry-basil-lemonade",
+          "name": "Strawberry Basil Lemonade",
+          "subtitle": null,
+          "calories": 120,
+          "priceAed": 38,
+          "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=700&q=85"
+        },
+        {
+          "id": "mixed-berry-lemonade",
+          "name": "Mixed Berry Lemonade",
+          "subtitle": null,
+          "calories": 130,
+          "priceAed": 38,
+          "image": "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=700&q=85"
+        },
+        {
+          "id": "blueberry-mint-cooler",
+          "name": "Blueberry Mint Cooler",
+          "subtitle": null,
+          "calories": 100,
+          "priceAed": 40,
+          "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=85"
+        },
+        {
+          "id": "raspberry-iced-tea",
+          "name": "Raspberry Iced Tea",
+          "subtitle": null,
+          "calories": 75,
+          "priceAed": 35,
+          "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=700&q=85"
+        }
+      ]
+    },
+    {
+      "id": "tropical",
+      "name": "Tropical",
+      "items": [
+        {
+          "id": "mango-passion-fruit-juice",
+          "name": "Mango Passion Fruit Juice",
+          "subtitle": null,
+          "calories": 145,
+          "priceAed": 42,
+          "image": "https://images.unsplash.com/photo-1497534446932-c925b458314e?w=700&q=85"
+        },
+        {
+          "id": "pineapple-coconut-drink",
+          "name": "Pineapple Coconut Drink",
+          "subtitle": null,
+          "calories": 160,
+          "priceAed": 44,
+          "image": "https://images.unsplash.com/photo-1562119458-8f36e8d6d8d0?w=700&q=85"
+        },
+        {
+          "id": "tropical-sunset-juice",
+          "name": "Tropical Sunset Juice",
+          "subtitle": "layered",
+          "calories": 138,
+          "priceAed": 46,
+          "image": "https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?w=700&q=85"
+        },
+        {
+          "id": "mango-peach-smoothie",
+          "name": "Mango Peach Smoothie",
+          "subtitle": null,
+          "calories": 175,
+          "priceAed": 44,
+          "image": "https://images.unsplash.com/photo-1553530666-ba11a90a3dc4?w=700&q=85"
+        }
+      ]
+    },
+    {
+      "id": "smoothies",
+      "name": "Smoothies",
+      "items": [
+        {
+          "id": "banana-date-smoothie",
+          "name": "Banana Date Smoothie",
+          "subtitle": null,
+          "calories": 210,
+          "priceAed": 42,
+          "image": "https://images.unsplash.com/photo-1570696516188-ade861b84a49?w=700&q=85"
+        },
+        {
+          "id": "avocado-honey-smoothie",
+          "name": "Avocado Honey Smoothie",
+          "subtitle": null,
+          "calories": 240,
+          "priceAed": 48,
+          "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=85"
+        },
+        {
+          "id": "strawberry-oat-smoothie",
+          "name": "Strawberry Oat Smoothie",
+          "subtitle": null,
+          "calories": 195,
+          "priceAed": 44,
+          "image": "https://images.unsplash.com/photo-1553530979-212cc573e2d1?w=700&q=85"
+        },
+        {
+          "id": "chocolate-banana-smoothie",
+          "name": "Chocolate Banana Smoothie",
+          "subtitle": null,
+          "calories": 260,
+          "priceAed": 46,
+          "image": "https://images.unsplash.com/photo-1571748982800-fa51082c2224?w=700&q=85"
+        }
+      ]
+    },
+    {
+      "id": "ice-cream-sorbet",
+      "name": "Ice Cream & Sorbet",
+      "items": [
+        {
+          "id": "mango-coconut-ice-cream",
+          "name": "Mango Coconut Ice Cream",
+          "subtitle": null,
+          "calories": 280,
+          "priceAed": 45,
+          "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=700&q=85"
+        },
+        {
+          "id": "strawberry-greek-yogurt-ice-cream",
+          "name": "Strawberry Greek Yogurt Ice Cream",
+          "subtitle": null,
+          "calories": 220,
+          "priceAed": 48,
+          "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=700&q=85"
+        },
+        {
+          "id": "pineapple-mango-sorbet",
+          "name": "Pineapple Mango Sorbet",
+          "subtitle": null,
+          "calories": 160,
+          "priceAed": 40,
+          "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=700&q=85"
+        },
+        {
+          "id": "watermelon-lime-sorbet",
+          "name": "Watermelon Lime Sorbet",
+          "subtitle": null,
+          "calories": 130,
+          "priceAed": 38,
+          "image": "https://images.unsplash.com/photo-1557142046-c704a3adf364?w=700&q=85"
+        },
+        {
+          "id": "blueberry-banana-ice-cream",
+          "name": "Blueberry Banana Ice Cream",
+          "subtitle": null,
+          "calories": 240,
+          "priceAed": 45,
+          "image": "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=700&q=85"
+        },
+        {
+          "id": "kiwi-banana-ice-cream",
+          "name": "Kiwi Banana Ice Cream",
+          "subtitle": null,
+          "calories": 200,
+          "priceAed": 43,
+          "image": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=700&q=85"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "chia-pudding-layers",
+          "name": "Chia Pudding Layers",
+          "subtitle": null,
+          "calories": 190,
+          "priceAed": 42,
+          "image": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=700&q=85"
+        },
+        {
+          "id": "fruit-sushi",
+          "name": "Fruit Sushi",
+          "subtitle": null,
+          "calories": 150,
+          "priceAed": 55,
+          "image": "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=700&q=85"
+        },
+        {
+          "id": "mini-fruit-tarts",
+          "name": "Mini Fruit Tarts",
+          "subtitle": null,
+          "calories": 210,
+          "priceAed": 50,
+          "image": "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=700&q=85"
+        },
+        {
+          "id": "frozen-yogurt-bites",
+          "name": "Frozen Yogurt Bites",
+          "subtitle": null,
+          "calories": 120,
+          "priceAed": 40,
+          "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=700&q=85"
+        },
+        {
+          "id": "fruit-skewers",
+          "name": "Fruit Skewers",
+          "subtitle": "fruit sticks",
+          "calories": 90,
+          "priceAed": 35,
+          "image": "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=85"
+        },
+        {
+          "id": "mango-coconut-cups",
+          "name": "Mango Coconut Cups",
+          "subtitle": null,
+          "calories": 175,
+          "priceAed": 44,
+          "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=700&q=85"
+        },
+        {
+          "id": "berry-chia-cups",
+          "name": "Berry Chia Cups",
+          "subtitle": null,
+          "calories": 165,
+          "priceAed": 42,
+          "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=85"
+        },
+        {
+          "id": "watermelon-pizza",
+          "name": "Watermelon Pizza",
+          "subtitle": null,
+          "calories": 140,
+          "priceAed": 60,
+          "image": "https://images.unsplash.com/photo-1563612116625-3012372fccce?w=700&q=85"
+        },
+        {
+          "id": "pineapple-coconut-dessert",
+          "name": "Pineapple Coconut Dessert",
+          "subtitle": null,
+          "calories": 200,
+          "priceAed": 46,
+          "image": "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=85"
+        }
+      ]
+    }
+  ]
+}
