@@ -1,0 +1,9 @@
+/* ── FOOTER ─────────────────────────────── */
+footer{background:var(--darker);border-top:1px solid rgba(255,255,255,.03);padding:2.8rem 5rem;}
+.foot-in{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;}
+.foot-logo{height:32px;opacity:.32;filter:invert(1);transition:opacity .4s;}
+.foot-logo:hover{opacity:.55;}
+.foot-links{display:flex;gap:2.8rem;list-style:none;}
+.foot-links a{font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.18);transition:all .38s;}
+.foot-links a:hover{color:var(--gold);letter-spacing:.32em;}
+.foot-copy{font-size:.48rem;letter-spacing:.12em;color:rgba(255,255,255,.11);}

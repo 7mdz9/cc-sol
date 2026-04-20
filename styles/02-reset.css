@@ -1,0 +1,12 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;cursor:none;}
+
+/* ── SECTIONS ──────────────────────────── */
+.sec{padding:9rem 5rem;position:relative;}
+.sec-in{max-width:1400px;margin:0 auto;}
+.ey{font-size:.52rem;letter-spacing:.52em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;gap:1rem;}
+.ey::before{content:'';width:20px;height:1px;background:var(--gold);flex-shrink:0;}
+.hd{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:300;color:var(--text);margin-bottom:1rem;}
+.hd em{font-style:italic;color:var(--gold);}
+.st{font-size:.66rem;letter-spacing:.05em;color:var(--muted);line-height:2.1;max-width:480px;}

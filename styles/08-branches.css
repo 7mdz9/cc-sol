@@ -1,0 +1,18 @@
+/* ── BRANCHES ─────────────────────────── */
+#branches{background:var(--white);}
+#branches::before{content:'';position:absolute;bottom:-80px;left:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(201,168,76,.04),transparent 70%);pointer-events:none;}
+.br-hd{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:5rem;}
+.br-hint{font-size:.6rem;letter-spacing:.1em;color:var(--muted);line-height:2.1;text-align:right;}
+.br-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.1);}
+.br-card{background:var(--white);padding:3.5rem 2.8rem;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);}
+.br-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.045),transparent);opacity:0;transition:opacity .5s;}
+.br-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(to right,var(--gold-d),var(--gold),var(--gold-l));transition:width .65s cubic-bezier(.4,0,.2,1);}
+.br-card:hover{background:var(--cream);transform:translateY(-4px);}
+.br-card:hover::before{opacity:1;}
+.br-card:hover::after{width:100%;}
+.br-card:hover .br-name{color:var(--gold-d);}
+.br-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,168,76,.08);line-height:1;margin-bottom:1.5rem;transition:color .5s;}
+.br-card:hover .br-num{color:rgba(201,168,76,.18);}
+.br-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:.3rem;transition:color .35s;}
+.br-area{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem;}
+.br-info{font-size:.62rem;letter-spacing:.04em;color:var(--muted);line-height:2.1;}

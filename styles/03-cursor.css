@@ -1,0 +1,6 @@
+/* ── CURSOR ───────────────────────────── */
+.cur{position:fixed;width:6px;height:6px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;will-change:left,top;}
+.cur-r{position:fixed;width:30px;height:30px;border-radius:50%;border:1px solid rgba(201,168,76,.55);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s;will-change:left,top;}
+.cur.big,.cur-r.big{}
+body:has(a:hover) .cur,.cur.big{width:14px;height:14px;}
+body:has(a:hover) .cur-r,.cur-r.big{width:44px;height:44px;border-color:rgba(201,168,76,.25);}

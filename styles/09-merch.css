@@ -1,0 +1,19 @@
+/* ── MERCH ─────────────────────────────── */
+#merch{background:var(--cream);}
+.merch-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:5rem;}
+.merch-note{font-size:.56rem;letter-spacing:.1em;color:var(--muted);line-height:2.1;text-align:right;}
+.merch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.8rem;}
+.mc{cursor:pointer;}
+.mc-img{width:100%;aspect-ratio:1;background:var(--gold-p);border:1px solid rgba(201,168,76,.18);position:relative;overflow:hidden;margin-bottom:1.1rem;transition:all .5s cubic-bezier(.4,0,.2,1);}
+.mc-img svg{width:100%;height:100%;transition:transform .65s cubic-bezier(.4,0,.2,1);}
+.mc:hover .mc-img svg{transform:scale(1.06);}
+.mc-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.06),transparent);opacity:0;transition:opacity .5s;z-index:1;}
+.mc:hover .mc-img{border-color:var(--gold);transform:translateY(-8px);box-shadow:0 28px 52px rgba(201,168,76,.11);}
+.mc:hover .mc-img::before{opacity:1;}
+.mc-layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,.86);opacity:0;transition:opacity .4s;font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:#fff;z-index:2;}
+.mc:hover .mc-layer{opacity:1;}
+.mc-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;transition:transform .55s cubic-bezier(.4,0,.2,1);}
+.mc:hover .mc-icon{transform:scale(1.18) translateY(-5px);}
+.mc-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;transition:color .35s;}
+.mc:hover .mc-name{color:var(--gold-d);}
+.mc-price{font-size:.58rem;letter-spacing:.15em;color:var(--gold);margin-top:.25rem;}
