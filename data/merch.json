@@ -1,0 +1,58 @@
+[
+  {
+    "id": "signature-bottle",
+    "name": "Signature Bottle",
+    "priceAed": 180,
+    "svg": "signature-bottle.svg",
+    "revealClass": "d1"
+  },
+  {
+    "id": "gold-tote-bag",
+    "name": "Gold Tote Bag",
+    "priceAed": 120,
+    "svg": "gold-tote-bag.svg",
+    "revealClass": "d2"
+  },
+  {
+    "id": "solea-slides",
+    "name": "Soléa Slides",
+    "priceAed": 250,
+    "svg": "solea-slides.svg",
+    "revealClass": "d3"
+  },
+  {
+    "id": "sun-cap",
+    "name": "Sun Cap",
+    "priceAed": 95,
+    "svg": "sun-cap.svg",
+    "revealClass": "d4"
+  },
+  {
+    "id": "solea-shades",
+    "name": "Soléa Shades",
+    "priceAed": 320,
+    "svg": "solea-shades.svg",
+    "revealClass": "d2"
+  },
+  {
+    "id": "beach-towel",
+    "name": "Beach Towel",
+    "priceAed": 150,
+    "svg": "beach-towel.svg",
+    "revealClass": "d3"
+  },
+  {
+    "id": "candle-set",
+    "name": "Candle Set",
+    "priceAed": 200,
+    "svg": "candle-set.svg",
+    "revealClass": "d1"
+  },
+  {
+    "id": "linen-tee",
+    "name": "Linen Tee",
+    "priceAed": 180,
+    "svg": "linen-tee.svg",
+    "revealClass": "d4"
+  }
+]

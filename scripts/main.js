@@ -6,6 +6,7 @@ import { initHeroCanvas } from "./hero-canvas.js";
 import { initMarquee } from "./marquee.js";
 import { initBranches } from "./branches.js";
 import { initSupport } from "./support.js";
+import { initMerch } from "./merch.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await initMarquee();
   await initBranches();
   await initMenu();
+  await initMerch();
   await initSupport();
   initReveal();
   initHeroCanvas();
