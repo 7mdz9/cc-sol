@@ -715,6 +715,16 @@
   text-transform: uppercase;
 }
 
+.admin-export-status {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border: 1px dashed rgba(201,168,76,.18);
+  border-radius: 18px;
+  color: var(--muted);
+  font-size: .68rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 1024px) {
   .filter-bar {
     justify-content: flex-start;

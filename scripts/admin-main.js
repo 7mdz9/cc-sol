@@ -7,6 +7,7 @@ import { initSales } from "./admin-sales.js";
 import { initProducts } from "./admin-products.js";
 import { initPayments } from "./admin-payments.js";
 import { initBranches } from "./admin-branches.js";
+import { initExport } from "./admin-export.js";
 
 const SECTIONS = ["overview", "orders", "sales", "products", "payments", "branches", "export"];
 const SECTION_TITLES = {
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProducts();
   initPayments();
   initBranches();
+  initExport();
   window.addEventListener("hashchange", handleRoute);
   handleRoute();
 });
