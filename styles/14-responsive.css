@@ -13,3 +13,72 @@
   .foot-in{flex-direction:column;gap:2rem;text-align:center;}
   .foot-links{justify-content:center;flex-wrap:wrap;}
 }
+
+@media(max-width:768px){
+  nav{padding:0 1rem;}
+  .nav-logo img{height:36px;}
+  nav.scrolled .nav-logo img{height:30px;}
+  .nav-links{gap:1.25rem;min-width:0;}
+  .nav-links a{font-size:.52rem;letter-spacing:.24em;padding:.65rem 0;}
+  .nav-cta{padding:.62rem 1rem;font-size:.5rem;letter-spacing:.16em;}
+
+  #hero{padding:7.5rem 1rem 4rem;}
+  .hero-title{font-size:clamp(1.9rem,6.8vw,3rem);}
+  .hero-actions{flex-direction:column;gap:1rem;width:min(320px,100%);}
+  .btn-p,.btn-g{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;padding:.95rem 1.5rem;text-align:center;}
+  .scroll-hint{bottom:1.5rem;}
+
+  .marquee{height:44px;}
+  .marquee::before,.marquee::after{width:56px;}
+  .marquee-track{gap:2rem;}
+  .mi{font-size:.46rem;letter-spacing:.28em;}
+
+  .menu-wrap{gap:2.5rem;}
+  .menu-vis{display:block;position:static;max-width:420px;margin:0 auto;}
+  .img-wrap{max-width:420px;margin:0 auto;}
+
+  .br-card{padding:2.8rem 2rem;}
+
+  .merch-grid{gap:1.2rem;}
+
+  .sup-btn{gap:1.25rem;padding:1.2rem 1.25rem;min-height:56px;}
+
+  .foot-links{gap:1.25rem;}
+}
+
+@media(max-width:480px){
+  nav{padding:0 .875rem;height:68px;}
+  nav.scrolled{height:58px;}
+  .nav-logo img{height:34px;}
+  nav.scrolled .nav-logo img{height:28px;}
+  .nav-links{flex:1;justify-content:flex-end;gap:.7rem;margin-left:1rem;}
+  .nav-links a{font-size:.46rem;letter-spacing:.14em;padding:.8rem 0;}
+  .nav-cta{display:none;}
+
+  .hr1{width:420px;height:420px;}
+  .hr2{width:300px;height:300px;}
+  .hr3{width:210px;height:210px;}
+  .hero-logo{width:min(170px,52vw);}
+  .hero-eyebrow{font-size:.48rem;letter-spacing:.26em;margin:1.4rem 0 .65rem;}
+  .hero-title{font-size:clamp(1.7rem,10vw,2.25rem);letter-spacing:.03em;}
+  .hero-actions{max-width:280px;margin-top:2rem;}
+  .scroll-hint{display:none;}
+
+  .cal-row{flex-wrap:wrap;gap:.8rem;}
+  .cat-hd{padding:1rem 0;}
+  .item{align-items:flex-start;gap:.65rem;}
+  .item-r{gap:.75rem;}
+  .item-price{font-size:1rem;min-width:auto;}
+
+  .br-hd{margin-bottom:3rem;}
+  .br-card{padding:2.4rem 1.5rem;}
+  .br-num{font-size:3rem;margin-bottom:1rem;}
+
+  .merch-grid{grid-template-columns:1fr;}
+  .merch-hd{gap:1rem;}
+
+  .sup-sub{line-height:2;}
+  .sup-btn{padding:1rem;}
+
+  .foot-links{flex-direction:column;gap:.9rem;}
+}
