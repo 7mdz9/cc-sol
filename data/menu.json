@@ -10,7 +10,7 @@
           "subtitle": null,
           "calories": 85,
           "priceAed": 35,
-          "image": "https://images.unsplash.com/photo-1625444520903-d3a4d1e9a765?w=700&q=85"
+          "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=700&q=85"
         },
         {
           "id": "iced-fruit-tea",
@@ -26,7 +26,7 @@
           "subtitle": null,
           "calories": 180,
           "priceAed": 45,
-          "image": "https://images.unsplash.com/photo-1638176066960-c1b9cc9cb96f?w=700&q=85"
+          "image": "https://images.unsplash.com/photo-1771371000586-33abd2ce9e23?w=700&q=85"
         },
         {
           "id": "kiwi-lime-juice",
@@ -110,7 +110,7 @@
           "subtitle": null,
           "calories": 160,
           "priceAed": 44,
-          "image": "https://images.unsplash.com/photo-1562119458-8f36e8d6d8d0?w=700&q=85"
+          "image": "https://images.unsplash.com/photo-1596392301391-e8622b210bd4?w=700&q=85"
         },
         {
           "id": "tropical-sunset-juice",
@@ -126,7 +126,7 @@
           "subtitle": null,
           "calories": 175,
           "priceAed": 44,
-          "image": "https://images.unsplash.com/photo-1553530666-ba11a90a3dc4?w=700&q=85"
+          "image": "https://images.unsplash.com/photo-1774428755046-f1a9b662ecb8?w=700&q=85"
         }
       ]
     },
@@ -156,7 +156,7 @@
           "subtitle": null,
           "calories": 195,
           "priceAed": 44,
-          "image": "https://images.unsplash.com/photo-1553530979-212cc573e2d1?w=700&q=85"
+          "image": "https://images.unsplash.com/photo-1565848920056-906a21da8c70?w=700&q=85"
         },
         {
           "id": "chocolate-banana-smoothie",
