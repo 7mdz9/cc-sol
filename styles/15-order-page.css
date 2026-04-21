@@ -329,6 +329,8 @@
   background: var(--dark);
   color: var(--gold-l);
   border: none;
+  text-decoration: none;
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: .54rem;
   font-weight: 700;

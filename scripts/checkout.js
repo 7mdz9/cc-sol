@@ -1,74 +1,68 @@
-import { getCart, getSubtotal } from "./cart.js";
+import { readBranchContext, validateBranch, validateTable } from "./branch-context.js";
+import { initCursor } from "./cursor.js";
+import { initCart, getCart, getSubtotal } from "./cart.js";
 
 let selectedMethod = null;
 
-export function initCheckout() {
-  const modal = document.getElementById("checkoutModal");
-  const openBtnContainer = document.getElementById("orderCart");
-  const closeBtn = document.getElementById("btnCheckoutClose");
-  const backdrop = modal.querySelector(".checkout-backdrop");
+document.addEventListener("DOMContentLoaded", async () => {
+  initCursor();
+  selectedMethod = null;
+
+  const { branch, table } = readBranchContext();
+  const branchData = await validateBranch(branch);
+  const tableNum = validateTable(table);
+
+  const guard = document.getElementById("checkoutGuard");
+  const app = document.getElementById("checkoutApp");
+  const guardMessage = document.getElementById("checkoutGuardMessage");
+  const context = document.getElementById("checkoutContext");
+  const backToOrder = document.getElementById("checkoutBackToOrder");
+
+  if (!branchData || !tableNum) {
+    guardMessage.textContent = "This checkout page is only available through an active in-store order.";
+    guard.hidden = false;
+    return;
+  }
+
+  initCart({ branch, table });
+  context.textContent = `${branchData.name} · Table ${tableNum}`;
+  backToOrder.href = `./order.html?branch=${branch}&table=${tableNum}`;
+
+  const cart = getCart();
+  if (cart.length === 0) {
+    guardMessage.textContent = "Your cart is currently empty. Please add items before continuing to checkout.";
+    guard.hidden = false;
+    const guardInner = guard.querySelector(".checkout-guard-inner");
+    guardInner.querySelector(".checkout-back-link").href = backToOrder.href;
+    guardInner.querySelector(".checkout-back-link").textContent = "Return to Order";
+    return;
+  }
+
+  app.hidden = false;
+
+  initCheckoutPage();
+});
+
+function initCheckoutPage() {
   const payBtn = document.getElementById("btnPay");
   const nameInput = document.getElementById("customerName");
   const phoneInput = document.getElementById("customerPhone");
 
-  if (!modal || !openBtnContainer || !closeBtn || !backdrop || !payBtn || !nameInput || !phoneInput) {
-    return;
-  }
-
-  openBtnContainer.addEventListener("click", e => {
-    if (e.target.id === "btnCheckout") openModal();
-  });
-
-  closeBtn.addEventListener("click", closeModal);
-  backdrop.addEventListener("click", closeModal);
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
-  });
+  renderSummary();
+  updatePayState();
 
   [nameInput, phoneInput].forEach(input => {
     input.addEventListener("input", updatePayState);
   });
 
-  modal.querySelectorAll(".payment-tile").forEach(tile => {
+  document.querySelectorAll(".payment-tile").forEach(tile => {
     tile.addEventListener("click", () => {
-      modal.querySelectorAll(".payment-tile").forEach(t => t.classList.remove("selected"));
+      document.querySelectorAll(".payment-tile").forEach(t => t.classList.remove("selected"));
       tile.classList.add("selected");
       selectedMethod = tile.dataset.method;
       updatePayState();
     });
   });
-
-  function openModal() {
-    if (getCart().length === 0) return;
-    renderSummary();
-    updatePayState();
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeModal() {
-    modal.hidden = true;
-    document.body.style.overflow = "";
-    selectedMethod = null;
-    modal.querySelectorAll(".payment-tile").forEach(t => t.classList.remove("selected"));
-    payBtn.disabled = true;
-    payBtn.textContent = "Select Payment Method";
-  }
-
-  function renderSummary() {
-    const el = document.getElementById("checkoutSummary");
-    const cart = getCart();
-    el.innerHTML = `
-      <ul class="summary-lines">
-        ${cart.map(l => `<li>${l.name} × ${l.quantity}<span>${l.priceAed * l.quantity} AED</span></li>`).join("")}
-      </ul>
-      <div class="summary-total">
-        <span>Total</span>
-        <strong>${getSubtotal()} AED</strong>
-      </div>
-    `;
-  }
 
   function updatePayState() {
     const nameOk = nameInput.value.trim().length > 0;
@@ -80,6 +74,20 @@ export function initCheckout() {
   }
 }
 
-function methodLabel(m) {
-  return m === "cash" ? "Confirm Cash Order" : m === "apple-pay" ? "Pay with Apple Pay" : "Pay with Card";
+function renderSummary() {
+  const el = document.getElementById("checkoutSummary");
+  const cart = getCart();
+  el.innerHTML = `
+    <ul class="summary-lines">
+      ${cart.map(l => `<li>${l.name} × ${l.quantity}<span>${l.priceAed * l.quantity} AED</span></li>`).join("")}
+    </ul>
+    <div class="summary-total">
+      <span>Total</span>
+      <strong>${getSubtotal()} AED</strong>
+    </div>
+  `;
+}
+
+function methodLabel(method) {
+  return method === "cash" ? "Confirm Cash Order" : method === "apple-pay" ? "Pay with Apple Pay" : "Pay with Card";
 }

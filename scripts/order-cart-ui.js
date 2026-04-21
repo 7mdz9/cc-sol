@@ -47,7 +47,7 @@ export function initCartUI() {
           <span>Total</span>
           <span class="cart-total-value">${subtotal} AED</span>
         </div>
-        <button class="btn-checkout" id="btnCheckout">Proceed to Checkout</button>
+        <a class="btn-checkout" id="btnCheckout" href="./checkout.html${window.location.search}">Proceed to Checkout</a>
       </div>
     `;
 

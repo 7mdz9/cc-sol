@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout · Soléa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body class="checkout-page">
+
+<div class="cur" id="C"></div>
+<div class="cur-r" id="CR"></div>
+
+<nav id="checkoutNav">
+  <div class="nav-logo">
+    <picture>
+      <source srcset="public/assets/logo.webp" type="image/webp">
+      <img src="public/assets/logo.png" alt="Soléa" width="120" height="40" fetchpriority="high">
+    </picture>
+  </div>
+  <div class="checkout-context" id="checkoutContext"></div>
+</nav>
+
+<main id="checkoutGuard" class="checkout-guard" hidden>
+  <div class="checkout-guard-inner">
+    <h1>Checkout Unavailable</h1>
+    <p id="checkoutGuardMessage">This checkout page is only available through an active in-store order.</p>
+    <a class="checkout-back-link" href="index.html">Return to Main Site</a>
+  </div>
+</main>
+
+<main id="checkoutApp" class="checkout-app" hidden>
+  <div class="checkout-page-layout">
+    <section class="checkout-main-card">
+      <div class="checkout-page-head">
+        <p class="checkout-eyebrow">Finalize Your Order</p>
+        <h1 class="checkout-page-title">Complete your Soléa order</h1>
+        <p class="checkout-page-copy">Review your selections, add your details, and choose how you would like to pay.</p>
+      </div>
+
+      <section class="checkout-form-section">
+        <label class="checkout-label">
+          <span>Your Name</span>
+          <input type="text" id="customerName" maxlength="50" required>
+        </label>
+        <label class="checkout-label">
+          <span>Phone Number</span>
+          <input type="tel" id="customerPhone" placeholder="+971 50 123 4567" required>
+        </label>
+      </section>
+
+      <section class="checkout-payment-section">
+        <div class="checkout-section-head">
+          <h2>Payment Method</h2>
+          <p>Select one option to continue.</p>
+        </div>
+        <div class="payment-tiles">
+          <button class="payment-tile" data-method="card">
+            <span class="payment-icon">💳</span>
+            <span>Credit Card</span>
+          </button>
+          <button class="payment-tile" data-method="apple-pay">
+            <span class="payment-icon"></span>
+            <span>Apple Pay</span>
+          </button>
+          <button class="payment-tile" data-method="cash">
+            <span class="payment-icon">💵</span>
+            <span>Cash</span>
+          </button>
+        </div>
+      </section>
+
+      <div class="checkout-actions">
+        <a class="checkout-secondary" id="checkoutBackToOrder" href="order.html">Back to Order</a>
+        <button class="btn-pay" id="btnPay" disabled>Select Payment Method</button>
+      </div>
+    </section>
+
+    <aside class="checkout-summary-card">
+      <div class="checkout-summary-top">
+        <p class="checkout-summary-label">Order Summary</p>
+        <h2>Your Table Order</h2>
+      </div>
+      <section class="checkout-summary" id="checkoutSummary"></section>
+    </aside>
+  </div>
+</main>
+
+<script type="module" src="scripts/checkout.js"></script>
+</body>
+</html>
