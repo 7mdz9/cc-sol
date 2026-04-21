@@ -4,7 +4,24 @@ const MAX_QTY = 20;
 
 export function initCartUI() {
   const container = document.getElementById("orderCart");
+  const mobileBar = document.getElementById("mobileCartBar");
+  const mobileSummary = document.getElementById("mobileCartSummary");
+  const mobileView = document.getElementById("mobileCartView");
   if (!container) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+  mobileView?.addEventListener("click", () => {
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  const handleViewportChange = () => render();
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", handleViewportChange);
+  } else {
+    mobileQuery.addListener(handleViewportChange);
+  }
+
   render();
   onChange(render);
 
@@ -12,6 +29,16 @@ export function initCartUI() {
     const cart = getCart();
     const subtotal = getSubtotal();
     const addedId = consumeLastAdded();
+    const totalItems = cart.reduce((sum, line) => sum + line.quantity, 0);
+
+    if (mobileBar && mobileSummary) {
+      if (cart.length > 0 && mobileQuery.matches) {
+        mobileSummary.textContent = `${totalItems} ${totalItems === 1 ? "item" : "items"} · ${subtotal} AED`;
+        mobileBar.hidden = false;
+      } else {
+        mobileBar.hidden = true;
+      }
+    }
 
     if (cart.length === 0) {
       container.innerHTML = `

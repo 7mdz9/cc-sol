@@ -451,6 +451,19 @@ body.checkout-page {
   margin-top: 18px;
 }
 
+.checkout-page .checkout-error {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(177, 102, 78, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 245, 242, 0.94);
+  color: #8e4e3b;
+  font-size: 0.64rem;
+  line-height: 1.65;
+}
+
 .checkout-page .method-panel {
   display: grid;
   gap: 18px;
@@ -773,11 +786,13 @@ body.checkout-page {
 .checkout-page .summary-line-copy {
   display: grid;
   gap: 2px;
+  min-width: 0;
 }
 
 .checkout-page .summary-line-copy strong {
   font-size: 0.68rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .checkout-page .summary-line-copy span {
@@ -901,5 +916,53 @@ body.checkout-page {
     width: 100%;
     text-align: center;
     justify-self: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-page .checkout-app {
+    padding: 0 0 calc(20px + env(safe-area-inset-bottom));
+  }
+
+  .checkout-page .checkout-shell {
+    gap: 12px;
+  }
+
+  .checkout-page .checkout-back-rail {
+    position: static;
+    padding: 0 12px;
+    margin-top: 8px;
+  }
+
+  .checkout-page .checkout-main-card,
+  .checkout-page .checkout-summary-card {
+    border-radius: 22px;
+    margin: 0 8px;
+  }
+
+  .checkout-page .checkout-page-head {
+    margin-bottom: 18px;
+  }
+
+  .checkout-page .checkout-page-title {
+    font-size: 2rem;
+  }
+
+  .checkout-page .payment-tile {
+    min-height: 108px;
+  }
+
+  .checkout-page .method-panel {
+    padding: 16px;
+  }
+
+  .checkout-page .method-panel .btn-pay {
+    position: sticky;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    z-index: 2;
+  }
+
+  .checkout-page .checkout-error {
+    margin-inline: 0;
   }
 }

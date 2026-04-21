@@ -234,6 +234,10 @@
   background: rgba(201,168,76,.32);
   border-radius: 999px;
 }
+.order-cart,
+.order-preview {
+  scroll-margin-top: 96px;
+}
 .cart-populated {
   display: flex;
   flex-direction: column;
@@ -271,11 +275,13 @@
   align-items: baseline;
   gap: .5rem;
   margin-bottom: .35rem;
+  min-width: 0;
 }
 .cart-line-name {
   font-size: .64rem;
   color: var(--text);
   line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 .cart-line-price {
   font-family: 'Cormorant Garamond', serif;
@@ -392,6 +398,75 @@
   text-align: center;
 }
 
+.mobile-cart-bar[hidden],
+.order-toast[hidden] {
+  display: none !important;
+}
+
+.mobile-cart-bar {
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 260;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(201,168,76,.2);
+  border-radius: 999px;
+  background: rgba(20,18,13,.94);
+  color: #f8efc9;
+  box-shadow: 0 20px 42px rgba(14,12,8,.22);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+.mobile-cart-summary {
+  font-size: .58rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.mobile-cart-view {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(248,239,201,.18);
+  border-radius: 999px;
+  background: rgba(248,239,201,.12);
+  color: #fff7db;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .52rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.order-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(22px + env(safe-area-inset-bottom));
+  transform: translate(-50%, 16px);
+  z-index: 300;
+  padding: 14px 18px;
+  border: 1px solid rgba(201,168,76,.18);
+  border-radius: 999px;
+  background: rgba(20,18,13,.94);
+  color: #fff6de;
+  box-shadow: 0 18px 40px rgba(14,12,8,.22);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity .24s ease, transform .24s ease;
+  white-space: nowrap;
+}
+
+.order-toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 @media (max-width: 1024px) {
   .order-layout {
     grid-template-columns: 1fr;
@@ -418,6 +493,130 @@
   }
   #orderNav .nav-logo img {
     height: 34px;
+  }
+  .mobile-cart-bar {
+    left: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 92px 16px 124px;
+  }
+
+  .order-side {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    height: auto;
+  }
+
+  .order-preview,
+  .order-cart {
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .preview-image-wrap {
+    aspect-ratio: 16 / 12;
+    max-height: 260px;
+  }
+
+  .preview-details {
+    padding: 1rem 1rem .75rem;
+  }
+
+  .preview-name {
+    font-size: 1.2rem;
+  }
+
+  .preview-meta {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-add-cart {
+    width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
+    min-height: 48px;
+  }
+
+  .cart-title {
+    padding: 1rem 1rem .7rem;
+  }
+
+  .cart-line,
+  .cart-total {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .qty-btn,
+  .qty-remove {
+    min-width: 30px;
+    min-height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  #orderNav {
+    padding: 16px;
+  }
+
+  .nav-context {
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-align: right;
+  }
+
+  .order-layout {
+    padding: 86px 12px 116px;
+  }
+
+  .preview-image-wrap {
+    aspect-ratio: 4 / 3;
+    max-height: 220px;
+  }
+
+  .preview-meta {
+    justify-content: flex-start;
+  }
+
+  .cart-line-main {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cart-line-price {
+    font-size: .86rem;
+  }
+
+  .mobile-cart-bar {
+    left: 10px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .mobile-cart-summary {
+    font-size: .5rem;
+    line-height: 1.4;
+  }
+
+  .mobile-cart-view {
+    min-height: 46px;
+    padding: 0 14px;
+    font-size: .48rem;
+  }
+
+  .order-toast {
+    width: calc(100% - 24px);
+    white-space: normal;
+    text-align: center;
   }
 }
 
