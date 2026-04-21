@@ -55,5 +55,5 @@
 
 ### Top remaining issues
 - The mobile LCP element is still the nav logo. The file is now tiny, so the remaining delay is render-time rather than transfer-time. Next step: remove or shorten initial hero/logo reveal delays on mobile so a larger hero element can paint earlier or the nav logo can paint sooner.
-- `scripts/cursor.js` is now the largest mobile boot cost in the final trace at about 341ms total / 51ms scripting. Next step: disable the custom cursor entirely for coarse pointers and touch-sized viewports.
+- The cursor patch removed the prior `scripts/cursor.js` mobile boot cost, but it did not move the overall Lighthouse score; the remaining score headroom is now dominated by render timing rather than script execution.
 - Font loading still requires four Google-hosted font files because the UI uses italic Montserrat for small menu notes. Next step: either self-host a tighter subset or swap that note style to an already-loaded face to remove one request.
