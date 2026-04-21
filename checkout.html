@@ -47,33 +47,16 @@
         <div class="checkout-context-pill" id="checkoutContextPill"></div>
       </div>
 
-      <section class="checkout-form-section">
-        <div class="checkout-section-head">
-          <h2>Guest Details</h2>
-          <p>Used only to connect this order to your table.</p>
-        </div>
-        <div class="checkout-form-grid">
-          <label class="checkout-label">
-            <span>Your Name</span>
-            <input type="text" id="customerName" maxlength="50" required>
-          </label>
-          <label class="checkout-label">
-            <span>Phone Number</span>
-            <input type="tel" id="customerPhone" placeholder="+971 50 123 4567" required>
-          </label>
-        </div>
-      </section>
-
       <section class="checkout-payment-section">
         <div class="checkout-section-head">
           <h2>Payment Method</h2>
-          <p>Select one option to continue.</p>
+          <p>Select your preferred way to settle this table order.</p>
         </div>
         <div class="payment-tiles">
           <button class="payment-tile" data-method="card">
             <span class="payment-icon payment-icon-card"></span>
             <span class="payment-label">Credit Card</span>
-            <span class="payment-note">Pay securely at confirmation</span>
+            <span class="payment-note">Add guest details and confirm in one step</span>
           </button>
           <button class="payment-tile" data-method="apple-pay">
             <span class="payment-icon payment-icon-apple">
@@ -91,9 +74,7 @@
         </div>
       </section>
 
-      <div class="checkout-actions">
-        <button class="btn-pay" id="btnPay" disabled>Select Payment Method</button>
-      </div>
+      <section class="checkout-method-panel" id="checkoutMethodPanel" hidden></section>
       <p class="checkout-footnote">Demo checkout only. Payment stays mocked in the next step.</p>
     </section>
 

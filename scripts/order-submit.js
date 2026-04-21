@@ -32,13 +32,16 @@ export async function submitOrder({ customer, paymentMethod, payment }) {
 function showConfirmation(orderNumber, payload) {
   const app = document.getElementById("checkoutApp");
   if (!app) return;
+  const greeting = payload.customer.name && payload.customer.name !== "Guest"
+    ? `Thank you, ${escapeHtml(payload.customer.name)}`
+    : "Order confirmed";
 
   app.innerHTML = `
     <div class="checkout-confirmation-shell">
       <section class="confirmation-card">
         <div class="conf-glyph">✦</div>
         <p class="confirmation-eyebrow">Order Confirmed</p>
-        <h2>Thank you, ${escapeHtml(payload.customer.name)}</h2>
+        <h2>${greeting}</h2>
         <p class="conf-number">Order #${orderNumber}</p>
         <p class="conf-msg">Your order has been sent to the kitchen and service team.</p>
         <p class="conf-sub">Please keep this screen available if a server asks to verify your table order.</p>
