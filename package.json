@@ -1,0 +1,15 @@
+{
+  "name": "solea",
+  "version": "1.0.0",
+  "description": "A premium UAE juice & dessert brand marketing site. Single-page, plain HTML/CSS/JS, no build step.",
+  "scripts": {
+    "build:logo": "node scripts/_build/optimize-logo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}
