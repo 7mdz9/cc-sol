@@ -1,11 +1,15 @@
 import { ADMIN_CREDENTIALS, ADMIN_SESSION_KEY } from "./admin-config.js";
 import { initCursor } from "./cursor.js";
+import { clearDemoOrders, seedDemoOrders } from "./admin-demo-data.js";
 
 export function initLoginPage() {
   const form = document.getElementById("loginForm");
   const emailInput = document.getElementById("loginEmail");
   const passwordInput = document.getElementById("loginPassword");
   const errorEl = document.getElementById("loginError");
+  const seedButton = document.getElementById("btnSeedDemoOrders");
+  const clearButton = document.getElementById("btnClearDemoOrders");
+  const demoStatus = document.getElementById("demoDataStatus");
 
   if (!form || !emailInput || !passwordInput || !errorEl) return;
 
@@ -29,6 +33,20 @@ export function initLoginPage() {
     errorEl.hidden = false;
     passwordInput.value = "";
     passwordInput.focus();
+  });
+
+  seedButton?.addEventListener("click", () => {
+    const count = seedDemoOrders();
+    if (demoStatus) {
+      demoStatus.textContent = `Loaded ${count} demo orders into the local dashboard dataset.`;
+    }
+  });
+
+  clearButton?.addEventListener("click", () => {
+    clearDemoOrders();
+    if (demoStatus) {
+      demoStatus.textContent = "Cleared demo orders from the local dashboard dataset.";
+    }
   });
 }
 
