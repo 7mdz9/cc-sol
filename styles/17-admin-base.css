@@ -147,7 +147,7 @@
 
 .sidebar-brand {
   gap: 10px;
-  padding: 0 12px 14px;
+  padding: 2px 12px 18px;
   border-bottom: 1px solid rgba(201, 168, 76, 0.12);
 }
 
@@ -168,12 +168,23 @@
   flex: 1;
   min-height: 0;
   overflow: auto;
-  padding-right: 2px;
+  padding: 12px 2px 0 0;
+}
+
+.sidebar-nav-wrap::before {
+  content: "Navigation";
+  display: block;
+  margin: 0 0 14px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .5rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(116, 101, 72, 0.72);
 }
 
 .sidebar-nav {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .sidebar-nav a {
@@ -232,11 +243,12 @@
   margin-left: 290px;
   min-height: 100vh;
   padding: 22px 34px 42px 28px;
+  position: relative;
 }
 
 .admin-header {
   position: sticky;
-  top: 14px;
+  top: 18px;
   z-index: 20;
   display: flex;
   align-items: flex-end;
@@ -247,12 +259,25 @@
   border: 1px solid rgba(201, 168, 76, 0.14);
   border-radius: 30px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.92), rgba(252,247,236,.88)),
-    rgba(253,250,243,.76);
-  backdrop-filter: blur(16px);
+    linear-gradient(180deg, rgba(255,255,255,.97), rgba(252,247,236,.95)),
+    rgba(253,250,243,.96);
+  backdrop-filter: blur(20px);
   box-shadow:
     0 20px 44px rgba(14,12,8,.05),
     inset 0 1px 0 rgba(255,255,255,.84);
+  isolation: isolate;
+}
+
+.admin-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px -12px 18px;
+  height: 20px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(201,168,76,.12), transparent);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .admin-title-block {
@@ -299,6 +324,7 @@
 
 .admin-section {
   min-height: calc(100vh - 180px);
+  scroll-margin-top: 140px;
 }
 
 @media (max-width: 1024px) {
@@ -322,6 +348,10 @@
     padding: 22px 22px 20px;
   }
 
+  .admin-header::after {
+    display: none;
+  }
+
   .admin-filter-slot {
     width: 100%;
     justify-content: flex-start;
@@ -337,6 +367,10 @@
   #adminSidebar {
     padding: 22px 16px 18px;
     border-radius: 24px;
+  }
+
+  .sidebar-nav-wrap::before {
+    margin-left: 10px;
   }
 
   .sidebar-nav {
