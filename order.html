@@ -67,6 +67,49 @@
   </div>
 </main>
 
+<div class="checkout-modal" id="checkoutModal" hidden>
+  <div class="checkout-backdrop"></div>
+  <div class="checkout-panel">
+    <button class="checkout-close" id="btnCheckoutClose" aria-label="Close">✕</button>
+    <h2 class="checkout-title">Complete Your Order</h2>
+
+    <section class="checkout-summary" id="checkoutSummary">
+      <!-- cart summary, filled by JS -->
+    </section>
+
+    <section class="checkout-form">
+      <label class="checkout-label">
+        <span>Your Name</span>
+        <input type="text" id="customerName" maxlength="50" required>
+      </label>
+      <label class="checkout-label">
+        <span>Phone Number</span>
+        <input type="tel" id="customerPhone" placeholder="+971 50 123 4567" required>
+      </label>
+    </section>
+
+    <section class="checkout-payment">
+      <h3>Payment Method</h3>
+      <div class="payment-tiles">
+        <button class="payment-tile" data-method="card">
+          <span class="payment-icon">💳</span>
+          <span>Credit Card</span>
+        </button>
+        <button class="payment-tile" data-method="apple-pay">
+          <span class="payment-icon"></span>
+          <span>Apple Pay</span>
+        </button>
+        <button class="payment-tile" data-method="cash">
+          <span class="payment-icon">💵</span>
+          <span>Cash</span>
+        </button>
+      </div>
+    </section>
+
+    <button class="btn-pay" id="btnPay" disabled>Select Payment Method</button>
+  </div>
+</div>
+
 <script type="module" src="scripts/order-main.js"></script>
 </body>
 </html>

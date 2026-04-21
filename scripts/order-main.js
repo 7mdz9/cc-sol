@@ -5,6 +5,7 @@ import { initOrderMenu } from "./order-menu.js";
 import { initOrderPreview } from "./order-preview.js";
 import { initCart } from "./cart.js";
 import { initCartUI } from "./order-cart-ui.js";
+import { initCheckout } from "./checkout.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
@@ -35,4 +36,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   initCart({ branch, table });
   initOrderPreview(menuData);
   initCartUI();
+  initCheckout();
 });
