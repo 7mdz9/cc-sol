@@ -18,20 +18,6 @@
 .order-menu, .order-preview, .order-cart {
   /* styled in later steps */
 }
-/* Order menu section — cal-row sits flush at top, no extra padding */
-#orderMenu .cal-row {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-}
-/* Scoped accordion: don't let order-page cats bleed into main-site styles */
-#orderMenu .cat-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .6s cubic-bezier(.4,0,.2,1);
-}
-#orderMenu .cat.open .cat-body {
-  max-height: 2000px;
-}
 /* Nav context label */
 #orderNav {
   display: flex;
