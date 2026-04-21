@@ -1,4 +1,7 @@
+import { addItem } from "./cart.js";
+
 let currentItemId = null;
+let itemsById = {};
 
 export function initOrderPreview(menuData) {
   const empty = document.querySelector(".preview-empty");
@@ -8,9 +11,10 @@ export function initOrderPreview(menuData) {
   const nameEl = document.getElementById("previewName");
   const calEl = document.getElementById("previewCal");
   const priceEl = document.getElementById("previewPrice");
+  const btnAdd = document.getElementById("btnAddCart");
 
   const items = menuData.categories.flatMap(c => c.items);
-  const itemsById = Object.fromEntries(items.map(i => [i.id, i]));
+  itemsById = Object.fromEntries(items.map(i => [i.id, i]));
 
   document.getElementById("orderMenu").addEventListener("click", e => {
     const btn = e.target.closest(".item");
@@ -41,6 +45,13 @@ export function initOrderPreview(menuData) {
     // Highlight active item
     document.getElementById("orderMenu").querySelectorAll(".item").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
+  });
+
+  // Add to Cart
+  btnAdd.addEventListener("click", () => {
+    if (!currentItemId) return;
+    const item = itemsById[currentItemId];
+    if (item) addItem(item);
   });
 }
 

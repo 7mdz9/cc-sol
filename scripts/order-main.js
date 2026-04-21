@@ -2,6 +2,9 @@ import { readBranchContext, validateBranch, validateTable } from "./branch-conte
 import { initCursor } from "./cursor.js";
 import { initNav } from "./nav.js";
 import { initOrderMenu } from "./order-menu.js";
+import { initOrderPreview } from "./order-preview.js";
+import { initCart } from "./cart.js";
+import { initCartUI } from "./order-cart-ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
@@ -23,5 +26,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("orderContext").textContent = `${branchData.name} · Table ${tableNum}`;
   app.hidden = false;
 
-  await initOrderMenu();
+  // initOrderMenu fetches its own data; fetch separately for preview + cart
+  const [menuData] = await Promise.all([
+    fetch("./data/menu.json").then(r => r.json()),
+    initOrderMenu()
+  ]);
+
+  initCart({ branch, table });
+  initOrderPreview(menuData);
+  initCartUI();
 });
