@@ -649,6 +649,34 @@
   line-height: .94;
 }
 
+.admin-products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-table-shell-compact {
+  margin-top: 0;
+}
+
+.admin-table-compact th,
+.admin-table-compact td {
+  white-space: normal;
+}
+
+.admin-rank-cell {
+  color: var(--gold-d);
+  font-family: 'Montserrat', sans-serif;
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.admin-product-name {
+  font-weight: 700;
+}
+
 @media (max-width: 1024px) {
   .filter-bar {
     justify-content: flex-start;
@@ -661,7 +689,8 @@
   .admin-kpi-grid,
   .admin-analytics-grid,
   .admin-export-grid,
-  .admin-content-grid-overview {
+  .admin-content-grid-overview,
+  .admin-products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -688,7 +717,8 @@
   .admin-kpi-grid,
   .admin-analytics-grid,
   .admin-export-grid,
-  .admin-content-grid-overview {
+  .admin-content-grid-overview,
+  .admin-products-grid {
     grid-template-columns: 1fr;
   }
 
