@@ -5,6 +5,7 @@ const listeners = [];
 
 export function initCart({ branch, table }) {
   cartKey = `solea_cart_${branch}_${table}`;
+  cart = [];
   const saved = localStorage.getItem(cartKey);
   if (saved) {
     try {
