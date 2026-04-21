@@ -1,15 +1,25 @@
 import { readBranchContext } from "./branch-context.js";
 import { getCart, getSubtotal, clearCart } from "./cart.js";
+import { ORDERS_STORAGE_KEY } from "./admin-config.js";
 
 export async function submitOrder({ customer, paymentMethod, payment }) {
   const { branch, table } = readBranchContext();
+  const orderNumber = `SLA-${Date.now().toString().slice(-6)}`;
+  const [branchName, categoryByItemId] = await Promise.all([
+    lookupBranchName(branch),
+    buildCategoryMap()
+  ]);
+
   const orderPayload = {
+    orderNumber,
     branch,
+    branchName,
     table: parseInt(table, 10),
     customer,
     items: getCart().map(line => ({
       id: line.id,
       name: line.name,
+      category: categoryByItemId[line.id] || "Unknown",
       priceAed: line.priceAed,
       quantity: line.quantity
     })),
@@ -20,13 +30,72 @@ export async function submitOrder({ customer, paymentMethod, payment }) {
   };
 
   console.log("ORDER SUBMITTED:", orderPayload);
+  await persistOrder(orderPayload);
   await sleep(500);
 
-  const orderNumber = `SLA-${Date.now().toString().slice(-6)}`;
   clearCart();
   showConfirmation(orderNumber, orderPayload);
 
   return { orderNumber, orderPayload };
+}
+
+async function buildCategoryMap() {
+  const menu = await fetch("./data/menu.json").then(response => response.json());
+  const categoryByItemId = {};
+
+  menu.categories.forEach(category => {
+    category.items.forEach(item => {
+      categoryByItemId[item.id] = category.name;
+    });
+  });
+
+  return categoryByItemId;
+}
+
+async function lookupBranchName(branchSlug) {
+  const branches = await fetch("./data/branches.json").then(response => response.json());
+  const branch = branches.find(entry => entry.slug === branchSlug);
+  return branch?.name || branchSlug;
+}
+
+async function persistOrder(order) {
+  let orders = readStoredOrders();
+
+  try {
+    orders.push(order);
+    localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
+  } catch (error) {
+    if (!isQuotaExceeded(error)) {
+      throw error;
+    }
+
+    orders = orders.slice(50);
+    orders.push(order);
+
+    try {
+      localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
+    } catch (retryError) {
+      console.warn("Unable to persist order history to localStorage.", retryError);
+    }
+  }
+}
+
+function readStoredOrders() {
+  try {
+    const raw = localStorage.getItem(ORDERS_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function isQuotaExceeded(error) {
+  return error instanceof DOMException && (
+    error.name === "QuotaExceededError" ||
+    error.name === "NS_ERROR_DOM_QUOTA_REACHED"
+  );
 }
 
 function showConfirmation(orderNumber, payload) {
