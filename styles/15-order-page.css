@@ -18,6 +18,12 @@
 .order-menu, .order-preview, .order-cart {
   /* styled in later steps */
 }
+#orderGuard[hidden],
+#orderApp[hidden],
+.preview-empty[hidden],
+.preview-populated[hidden] {
+  display: none !important;
+}
 /* Order menu — cal-row and accordion scoping */
 #orderMenu .cal-row {
   margin-bottom: 2rem;
@@ -87,6 +93,8 @@
   transform: scale(1.04);
 }
 .preview-populated {
+  display: flex;
+  flex-direction: column;
   background:
     linear-gradient(180deg, rgba(250,245,232,0) 0%, rgba(250,245,232,.88) 100%),
     var(--cream);

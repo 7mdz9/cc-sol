@@ -16,6 +16,11 @@ export function initOrderPreview(menuData) {
   const items = menuData.categories.flatMap(c => c.items);
   itemsById = Object.fromEntries(items.map(i => [i.id, i]));
 
+  function showPreview() {
+    empty.hidden = true;
+    populated.hidden = false;
+  }
+
   document.getElementById("orderMenu").addEventListener("click", e => {
     const btn = e.target.closest(".item");
     if (!btn) return;
@@ -26,8 +31,7 @@ export function initOrderPreview(menuData) {
     currentItemId = id;
 
     // Swap empty → populated
-    empty.hidden = true;
-    populated.hidden = false;
+    showPreview();
 
     // Responsive images using local optimized variants
     const base = `public/assets/menu/optimized/${item.image}`;
