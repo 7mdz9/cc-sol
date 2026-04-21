@@ -224,6 +224,10 @@
   color: var(--gold);
 }
 
+.admin-section {
+  min-height: calc(100vh - 180px);
+}
+
 @media (max-width: 1024px) {
   #adminSidebar {
     position: static;
