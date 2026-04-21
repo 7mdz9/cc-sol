@@ -9,11 +9,26 @@
 }
 .order-side {
   position: sticky;
-  top: 100px;
+  top: 96px;
   align-self: start;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.32) transparent;
+}
+.order-side::-webkit-scrollbar {
+  width: 6px;
+}
+.order-side::-webkit-scrollbar-track {
+  background: transparent;
+}
+.order-side::-webkit-scrollbar-thumb {
+  background: rgba(201,168,76,.32);
+  border-radius: 999px;
 }
 .order-menu, .order-preview, .order-cart {
   /* styled in later steps */
@@ -346,6 +361,17 @@
 }
 
 @media (max-width: 1024px) {
+  .order-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 104px 24px 64px;
+  }
+  .order-side {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
   .preview-image-wrap {
     aspect-ratio: 4 / 5;
   }
