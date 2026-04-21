@@ -25,15 +25,28 @@
     <span class="sidebar-scope">Admin</span>
   </div>
   <div class="sidebar-nav-wrap">
-    <nav class="sidebar-nav">
-      <a href="#overview" data-section="overview">Overview</a>
-      <a href="#orders" data-section="orders">Orders</a>
-      <a href="#sales" data-section="sales">Sales</a>
-      <a href="#products" data-section="products">Products</a>
-      <a href="#payments" data-section="payments">Payments</a>
-      <a href="#branches" data-section="branches">Branches</a>
-      <a href="#export" data-section="export">Export</a>
-    </nav>
+    <div class="sidebar-group">
+      <p class="sidebar-group-label">Core</p>
+      <nav class="sidebar-nav">
+        <a href="#overview" data-section="overview">Overview</a>
+        <a href="#orders" data-section="orders">Orders</a>
+        <a href="#sales" data-section="sales">Sales</a>
+      </nav>
+    </div>
+    <div class="sidebar-group">
+      <p class="sidebar-group-label">Operations</p>
+      <nav class="sidebar-nav">
+        <a href="#products" data-section="products">Products</a>
+        <a href="#payments" data-section="payments">Payments</a>
+        <a href="#branches" data-section="branches">Branches</a>
+      </nav>
+    </div>
+    <div class="sidebar-group">
+      <p class="sidebar-group-label">Tools</p>
+      <nav class="sidebar-nav">
+        <a href="#export" data-section="export">Export</a>
+      </nav>
+    </div>
   </div>
   <button class="sidebar-logout" id="btnLogout" type="button">Logout</button>
 </aside>

@@ -4,12 +4,12 @@
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .filter-select {
   min-width: 188px;
-  min-height: 46px;
+  min-height: 42px;
   padding-right: 42px;
   border-radius: 999px;
   border: 1px solid rgba(201,168,76,.18);
@@ -28,7 +28,7 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
-  font-size: .66rem;
+  font-size: .62rem;
   letter-spacing: .08em;
   transition: border-color .2s, box-shadow .2s, transform .2s;
 }
@@ -261,6 +261,15 @@
   display: grid;
   gap: 18px;
   padding: 24px;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.admin-export-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201,168,76,.28);
+  box-shadow:
+    0 22px 42px rgba(14,12,8,.07),
+    inset 0 1px 0 rgba(255,255,255,.86);
 }
 
 .admin-export-icon {
@@ -728,6 +737,7 @@
 @media (max-width: 1024px) {
   .filter-bar {
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .filter-select {
