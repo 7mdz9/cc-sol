@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard · Soléa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body class="admin-page">
+
+<div class="cur" id="C"></div>
+<div class="cur-r" id="CR"></div>
+
+<aside id="adminSidebar">
+  <div class="sidebar-brand">
+    <picture>
+      <source srcset="public/assets/logo.webp" type="image/webp">
+      <img src="public/assets/logo.png" alt="Soléa" width="140" height="48">
+    </picture>
+    <span class="sidebar-scope">Admin</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#overview" data-section="overview">Overview</a>
+    <a href="#orders" data-section="orders">Orders</a>
+    <a href="#sales" data-section="sales">Sales</a>
+    <a href="#products" data-section="products">Products</a>
+    <a href="#payments" data-section="payments">Payments</a>
+    <a href="#branches" data-section="branches">Branches</a>
+    <a href="#export" data-section="export">Export</a>
+    <a href="#logout" data-section="logout">Logout</a>
+  </nav>
+</aside>
+
+<main id="adminMain">
+  <header class="admin-header" id="adminHeader">
+    <h1 class="admin-title" id="adminTitle">Overview</h1>
+    <div class="admin-filter-slot" id="adminFilterSlot"></div>
+  </header>
+
+  <section class="admin-section" id="section-overview"></section>
+  <section class="admin-section" id="section-orders" hidden></section>
+  <section class="admin-section" id="section-sales" hidden></section>
+  <section class="admin-section" id="section-products" hidden></section>
+  <section class="admin-section" id="section-payments" hidden></section>
+  <section class="admin-section" id="section-branches" hidden></section>
+  <section class="admin-section" id="section-export" hidden></section>
+</main>
+
+<script type="module" src="scripts/admin-main.js"></script>
+</body>
+</html>

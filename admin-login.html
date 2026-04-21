@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login · Soléa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/17-admin-base.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body class="admin-login-page">
+
+<div class="cur" id="C"></div>
+<div class="cur-r" id="CR"></div>
+
+<main class="admin-login-shell">
+  <section class="admin-login-card">
+    <div class="admin-login-brand">
+      <picture>
+        <source srcset="public/assets/logo.webp" type="image/webp">
+        <img src="public/assets/logo.png" alt="Soléa" width="140" height="48">
+      </picture>
+    </div>
+    <div class="admin-login-copy">
+      <h1>Soléa Admin</h1>
+      <p>Secure access for the local dashboard demo.</p>
+    </div>
+    <div class="admin-login-error" id="loginError" hidden></div>
+    <form id="loginForm" class="admin-login-form">
+      <label class="admin-login-field">
+        <span>Email</span>
+        <input type="email" id="loginEmail" autocomplete="email">
+      </label>
+      <label class="admin-login-field">
+        <span>Password</span>
+        <input type="password" id="loginPassword" autocomplete="current-password">
+      </label>
+      <button type="submit" class="admin-login-submit">Sign In</button>
+    </form>
+    <p class="admin-login-note">Admin access — Soléa internal</p>
+  </section>
+</main>
+
+<script type="module" src="scripts/admin-auth.js"></script>
+</body>
+</html>
