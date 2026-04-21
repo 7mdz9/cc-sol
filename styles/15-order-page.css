@@ -11,24 +11,11 @@
   position: sticky;
   top: 96px;
   align-self: start;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 18px;
-  max-height: calc(100vh - 116px);
-  overflow-y: auto;
-  padding-right: 6px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(201,168,76,.32) transparent;
-}
-.order-side::-webkit-scrollbar {
-  width: 6px;
-}
-.order-side::-webkit-scrollbar-track {
-  background: transparent;
-}
-.order-side::-webkit-scrollbar-thumb {
-  background: rgba(201,168,76,.32);
-  border-radius: 999px;
+  height: calc(100dvh - 116px);
+  min-height: 0;
 }
 .order-menu, .order-preview, .order-cart {
   /* styled in later steps */
@@ -60,6 +47,7 @@
   background: var(--cream);
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(14,12,8,.06);
+  min-height: 0;
 }
 /* Empty state */
 .preview-empty {
@@ -230,6 +218,25 @@
 .order-cart {
   border: 1px solid var(--border);
   background: var(--cream);
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.32) transparent;
+}
+.order-cart::-webkit-scrollbar {
+  width: 6px;
+}
+.order-cart::-webkit-scrollbar-track {
+  background: transparent;
+}
+.order-cart::-webkit-scrollbar-thumb {
+  background: rgba(201,168,76,.32);
+  border-radius: 999px;
+}
+.cart-populated {
+  display: flex;
+  flex-direction: column;
 }
 .cart-title {
   font-family: 'Cormorant Garamond', serif;
@@ -329,6 +336,9 @@
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--muted);
+  background: linear-gradient(180deg, rgba(253,250,243,.92), rgba(253,250,243,.98));
+  position: sticky;
+  bottom: 50px;
 }
 .cart-total-value {
   font-family: 'Cormorant Garamond', serif;
@@ -353,6 +363,8 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background .3s;
+  position: sticky;
+  bottom: 0;
 }
 .btn-checkout:hover {
   background: var(--darker);
@@ -392,11 +404,37 @@
     overflow: visible;
     padding-right: 0;
   }
+  .order-cart {
+    max-height: none;
+    overflow: visible;
+  }
+  .cart-total,
+  .btn-checkout {
+    position: static;
+  }
   .preview-image-wrap {
     height: auto;
     aspect-ratio: 4 / 5;
   }
   #orderNav .nav-logo img {
     height: 34px;
+  }
+}
+
+@media (max-height: 860px) {
+  .order-side {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .order-cart {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+  .cart-total,
+  .btn-checkout {
+    position: static;
   }
 }
