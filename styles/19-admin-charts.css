@@ -1,1 +1,50 @@
 /* Admin charts */
+.admin-sales-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-chart-panel {
+  min-height: 420px;
+}
+
+.admin-chart-panel-wide {
+  grid-column: 1 / -1;
+}
+
+.admin-chart-canvas-wrap {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  min-height: 280px;
+  padding: 12px 10px 4px;
+  border: 1px solid rgba(201,168,76,.12);
+  border-radius: 22px;
+  background: rgba(255,252,245,.72);
+}
+
+.admin-chart-panel:not(.admin-chart-panel-wide) .admin-chart-canvas-wrap {
+  min-height: 320px;
+}
+
+@media (max-width: 1024px) {
+  .admin-sales-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-chart-panel-wide {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-chart-panel {
+    min-height: 0;
+  }
+
+  .admin-chart-canvas-wrap {
+    min-height: 240px;
+    padding: 10px 6px 2px;
+  }
+}

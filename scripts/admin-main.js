@@ -3,6 +3,7 @@ import { renderFilterBar } from "./admin-filters.js";
 import { initCursor } from "./cursor.js";
 import { initOverview } from "./admin-overview.js";
 import { initOrders } from "./admin-orders.js";
+import { initSales } from "./admin-sales.js";
 
 const SECTIONS = ["overview", "orders", "sales", "products", "payments", "branches", "export"];
 const SECTION_TITLES = {
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFilterBar();
   initOverview();
   initOrders();
+  initSales();
   window.addEventListener("hashchange", handleRoute);
   handleRoute();
 });
