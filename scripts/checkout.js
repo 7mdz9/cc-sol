@@ -52,6 +52,7 @@ function initCheckoutPage() {
   const nameInput = document.getElementById("customerName");
   const phoneInput = document.getElementById("customerPhone");
   const appleTile = document.querySelector('.payment-tile[data-method="apple-pay"]');
+  const paymentTiles = document.querySelector(".payment-tiles");
 
   renderSummary();
   syncApplePayAvailability();
@@ -63,8 +64,11 @@ function initCheckoutPage() {
 
   document.querySelectorAll(".payment-tile").forEach(tile => {
     tile.addEventListener("click", () => {
+      if (tile.hidden || tile.disabled) return;
+
       document.querySelectorAll(".payment-tile").forEach(t => t.classList.remove("selected"));
       tile.classList.add("selected");
+      if (paymentTiles) paymentTiles.classList.add("has-selection");
       selectedMethod = tile.dataset.method;
       updatePayState();
     });
@@ -99,8 +103,7 @@ function initCheckoutPage() {
         payment
       });
     } catch (err) {
-      payBtn.disabled = false;
-      payBtn.textContent = methodLabel(selectedMethod);
+      updatePayState();
       alert(err.message);
     }
   });
@@ -138,7 +141,11 @@ function initCheckoutPage() {
     const phoneOk = phoneDigits.length >= 7;
     const canPay = Boolean(selectedMethod) && nameOk && phoneOk;
     payBtn.disabled = !canPay;
-    payBtn.textContent = canPay ? methodLabel(selectedMethod) : "Select Payment Method";
+    if (!selectedMethod) {
+      payBtn.textContent = "Select Payment Method";
+      return;
+    }
+    payBtn.textContent = canPay ? methodLabel(selectedMethod) : pendingMethodLabel(selectedMethod);
   }
 }
 
@@ -171,4 +178,12 @@ function renderSummary() {
 
 function methodLabel(method) {
   return method === "cash" ? "Confirm Cash Order" : method === "apple-pay" ? "Pay with Apple Pay" : "Pay with Card";
+}
+
+function pendingMethodLabel(method) {
+  return method === "cash"
+    ? "Enter details for Cash Order"
+    : method === "apple-pay"
+      ? "Enter details for Apple Pay"
+      : "Enter details for Card";
 }

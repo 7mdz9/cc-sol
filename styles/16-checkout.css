@@ -324,6 +324,39 @@ body.checkout-page {
   border-color: rgba(201, 168, 76, 0.62);
   background: linear-gradient(180deg, rgba(246, 234, 196, 0.98), rgba(255, 255, 255, 0.98));
   box-shadow: 0 14px 28px rgba(201, 168, 76, 0.12);
+  transform: translateY(-2px);
+}
+
+.checkout-page .payment-tiles.has-selection .payment-tile:not(.selected) {
+  opacity: 0.5;
+}
+
+.checkout-page .payment-tile.selected .payment-label {
+  color: var(--text);
+}
+
+.checkout-page .payment-tile.selected .payment-note {
+  color: #6f6454;
+}
+
+.checkout-page .payment-tile.selected .payment-icon {
+  border-color: rgba(201, 168, 76, 0.46);
+  background: rgba(255, 248, 225, 0.98);
+  box-shadow: 0 8px 18px rgba(201, 168, 76, 0.14);
+}
+
+.checkout-page .payment-tile.selected::after {
+  content: "Selected";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(201, 168, 76, 0.14);
+  color: var(--gold-d);
+  font-size: 0.46rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .checkout-page .payment-icon {
