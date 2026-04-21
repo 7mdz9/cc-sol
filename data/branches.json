@@ -2,41 +2,46 @@
   {
     "index": "01",
     "name": "Bluewaters Island",
+    "slug": "bluewaters-island",
     "region": "Dubai",
     "district": "Beachfront",
     "address": "The Promenade, Ground Floor",
-    "hours": "8:00am – 12:00am"
+    "hours": "8:00am \u2013 12:00am"
   },
   {
     "index": "02",
     "name": "Mamsha Al Saadiyat",
+    "slug": "mamsha-al-saadiyat",
     "region": "Abu Dhabi",
     "district": "Cultural District",
     "address": "Mamsha Al Saadiyat Promenade",
-    "hours": "8:00am – 12:00am"
+    "hours": "8:00am \u2013 12:00am"
   },
   {
     "index": "03",
     "name": "Kite Beach",
+    "slug": "kite-beach",
     "region": "Dubai",
     "district": "Jumeirah",
     "address": "Kite Beach Boardwalk",
-    "hours": "7:00am – 12:00am"
+    "hours": "7:00am \u2013 12:00am"
   },
   {
     "index": "04",
     "name": "Yas Bay",
+    "slug": "yas-bay",
     "region": "Abu Dhabi",
     "district": "Yas Island",
     "address": "Yas Bay Waterfront",
-    "hours": "9:00am – 12:00am"
+    "hours": "9:00am \u2013 12:00am"
   },
   {
     "index": "05",
     "name": "Al Bateen Ladies Club",
+    "slug": "al-bateen-ladies-club",
     "region": "Abu Dhabi",
     "district": "Al Bateen",
     "address": "Al Bateen Ladies Club, Abu Dhabi",
-    "hours": "8:00am – 10:00pm"
+    "hours": "8:00am \u2013 10:00pm"
   }
 ]

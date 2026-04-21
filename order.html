@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order · Soléa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/15-order-page.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+<div class="cur" id="C"></div>
+<div class="cur-r" id="CR"></div>
+
+<nav id="orderNav">
+  <div class="nav-logo">
+    <picture>
+      <source srcset="public/assets/logo.webp" type="image/webp">
+      <img src="public/assets/logo.png" alt="Soléa" width="120" height="40" fetchpriority="high">
+    </picture>
+  </div>
+  <div class="nav-context" id="orderContext"></div>
+</nav>
+
+<!-- guard: shown when branch/table params are missing or invalid -->
+<main id="orderGuard" class="order-guard" hidden>
+  <div class="guard-inner">
+    <h1>Welcome to Soléa</h1>
+    <p>To place an order, please scan the QR code at your table.</p>
+    <p class="guard-sub">If you're not currently dining with us, visit <a href="index.html">our main site</a> to see the menu and find a location near you.</p>
+  </div>
+</main>
+
+<!-- order UI: populated by subsequent steps -->
+<main id="orderApp" class="order-app" hidden>
+  <div class="order-layout">
+    <section class="order-menu" id="orderMenu"><!-- menu accordion goes here, Step 1 --></section>
+    <aside class="order-side">
+      <div class="order-preview" id="orderPreview"><!-- preview panel, Step 2 --></div>
+      <div class="order-cart" id="orderCart"><!-- cart panel, Step 3+ --></div>
+    </aside>
+  </div>
+</main>
+
+<script type="module" src="scripts/order-main.js"></script>
+</body>
+</html>

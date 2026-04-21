@@ -1,0 +1,61 @@
+/* Order page layout */
+.order-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 40px 80px;
+}
+.order-side {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.order-menu, .order-preview, .order-cart {
+  /* styled in later steps */
+}
+/* Nav context label */
+#orderNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  /* reuse nav styles from 04-nav.css where possible */
+}
+.nav-context {
+  font-family: var(--font-sans, "Montserrat"), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+/* Guard state */
+.order-guard {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.guard-inner {
+  max-width: 480px;
+  text-align: center;
+}
+.guard-inner h1 {
+  font-family: var(--font-serif, "Cormorant Garamond"), serif;
+  font-size: clamp(36px, 6vw, 56px);
+  margin-bottom: 16px;
+}
+.guard-inner p {
+  margin-bottom: 12px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.guard-sub {
+  font-size: 14px;
+  color: var(--muted);
+}
