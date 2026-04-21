@@ -2,6 +2,10 @@
 let cartKey = null;
 let cart = []; // [{ id, name, priceAed, quantity }]
 const listeners = [];
+let lastAddedId = null;
+
+const MAX_QTY = 20;
+const EXPIRY_MS = 2 * 60 * 60 * 1000; // 2 hours
 
 export function initCart({ branch, table }) {
   cartKey = `solea_cart_${branch}_${table}`;
@@ -10,7 +14,17 @@ export function initCart({ branch, table }) {
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed)) cart = parsed;
+      // Support both legacy plain array and new { items, updatedAt } shape
+      if (Array.isArray(parsed)) {
+        // Legacy format — treat as expired (no timestamp)
+        cart = [];
+      } else if (parsed && Array.isArray(parsed.items)) {
+        const age = Date.now() - (parsed.updatedAt || 0);
+        if (age < EXPIRY_MS) {
+          cart = parsed.items;
+        }
+        // else expired — cart stays []
+      }
     } catch {}
   }
   notify();
@@ -19,6 +33,7 @@ export function initCart({ branch, table }) {
 export function addItem(item) {
   const existing = cart.find(l => l.id === item.id);
   if (existing) {
+    if (existing.quantity >= MAX_QTY) return; // cap reached, silent
     existing.quantity += 1;
   } else {
     cart.push({
@@ -28,6 +43,7 @@ export function addItem(item) {
       quantity: 1
     });
   }
+  lastAddedId = item.id;
   persist();
   notify();
 }
@@ -40,6 +56,7 @@ export function removeItem(id) {
 
 export function setQuantity(id, qty) {
   if (qty <= 0) return removeItem(id);
+  if (qty > MAX_QTY) qty = MAX_QTY; // silently cap
   const line = cart.find(l => l.id === id);
   if (line) {
     line.quantity = qty;
@@ -62,13 +79,20 @@ export function clearCart() {
   notify();
 }
 
+// Read-once: returns the last-added item id and clears it
+export function consumeLastAdded() {
+  const id = lastAddedId;
+  lastAddedId = null;
+  return id;
+}
+
 export function onChange(fn) {
   listeners.push(fn);
 }
 
 function persist() {
   if (!cartKey) return;
-  localStorage.setItem(cartKey, JSON.stringify(cart));
+  localStorage.setItem(cartKey, JSON.stringify({ items: cart, updatedAt: Date.now() }));
 }
 function notify() {
   listeners.forEach(fn => fn());

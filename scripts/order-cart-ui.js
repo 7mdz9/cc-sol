@@ -1,4 +1,6 @@
-import { getCart, getSubtotal, setQuantity, removeItem, onChange } from "./cart.js";
+import { getCart, getSubtotal, setQuantity, removeItem, onChange, consumeLastAdded } from "./cart.js";
+
+const MAX_QTY = 20;
 
 export function initCartUI() {
   const container = document.getElementById("orderCart");
@@ -9,12 +11,14 @@ export function initCartUI() {
   function render() {
     const cart = getCart();
     const subtotal = getSubtotal();
+    const addedId = consumeLastAdded();
 
     if (cart.length === 0) {
       container.innerHTML = `
         <div class="cart-empty">
           <h3 class="cart-title">Your Order</h3>
-          <p class="cart-hint">Your cart is empty. Tap <b>+ Add to Cart</b> on any item to begin.</p>
+          <div class="cart-empty-glyph">✦</div>
+          <p class="cart-hint">Select any item and tap <b>+ Add to Cart</b> to begin your order.</p>
         </div>
       `;
       return;
@@ -33,7 +37,7 @@ export function initCartUI() {
               <div class="cart-line-qty">
                 <button class="qty-btn qty-dec" data-id="${line.id}">−</button>
                 <span class="qty-value">${line.quantity}</span>
-                <button class="qty-btn qty-inc" data-id="${line.id}">+</button>
+                <button class="qty-btn qty-inc" data-id="${line.id}"${line.quantity >= MAX_QTY ? " disabled" : ""}>+</button>
                 <button class="qty-remove" data-id="${line.id}">✕</button>
               </div>
             </li>
@@ -46,6 +50,16 @@ export function initCartUI() {
         <button class="btn-checkout" id="btnCheckout">Proceed to Checkout</button>
       </div>
     `;
+
+    // Flash newly-added line
+    if (addedId) {
+      const line = container.querySelector(`.cart-line[data-id="${addedId}"]`);
+      if (line) {
+        // rAF ensures class is added after paint so animation triggers
+        requestAnimationFrame(() => line.classList.add("cart-line-flash"));
+        line.addEventListener("animationend", () => line.classList.remove("cart-line-flash"), { once: true });
+      }
+    }
 
     // Wire quantity controls
     container.querySelectorAll(".qty-inc").forEach(btn => {

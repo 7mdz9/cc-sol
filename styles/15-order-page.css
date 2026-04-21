@@ -298,3 +298,25 @@
 .btn-checkout:hover {
   background: var(--darker);
 }
+/* Cart line flash on add */
+@keyframes cartFlash {
+  0%   { background: rgba(201,168,76,.22); }
+  100% { background: transparent; }
+}
+.cart-line-flash {
+  animation: cartFlash 400ms ease-out forwards;
+}
+/* Disabled qty-inc at cap */
+.qty-btn:disabled {
+  opacity: .28;
+  cursor: not-allowed;
+}
+/* Empty state glyph — reuses phFloat from 13-animations.css */
+.cart-empty-glyph {
+  font-size: 1.6rem;
+  opacity: .09;
+  margin: 1.2rem 0 .6rem;
+  animation: phFloat 4s ease-in-out infinite;
+  display: block;
+  text-align: center;
+}
