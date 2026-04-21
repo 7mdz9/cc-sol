@@ -1,11 +1,12 @@
 import { readBranchContext, validateBranch, validateTable } from "./branch-context.js";
 import { initCursor } from "./cursor.js";
-import { initCart, getCart, getSubtotal } from "./cart.js";
+import { consumeCartNotice, initCart, getCart, getSubtotal, onChange } from "./cart.js";
 import { mockCreatePayment } from "./payment-stub.js";
 import { submitOrder } from "./order-submit.js";
 
 let selectedMethod = null;
 let isProcessing = false;
+let suppressEmptyCartGuard = false;
 const cardDraft = {
   cardholderName: "",
   cardNumber: "",
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
   selectedMethod = null;
   isProcessing = false;
+  suppressEmptyCartGuard = false;
 
   const { branch, table } = readBranchContext();
   const branchData = await validateBranch(branch);
@@ -40,13 +42,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (contextPill) contextPill.textContent = `${branchData.name} · Table ${tableNum}`;
   backToOrder.href = `./order.html?branch=${branch}&table=${tableNum}`;
 
+  const cartNotice = consumeCartNotice();
   const cart = getCart();
   if (cart.length === 0) {
-    guardMessage.textContent = "Your cart is currently empty. Please add items before continuing to checkout.";
-    guard.hidden = false;
-    const guardInner = guard.querySelector(".checkout-guard-inner");
-    guardInner.querySelector(".checkout-back-link").href = backToOrder.href;
-    guardInner.querySelector(".checkout-back-link").textContent = "Return to Order";
+    showCheckoutGuard(cartNotice || "Your cart is currently empty. Please add items before continuing to checkout.", backToOrder.href);
     return;
   }
 
@@ -60,10 +59,22 @@ function initCheckoutPage() {
 
   renderSummary();
   renderMethodPanel();
+  clearError();
+
+  onChange(() => {
+    const cart = getCart();
+    if (cart.length === 0) {
+      if (suppressEmptyCartGuard) return;
+      showCheckoutGuard("Your cart is empty. Return to the menu to start fresh.", document.getElementById("checkoutBackToOrder")?.href || "./order.html");
+      return;
+    }
+    renderSummary();
+  });
 
   document.querySelectorAll(".payment-tile").forEach(tile => {
     tile.addEventListener("click", () => {
       selectedMethod = tile.dataset.method;
+      clearError();
 
       document.querySelectorAll(".payment-tile").forEach(t => {
         t.classList.toggle("selected", t === tile);
@@ -100,6 +111,7 @@ function initCheckoutPage() {
       target.value = digits;
     }
 
+    clearError();
     updateMethodButtonState();
   });
 
@@ -117,6 +129,7 @@ function initCheckoutPage() {
     }
 
     isProcessing = true;
+    suppressEmptyCartGuard = true;
     updateMethodButtonState();
 
     try {
@@ -138,8 +151,9 @@ function initCheckoutPage() {
       });
     } catch (err) {
       isProcessing = false;
+      suppressEmptyCartGuard = false;
       updateMethodButtonState();
-      alert(err.message);
+      showError(err.message);
     }
   });
 }
@@ -298,6 +312,47 @@ function methodLabel(method) {
     : method === "apple-pay"
       ? "Pay with Apple Pay"
       : "Pay with Card";
+}
+
+function showError(message) {
+  const error = document.getElementById("checkoutError");
+  if (!error) return;
+
+  error.textContent = message;
+  error.hidden = false;
+}
+
+function clearError() {
+  const error = document.getElementById("checkoutError");
+  if (!error) return;
+
+  error.hidden = true;
+  error.textContent = "";
+}
+
+function showCheckoutGuard(message, backHref) {
+  const guard = document.getElementById("checkoutGuard");
+  const app = document.getElementById("checkoutApp");
+  const guardMessage = document.getElementById("checkoutGuardMessage");
+  const guardInner = guard?.querySelector(".checkout-guard-inner");
+  const backLink = guardInner?.querySelector(".checkout-back-link");
+
+  if (guardMessage) {
+    guardMessage.textContent = message;
+  }
+
+  if (backLink) {
+    backLink.href = backHref || "./order.html";
+    backLink.textContent = "Return to Order";
+  }
+
+  if (app) {
+    app.hidden = true;
+  }
+
+  if (guard) {
+    guard.hidden = false;
+  }
 }
 
 function escapeAttribute(value) {

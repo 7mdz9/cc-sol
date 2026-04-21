@@ -3,7 +3,7 @@ import { initCursor } from "./cursor.js";
 import { initNav } from "./nav.js";
 import { initOrderMenu } from "./order-menu.js";
 import { initOrderPreview } from "./order-preview.js";
-import { initCart } from "./cart.js";
+import { consumeCartNotice, initCart } from "./cart.js";
 import { initCartUI } from "./order-cart-ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -35,4 +35,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   initCart({ branch, table });
   initOrderPreview(menuData);
   initCartUI();
+
+  const notice = consumeCartNotice();
+  if (notice) {
+    showOrderToast(notice);
+  }
 });
+
+function showOrderToast(message) {
+  const toast = document.getElementById("orderToast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.hidden = false;
+  toast.classList.add("show");
+
+  window.setTimeout(() => {
+    toast.classList.remove("show");
+    window.setTimeout(() => {
+      toast.hidden = true;
+    }, 260);
+  }, 2600);
+}
