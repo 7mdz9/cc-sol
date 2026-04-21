@@ -677,6 +677,22 @@
   font-weight: 700;
 }
 
+.admin-payments-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: 18px;
+}
+
+.admin-payment-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-payment-card {
+  min-height: 0;
+}
+
 @media (max-width: 1024px) {
   .filter-bar {
     justify-content: flex-start;
@@ -692,6 +708,11 @@
   .admin-content-grid-overview,
   .admin-products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-payments-grid,
+  .admin-payment-cards {
+    grid-template-columns: 1fr;
   }
 
   .admin-chart-shell:first-child {
