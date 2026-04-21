@@ -4,7 +4,9 @@
   "description": "A premium UAE juice & dessert brand marketing site. Single-page, plain HTML/CSS/JS, no build step.",
   "scripts": {
     "build:logo": "node scripts/_build/optimize-logo.js",
-    "build:download-images": "node scripts/_build/download-menu-images.js"
+    "build:download-images": "node scripts/_build/download-menu-images.js",
+    "build:optimize-images": "node scripts/_build/optimize-menu-images.js",
+    "build:images": "npm run build:download-images && npm run build:optimize-images"
   },
   "keywords": [],
   "author": "",

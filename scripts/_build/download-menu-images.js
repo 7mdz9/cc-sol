@@ -39,8 +39,22 @@ let succeeded = 0;
 let failed = 0;
 
 for (const item of items) {
-  const targetUrl = toHighResUrl(item.image);
   const outputPath = path.join(outDir, `${item.id}.jpg`);
+
+  if (!item.image.startsWith("http")) {
+    try {
+      await fs.access(outputPath);
+      succeeded += 1;
+      console.log(`kept ${item.id}.jpg`);
+      continue;
+    } catch {
+      failed += 1;
+      console.error(`failed ${item.id}: missing source URL and local JPEG`);
+      continue;
+    }
+  }
+
+  const targetUrl = toHighResUrl(item.image);
 
   try {
     const response = await fetchWithRetry(targetUrl);
@@ -60,4 +74,3 @@ for (const item of items) {
 }
 
 console.log(`summary: ${succeeded} succeeded, ${failed} failed`);
-
