@@ -1,6 +1,7 @@
 import { readBranchContext, validateBranch, validateTable } from "./branch-context.js";
 import { initCursor } from "./cursor.js";
 import { initNav } from "./nav.js";
+import { initOrderMenu } from "./order-menu.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
@@ -22,6 +23,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("orderContext").textContent = `${branchData.name} · Table ${tableNum}`;
   app.hidden = false;
 
-  // Subsequent step modules will import and run here
-  // (Step 1 adds menu render, etc.)
+  await initOrderMenu();
 });
