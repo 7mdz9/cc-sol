@@ -44,12 +44,16 @@
 - Menu preview click-through: verified 33 local optimized image requests and 0 Unsplash requests during a full desktop-width click-through of all menu items.
 - Canvas CPU: `hero-canvas.js` dropped from roughly 351ms total / 305ms scripting in the baseline mobile boot trace to 245ms total / 182ms scripting in the final mobile boot trace.
 
+### Post-audit patch
+- Disabled custom cursor initialization on touch and coarse-pointer devices in `scripts/cursor.js`, and restored the native cursor via a coarse-pointer / no-hover override in `styles/03-cursor.css`.
+- Mobile Lighthouse Performance after the patch remained `88` (`88` before the patch), while mobile LCP improved slightly to `3.1s` (`3.15s` before the patch).
+- The touch-device boot trace no longer shows meaningful custom-cursor work: `scripts/cursor.js` fell from about `341ms` total CPU in the prior final trace to well under `1ms` of traceable parse/compile work, with no runtime cursor initialization on the emulated mobile pass.
+
 ### What didn't hit target
 - Mobile Lighthouse Performance finished at 88, short of the 90 target.
-- Mobile LCP finished at 3.15s, above the 2.0s target.
+- Mobile LCP finished at 3.1s, above the 2.0s target.
 
 ### Top remaining issues
 - The mobile LCP element is still the nav logo. The file is now tiny, so the remaining delay is render-time rather than transfer-time. Next step: remove or shorten initial hero/logo reveal delays on mobile so a larger hero element can paint earlier or the nav logo can paint sooner.
 - `scripts/cursor.js` is now the largest mobile boot cost in the final trace at about 341ms total / 51ms scripting. Next step: disable the custom cursor entirely for coarse pointers and touch-sized viewports.
 - Font loading still requires four Google-hosted font files because the UI uses italic Montserrat for small menu notes. Next step: either self-host a tighter subset or swap that note style to an already-loaded face to remove one request.
-
