@@ -1,3 +1,7 @@
+// Support rendering is intentionally simple: one fetch and two innerHTML writes.
+// A baseline Lighthouse run once attributed unusually high CPU time to this file,
+// but the issue did not reproduce after the first performance fixes and no
+// support-specific hot path was found to change safely here.
 export async function initSupport(){
 const resp=await fetch('./data/contact.json');
 const data=await resp.json();
