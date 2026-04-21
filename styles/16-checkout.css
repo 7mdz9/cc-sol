@@ -6,10 +6,25 @@ body.checkout-page {
 }
 
 .checkout-page #checkoutNav {
+  position: sticky;
+  inset: auto;
+  top: 0;
+  z-index: 240;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 34px 10px;
+  min-height: 82px;
+}
+
+.checkout-page #checkoutNav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(253, 250, 243, 0.96), rgba(253, 250, 243, 0.76));
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  backdrop-filter: blur(18px) saturate(160%);
+  z-index: -1;
 }
 
 .checkout-page .checkout-context {
@@ -83,7 +98,7 @@ body.checkout-page {
 }
 
 .checkout-page .checkout-app {
-  padding: 8px 34px 64px;
+  padding: 18px 34px 64px;
 }
 
 .checkout-page .checkout-page-layout {
@@ -124,7 +139,7 @@ body.checkout-page {
 
 .checkout-page .checkout-summary-card {
   position: sticky;
-  top: 86px;
+  top: 104px;
   padding: 22px;
   background:
     linear-gradient(180deg, rgba(253, 247, 232, 0.96), rgba(255, 255, 255, 0.9)),
@@ -263,12 +278,13 @@ body.checkout-page {
   border-radius: 22px;
   padding: 16px 14px;
   display: grid;
-  justify-items: center;
-  align-content: center;
+  justify-items: start;
+  align-content: start;
   gap: 6px;
   color: var(--text);
   cursor: pointer;
   transition: transform .25s, border-color .25s, box-shadow .25s, background .25s;
+  text-align: left;
 }
 
 .checkout-page .payment-tile:hover {
@@ -292,11 +308,60 @@ body.checkout-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.56rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  position: relative;
   color: var(--gold);
+}
+
+.checkout-page .payment-icon::before,
+.checkout-page .payment-icon::after {
+  content: "";
+  position: absolute;
+}
+
+.checkout-page .payment-icon-card::before {
+  width: 22px;
+  height: 15px;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+}
+
+.checkout-page .payment-icon-card::after {
+  width: 16px;
+  height: 1.5px;
+  background: currentColor;
+  top: 14px;
+}
+
+.checkout-page .payment-icon-apple::before {
+  width: 18px;
+  height: 20px;
+  border-radius: 48% 48% 42% 42%;
+  border: 1.5px solid currentColor;
+  top: 12px;
+}
+
+.checkout-page .payment-icon-apple::after {
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid currentColor;
+  border-left: 1.5px solid currentColor;
+  transform: rotate(32deg);
+  top: 8px;
+  left: 22px;
+}
+
+.checkout-page .payment-icon-cash::before {
+  width: 24px;
+  height: 14px;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+}
+
+.checkout-page .payment-icon-cash::after {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
 }
 
 .checkout-page .payment-label {
@@ -309,12 +374,11 @@ body.checkout-page {
   font-size: 0.52rem;
   line-height: 1.45;
   color: var(--muted);
-  text-align: center;
+  text-align: left;
 }
 
 .checkout-page .checkout-actions {
-  display: flex;
-  align-items: center;
+  display: grid;
   gap: 10px;
   margin-top: 22px;
 }
@@ -334,6 +398,7 @@ body.checkout-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: start;
   border: 1px solid rgba(201, 168, 76, 0.42);
   color: var(--gold);
   text-decoration: none;
@@ -349,13 +414,14 @@ body.checkout-page {
 }
 
 .checkout-page .btn-pay {
-  flex: 1;
   border: none;
   background: linear-gradient(180deg, #222018 0%, #14120d 100%);
   color: #f8efc9;
   cursor: pointer;
   box-shadow: 0 18px 32px rgba(14, 12, 8, 0.18);
   transition: background .25s, transform .2s, opacity .2s, box-shadow .25s;
+  width: 100%;
+  min-height: 50px;
 }
 
 .checkout-page .btn-pay:hover:not(:disabled) {
@@ -464,6 +530,7 @@ body.checkout-page {
 @media (max-width: 640px) {
   .checkout-page #checkoutNav {
     padding: 16px 16px 8px;
+    min-height: 76px;
   }
 
   .checkout-page .checkout-app {
@@ -493,14 +560,10 @@ body.checkout-page {
     max-width: none;
   }
 
-  .checkout-page .checkout-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
   .checkout-page .checkout-secondary,
   .checkout-page .btn-pay {
     width: 100%;
     text-align: center;
+    justify-self: stretch;
   }
 }

@@ -68,17 +68,17 @@
         </div>
         <div class="payment-tiles">
           <button class="payment-tile" data-method="card">
-            <span class="payment-icon">Card</span>
+            <span class="payment-icon payment-icon-card"></span>
             <span class="payment-label">Credit Card</span>
             <span class="payment-note">Pay securely at confirmation</span>
           </button>
           <button class="payment-tile" data-method="apple-pay">
-            <span class="payment-icon">Pay</span>
+            <span class="payment-icon payment-icon-apple"></span>
             <span class="payment-label">Apple Pay</span>
             <span class="payment-note">Fastest table-side checkout</span>
           </button>
           <button class="payment-tile" data-method="cash">
-            <span class="payment-icon">Cash</span>
+            <span class="payment-icon payment-icon-cash"></span>
             <span class="payment-label">Cash</span>
             <span class="payment-note">Pay when your order arrives</span>
           </button>
@@ -86,8 +86,8 @@
       </section>
 
       <div class="checkout-actions">
-        <a class="checkout-secondary" id="checkoutBackToOrder" href="order.html">Back to Order</a>
         <button class="btn-pay" id="btnPay" disabled>Select Payment Method</button>
+        <a class="checkout-secondary" id="checkoutBackToOrder" href="order.html">Back to Order</a>
       </div>
       <p class="checkout-footnote">Demo checkout only. Payment stays mocked in the next step.</p>
     </section>
