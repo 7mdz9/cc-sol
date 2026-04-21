@@ -186,8 +186,22 @@
 }
 
 .sidebar-nav {
+  position: static;
+  inset: auto;
+  z-index: auto;
   display: grid;
+  align-items: stretch;
+  justify-content: stretch;
   gap: 10px;
+  padding: 0;
+  height: auto;
+  background: transparent;
+  box-shadow: none;
+  transition: none;
+}
+
+.sidebar-nav::before {
+  display: none;
 }
 
 .sidebar-nav a {
