@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const app = document.getElementById("checkoutApp");
   const guardMessage = document.getElementById("checkoutGuardMessage");
   const context = document.getElementById("checkoutContext");
+  const contextPill = document.getElementById("checkoutContextPill");
   const backToOrder = document.getElementById("checkoutBackToOrder");
 
   if (!branchData || !tableNum) {
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   initCart({ branch, table });
   context.textContent = `${branchData.name} · Table ${tableNum}`;
+  if (contextPill) contextPill.textContent = `${branchData.name} · Table ${tableNum}`;
   backToOrder.href = `./order.html?branch=${branch}&table=${tableNum}`;
 
   const cart = getCart();
@@ -76,14 +78,27 @@ function initCheckoutPage() {
 
 function renderSummary() {
   const el = document.getElementById("checkoutSummary");
+  const totalPill = document.getElementById("checkoutSummaryTotalPill");
   const cart = getCart();
+  const subtotal = getSubtotal();
+  if (totalPill) {
+    totalPill.textContent = `${subtotal} AED`;
+  }
   el.innerHTML = `
     <ul class="summary-lines">
-      ${cart.map(l => `<li>${l.name} × ${l.quantity}<span>${l.priceAed * l.quantity} AED</span></li>`).join("")}
+      ${cart.map(l => `
+        <li>
+          <div class="summary-line-copy">
+            <strong>${l.name}</strong>
+            <span>${l.quantity} ${l.quantity === 1 ? "item" : "items"}</span>
+          </div>
+          <span>${l.priceAed * l.quantity} AED</span>
+        </li>
+      `).join("")}
     </ul>
     <div class="summary-total">
       <span>Total</span>
-      <strong>${getSubtotal()} AED</strong>
+      <strong>${subtotal} AED</strong>
     </div>
   `;
 }

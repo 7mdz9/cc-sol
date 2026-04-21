@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/16-checkout.css">
   <link rel="icon" href="favicon.ico">
 </head>
 <body class="checkout-page">
@@ -39,18 +40,25 @@
       <div class="checkout-page-head">
         <p class="checkout-eyebrow">Finalize Your Order</p>
         <h1 class="checkout-page-title">Complete your Soléa order</h1>
-        <p class="checkout-page-copy">Review your selections, add your details, and choose how you would like to pay.</p>
+        <p class="checkout-page-copy">A calm, polished finish for your table-side order, designed to feel as refined as the Soléa dining experience itself.</p>
+        <div class="checkout-context-pill" id="checkoutContextPill"></div>
       </div>
 
       <section class="checkout-form-section">
-        <label class="checkout-label">
-          <span>Your Name</span>
-          <input type="text" id="customerName" maxlength="50" required>
-        </label>
-        <label class="checkout-label">
-          <span>Phone Number</span>
-          <input type="tel" id="customerPhone" placeholder="+971 50 123 4567" required>
-        </label>
+        <div class="checkout-section-head">
+          <h2>Guest Details</h2>
+          <p>We use these details to connect your order to the right table and service flow.</p>
+        </div>
+        <div class="checkout-form-grid">
+          <label class="checkout-label">
+            <span>Your Name</span>
+            <input type="text" id="customerName" maxlength="50" required>
+          </label>
+          <label class="checkout-label">
+            <span>Phone Number</span>
+            <input type="tel" id="customerPhone" placeholder="+971 50 123 4567" required>
+          </label>
+        </div>
       </section>
 
       <section class="checkout-payment-section">
@@ -60,16 +68,19 @@
         </div>
         <div class="payment-tiles">
           <button class="payment-tile" data-method="card">
-            <span class="payment-icon">💳</span>
-            <span>Credit Card</span>
+            <span class="payment-icon">Card</span>
+            <span class="payment-label">Credit Card</span>
+            <span class="payment-note">Pay securely at confirmation</span>
           </button>
           <button class="payment-tile" data-method="apple-pay">
-            <span class="payment-icon"></span>
-            <span>Apple Pay</span>
+            <span class="payment-icon">Pay</span>
+            <span class="payment-label">Apple Pay</span>
+            <span class="payment-note">Fastest table-side checkout</span>
           </button>
           <button class="payment-tile" data-method="cash">
-            <span class="payment-icon">💵</span>
-            <span>Cash</span>
+            <span class="payment-icon">Cash</span>
+            <span class="payment-label">Cash</span>
+            <span class="payment-note">Pay when your order arrives</span>
           </button>
         </div>
       </section>
@@ -78,13 +89,16 @@
         <a class="checkout-secondary" id="checkoutBackToOrder" href="order.html">Back to Order</a>
         <button class="btn-pay" id="btnPay" disabled>Select Payment Method</button>
       </div>
+      <p class="checkout-footnote">This is still a demo checkout experience. Payment handling remains mocked in the next step.</p>
     </section>
 
     <aside class="checkout-summary-card">
       <div class="checkout-summary-top">
         <p class="checkout-summary-label">Order Summary</p>
         <h2>Your Table Order</h2>
+        <p class="checkout-summary-copy">A clear review of everything being prepared for your table before you confirm.</p>
       </div>
+      <div class="checkout-summary-total-pill" id="checkoutSummaryTotalPill">0 AED</div>
       <section class="checkout-summary" id="checkoutSummary"></section>
     </aside>
   </div>
