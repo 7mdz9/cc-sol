@@ -1,4 +1,5 @@
 import { ADMIN_CREDENTIALS, ADMIN_SESSION_KEY } from "./admin-config.js";
+import { initCursor } from "./cursor.js";
 
 export function initLoginPage() {
   const form = document.getElementById("loginForm");
@@ -64,5 +65,6 @@ function redirectToLogin() {
 }
 
 if (document.getElementById("loginForm")) {
+  initCursor();
   initLoginPage();
 }

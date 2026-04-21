@@ -8,8 +8,8 @@
 }
 
 .filter-select {
-  min-width: 170px;
-  min-height: 44px;
+  min-width: 188px;
+  min-height: 46px;
   padding-right: 42px;
   border-radius: 999px;
   border: 1px solid rgba(201,168,76,.18);
@@ -43,7 +43,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .admin-kpi-card,
@@ -76,6 +76,7 @@
 .admin-kpi-card {
   display: grid;
   gap: 10px;
+  min-height: 214px;
   padding: 24px 22px;
 }
 
@@ -111,6 +112,7 @@
 .admin-content-grid {
   display: grid;
   gap: 18px;
+  align-items: start;
 }
 
 .admin-content-grid-overview {
@@ -314,9 +316,94 @@
   cursor: not-allowed;
 }
 
+.recent-list {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.recent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid rgba(201,168,76,.14);
+  border-radius: 20px;
+  background: rgba(255,252,245,.8);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.82);
+}
+
+.recent-row-main,
+.recent-row-side {
+  display: grid;
+  gap: 6px;
+}
+
+.recent-row-main {
+  min-width: 0;
+}
+
+.recent-row-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.recent-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.recent-branch,
+.recent-time {
+  color: var(--muted);
+  font-size: .66rem;
+  line-height: 1.5;
+}
+
+.recent-method {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(201,168,76,.11);
+  color: var(--gold-d);
+  font-size: .52rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.recent-row-side {
+  justify-items: end;
+  text-align: right;
+}
+
+.recent-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  line-height: .95;
+  color: var(--text);
+}
+
 @media (max-width: 1024px) {
   .filter-bar {
     justify-content: flex-start;
+  }
+
+  .filter-select {
+    min-width: 170px;
   }
 
   .admin-kpi-grid,
@@ -334,6 +421,7 @@
 @media (max-width: 640px) {
   .filter-bar {
     width: 100%;
+    gap: 10px;
   }
 
   .filter-select {
@@ -354,6 +442,10 @@
     border-radius: 22px;
   }
 
+  .admin-kpi-card {
+    min-height: 0;
+  }
+
   .admin-panel,
   .admin-export-card {
     padding: 22px 18px;
@@ -362,5 +454,16 @@
   .admin-panel-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .recent-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recent-row-side {
+    width: 100%;
+    justify-items: start;
+    text-align: left;
   }
 }

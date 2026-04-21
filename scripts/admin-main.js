@@ -1,5 +1,7 @@
 import { requireSession, logout } from "./admin-auth.js";
 import { renderFilterBar } from "./admin-filters.js";
+import { initCursor } from "./cursor.js";
+import { initOverview } from "./admin-overview.js";
 
 const SECTIONS = ["overview", "orders", "sales", "products", "payments", "branches", "export"];
 const SECTION_TITLES = {
@@ -22,12 +24,15 @@ const SECTION_SUBTITLES = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  initCursor();
+
   const session = requireSession();
   if (!session) return;
 
   document.getElementById("btnLogout")?.addEventListener("click", logout);
   renderSectionPlaceholders();
   renderFilterBar();
+  initOverview();
   window.addEventListener("hashchange", handleRoute);
   handleRoute();
 });
