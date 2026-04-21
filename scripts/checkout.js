@@ -7,8 +7,10 @@ import { submitOrder } from "./order-submit.js";
 let selectedMethod = null;
 let isProcessing = false;
 const cardDraft = {
-  name: "",
-  phone: ""
+  cardholderName: "",
+  cardNumber: "",
+  expiryDate: "",
+  cvv: ""
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -76,12 +78,26 @@ function initCheckoutPage() {
     const target = event.target;
     if (!(target instanceof HTMLInputElement)) return;
 
-    if (target.id === "customerName") {
-      cardDraft.name = target.value;
+    if (target.id === "cardholderName") {
+      cardDraft.cardholderName = target.value;
     }
 
-    if (target.id === "customerPhone") {
-      cardDraft.phone = target.value;
+    if (target.id === "cardNumber") {
+      const digits = target.value.replace(/\D/g, "").slice(0, 16);
+      cardDraft.cardNumber = digits;
+      target.value = formatCardNumber(digits);
+    }
+
+    if (target.id === "cardExpiry") {
+      const digits = target.value.replace(/\D/g, "").slice(0, 4);
+      cardDraft.expiryDate = digits;
+      target.value = formatExpiry(digits);
+    }
+
+    if (target.id === "cardCvv") {
+      const digits = target.value.replace(/\D/g, "").slice(0, 4);
+      cardDraft.cvv = digits;
+      target.value = digits;
     }
 
     updateMethodButtonState();
@@ -170,7 +186,7 @@ function renderMethodPanel() {
   panel.hidden = false;
 
   if (selectedMethod === "card") {
-    panel.innerHTML = `
+      panel.innerHTML = `
       <div class="method-panel method-panel-card">
         <div class="method-panel-head">
           <span class="method-panel-kicker">Card Checkout</span>
@@ -179,12 +195,20 @@ function renderMethodPanel() {
         </div>
         <div class="checkout-form-grid method-panel-grid">
           <label class="checkout-label">
-            <span>Your Name</span>
-            <input type="text" id="customerName" maxlength="50" value="${escapeAttribute(cardDraft.name)}" autocomplete="name">
+            <span>Cardholder Name</span>
+            <input type="text" id="cardholderName" maxlength="60" value="${escapeAttribute(cardDraft.cardholderName)}" autocomplete="cc-name">
           </label>
           <label class="checkout-label">
-            <span>Phone Number</span>
-            <input type="tel" id="customerPhone" placeholder="+971 50 123 4567" value="${escapeAttribute(cardDraft.phone)}" autocomplete="tel">
+            <span>Card Number</span>
+            <input type="text" id="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456" value="${escapeAttribute(formatCardNumber(cardDraft.cardNumber))}" autocomplete="cc-number">
+          </label>
+          <label class="checkout-label checkout-label-half">
+            <span>Expiry Date</span>
+            <input type="text" id="cardExpiry" inputmode="numeric" placeholder="MM/YY" value="${escapeAttribute(formatExpiry(cardDraft.expiryDate))}" autocomplete="cc-exp">
+          </label>
+          <label class="checkout-label checkout-label-half">
+            <span>CVV</span>
+            <input type="password" id="cardCvv" inputmode="numeric" placeholder="123" value="${escapeAttribute(cardDraft.cvv)}" autocomplete="cc-csc">
           </label>
         </div>
         <div class="method-panel-note">
@@ -245,14 +269,20 @@ function updateMethodButtonState() {
 }
 
 function isCardDetailsValid() {
-  return cardDraft.name.trim().length > 0 && cardDraft.phone.replace(/\D/g, "").length >= 7;
+  const expiryOk = isExpiryValid(cardDraft.expiryDate);
+  return (
+    cardDraft.cardholderName.trim().length > 1 &&
+    cardDraft.cardNumber.length >= 14 &&
+    expiryOk &&
+    cardDraft.cvv.length >= 3
+  );
 }
 
 function customerPayloadForMethod(method) {
   if (method === "card") {
     return {
-      name: cardDraft.name.trim(),
-      phone: cardDraft.phone.trim()
+      name: cardDraft.cardholderName.trim(),
+      phone: ""
     };
   }
 
@@ -276,4 +306,36 @@ function escapeAttribute(value) {
     .replaceAll('"', "&quot;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;");
+}
+
+function formatCardNumber(value) {
+  return String(value)
+    .replace(/\D/g, "")
+    .replace(/(.{4})/g, "$1 ")
+    .trim();
+}
+
+function formatExpiry(value) {
+  const digits = String(value).replace(/\D/g, "").slice(0, 4);
+  if (digits.length <= 2) return digits;
+  return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+}
+
+function isExpiryValid(value) {
+  const digits = String(value).replace(/\D/g, "");
+  if (digits.length !== 4) return false;
+
+  const month = Number.parseInt(digits.slice(0, 2), 10);
+  const year = Number.parseInt(digits.slice(2), 10);
+
+  if (month < 1 || month > 12) return false;
+
+  const now = new Date();
+  const currentYear = now.getFullYear() % 100;
+  const currentMonth = now.getMonth() + 1;
+
+  if (year < currentYear) return false;
+  if (year === currentYear && month < currentMonth) return false;
+
+  return true;
 }

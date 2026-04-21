@@ -494,6 +494,16 @@ body.checkout-page {
 
 .checkout-page .method-panel-grid {
   margin-top: 2px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.checkout-page .method-panel-grid .checkout-label:first-child,
+.checkout-page .method-panel-grid .checkout-label:nth-child(2) {
+  grid-column: 1 / -1;
+}
+
+.checkout-page .checkout-label-half {
+  grid-column: span 1;
 }
 
 .checkout-page .method-inline-actions {
@@ -529,7 +539,7 @@ body.checkout-page {
 }
 
 .checkout-page .method-panel .btn-pay {
-  justify-self: start;
+  justify-self: center;
   width: min(100%, 320px);
 }
 
