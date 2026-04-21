@@ -2,6 +2,7 @@ import { requireSession, logout } from "./admin-auth.js";
 import { renderFilterBar } from "./admin-filters.js";
 import { initCursor } from "./cursor.js";
 import { initOverview } from "./admin-overview.js";
+import { initOrders } from "./admin-orders.js";
 
 const SECTIONS = ["overview", "orders", "sales", "products", "payments", "branches", "export"];
 const SECTION_TITLES = {
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSectionPlaceholders();
   renderFilterBar();
   initOverview();
+  initOrders();
   window.addEventListener("hashchange", handleRoute);
   handleRoute();
 });
