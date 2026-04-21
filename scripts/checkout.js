@@ -98,10 +98,6 @@ function initCheckoutPage() {
         paymentMethod: selectedMethod,
         payment
       });
-
-      payBtn.disabled = false;
-      payBtn.textContent = methodLabel(selectedMethod);
-      alert("Order submitted successfully.");
     } catch (err) {
       payBtn.disabled = false;
       payBtn.textContent = methodLabel(selectedMethod);
