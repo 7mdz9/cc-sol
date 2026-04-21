@@ -1,6 +1,8 @@
 import { readBranchContext, validateBranch, validateTable } from "./branch-context.js";
 import { initCursor } from "./cursor.js";
 import { initCart, getCart, getSubtotal } from "./cart.js";
+import { mockCreatePayment } from "./payment-stub.js";
+import { submitOrder } from "./order-submit.js";
 
 let selectedMethod = null;
 
@@ -49,8 +51,10 @@ function initCheckoutPage() {
   const payBtn = document.getElementById("btnPay");
   const nameInput = document.getElementById("customerName");
   const phoneInput = document.getElementById("customerPhone");
+  const appleTile = document.querySelector('.payment-tile[data-method="apple-pay"]');
 
   renderSummary();
+  syncApplePayAvailability();
   updatePayState();
 
   [nameInput, phoneInput].forEach(input => {
@@ -65,6 +69,72 @@ function initCheckoutPage() {
       updatePayState();
     });
   });
+
+  payBtn.addEventListener("click", async () => {
+    if (!selectedMethod) return;
+
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const phoneDigits = phone.replace(/\D/g, "");
+    if (!name || phoneDigits.length < 7) return;
+
+    payBtn.disabled = true;
+    payBtn.textContent = "Processing…";
+
+    try {
+      let payment = null;
+
+      if (selectedMethod !== "cash") {
+        payment = await mockCreatePayment({
+          method: selectedMethod,
+          amount: getSubtotal(),
+          currency: "AED",
+          metadata: { name, phone }
+        });
+      }
+
+      await submitOrder({
+        customer: { name, phone },
+        paymentMethod: selectedMethod,
+        payment
+      });
+
+      payBtn.disabled = false;
+      payBtn.textContent = methodLabel(selectedMethod);
+      alert("Order submitted successfully.");
+    } catch (err) {
+      payBtn.disabled = false;
+      payBtn.textContent = methodLabel(selectedMethod);
+      alert(err.message);
+    }
+  });
+
+  function syncApplePayAvailability() {
+    if (!appleTile) return;
+
+    const supportsApplePay =
+      typeof window.ApplePaySession !== "undefined" &&
+      typeof window.ApplePaySession.canMakePayments === "function" &&
+      window.ApplePaySession.canMakePayments();
+
+    if (supportsApplePay) return;
+
+    if (selectedMethod === "apple-pay") {
+      selectedMethod = null;
+    }
+
+    appleTile.hidden = true;
+    appleTile.disabled = true;
+    appleTile.setAttribute("aria-hidden", "true");
+
+    const paymentSection = appleTile.closest(".checkout-payment-section");
+    if (!paymentSection || paymentSection.querySelector(".apple-pay-note")) return;
+
+    paymentSection.insertAdjacentHTML(
+      "beforeend",
+      '<p class="apple-pay-note">Apple Pay requires Safari on iOS/macOS.</p>'
+    );
+  }
 
   function updatePayState() {
     const nameOk = nameInput.value.trim().length > 0;

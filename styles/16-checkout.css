@@ -407,6 +407,13 @@ body.checkout-page {
   text-align: left;
 }
 
+.checkout-page .apple-pay-note {
+  margin-top: 12px;
+  font-size: 0.58rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 .checkout-page .checkout-actions {
   display: grid;
   gap: 10px;
