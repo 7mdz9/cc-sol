@@ -151,6 +151,22 @@
   padding: 20px 40px;
   /* reuse nav styles from 04-nav.css where possible */
 }
+#orderNav .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .48rem .9rem .42rem;
+  border: 1px solid rgba(201,168,76,.14);
+  border-radius: 999px;
+  background: rgba(255,252,245,.76);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 24px rgba(14,12,8,.04);
+}
+#orderNav .nav-logo img {
+  height: 40px;
+  width: auto;
+  filter: contrast(1.06) saturate(1.05);
+}
 .nav-context {
   font-family: var(--font-sans, "Montserrat"), sans-serif;
   font-size: 13px;
@@ -380,5 +396,8 @@
   .preview-image-wrap {
     height: auto;
     aspect-ratio: 4 / 5;
+  }
+  #orderNav .nav-logo img {
+    height: 34px;
   }
 }

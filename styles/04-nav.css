@@ -3,9 +3,7 @@ nav{position:fixed;inset:0 0 auto 0;z-index:200;display:flex;align-items:center;
 nav::before{content:'';position:absolute;inset:0;backdrop-filter:blur(28px) saturate(200%);background:rgba(253,250,243,0);border-bottom:1px solid rgba(201,168,76,0);transition:all .6s;z-index:-1;}
 nav.scrolled::before{background:rgba(253,250,243,.94);border-bottom-color:var(--border);}
 nav.scrolled{height:64px;box-shadow:0 2px 40px rgba(0,0,0,.04);}
-.nav-logo{display:inline-flex;align-items:center;justify-content:center;padding:.48rem .9rem .42rem;border:1px solid rgba(201,168,76,.14);border-radius:999px;background:rgba(255,252,245,.72);backdrop-filter:blur(12px);box-shadow:0 12px 24px rgba(14,12,8,.04);transition:all .4s;}
-.nav-logo img{height:44px;transition:all .5s;filter:contrast(1.06) saturate(1.05) drop-shadow(0 0 0px rgba(201,168,76,0));}
-nav.scrolled .nav-logo{background:rgba(255,252,245,.9);border-color:rgba(201,168,76,.2);box-shadow:0 10px 20px rgba(14,12,8,.05);}
+.nav-logo img{height:44px;transition:all .5s;filter:drop-shadow(0 0 0px rgba(201,168,76,0));}
 nav.scrolled .nav-logo img{height:34px;}
 .nav-logo img:hover{filter:drop-shadow(0 0 18px rgba(201,168,76,.45));}
 .nav-links{display:flex;align-items:center;gap:3rem;list-style:none;}
