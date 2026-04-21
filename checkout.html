@@ -35,10 +35,10 @@
 </main>
 
 <main id="checkoutApp" class="checkout-app" hidden>
-  <div class="checkout-back-rail">
-    <a class="checkout-secondary checkout-floating-back" id="checkoutBackToOrder" href="order.html">Back to Order</a>
-  </div>
-  <div class="checkout-page-layout">
+  <div class="checkout-shell">
+    <aside class="checkout-back-rail">
+      <a class="checkout-secondary checkout-floating-back" id="checkoutBackToOrder" href="order.html">Back to Order</a>
+    </aside>
     <section class="checkout-main-card">
       <div class="checkout-page-head">
         <p class="checkout-eyebrow">Finalize Your Order</p>
@@ -76,7 +76,10 @@
             <span class="payment-note">Pay securely at confirmation</span>
           </button>
           <button class="payment-tile" data-method="apple-pay">
-            <span class="payment-icon payment-icon-apple"></span>
+            <span class="payment-icon payment-icon-apple">
+              <span class="payment-apple-mark"></span>
+              <span class="payment-apple-word">Pay</span>
+            </span>
             <span class="payment-label">Apple Pay</span>
             <span class="payment-note">Fastest table-side checkout</span>
           </button>

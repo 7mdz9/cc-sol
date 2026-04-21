@@ -155,17 +155,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: .48rem .9rem .42rem;
-  border: 1px solid rgba(201,168,76,.14);
-  border-radius: 999px;
-  background: rgba(255,252,245,.76);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 24px rgba(14,12,8,.04);
+  padding: 0;
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 #orderNav .nav-logo img {
   height: 40px;
   width: auto;
-  filter: contrast(1.06) saturate(1.05);
+  filter: contrast(1.04) saturate(1.02);
 }
 .nav-context {
   font-family: var(--font-sans, "Montserrat"), sans-serif;
