@@ -17,13 +17,14 @@ export function initCart({ branch, table }) {
       // Support both legacy plain array and new { items, updatedAt } shape
       if (Array.isArray(parsed)) {
         // Legacy format — treat as expired (no timestamp)
-        cart = [];
+        localStorage.removeItem(cartKey);
       } else if (parsed && Array.isArray(parsed.items)) {
         const age = Date.now() - (parsed.updatedAt || 0);
         if (age < EXPIRY_MS) {
           cart = parsed.items;
+        } else {
+          localStorage.removeItem(cartKey);
         }
-        // else expired — cart stays []
       }
     } catch {}
   }
