@@ -2,7 +2,6 @@ import { readBranchContext, validateBranch, validateTable } from "./branch-conte
 import { initCursor } from "./cursor.js";
 import { initNav } from "./nav.js";
 import { initOrderMenu } from "./order-menu.js";
-import { initOrderPreview } from "./order-preview.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
@@ -24,8 +23,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("orderContext").textContent = `${branchData.name} · Table ${tableNum}`;
   app.hidden = false;
 
-  // Single fetch — data passed to both menu and preview modules
-  const menuData = await fetch("./data/menu.json").then(r => r.json());
-  initOrderMenu(menuData.categories);
-  initOrderPreview(menuData);
+  await initOrderMenu();
 });
