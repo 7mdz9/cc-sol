@@ -1,3 +1,8 @@
-export function initNav(){
-window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>50));
+export function initNav() {
+  const nav = document.getElementById("mainNav");
+  if (!nav) return;
+
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", scrollY > 50);
+  });
 }

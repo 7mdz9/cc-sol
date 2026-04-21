@@ -1,8 +1,8 @@
-export async function initOrderMenu() {
+export async function initOrderMenu(menuData) {
   const container = document.getElementById("orderMenu");
   if (!container) return;
-  const res = await fetch("./data/menu.json");
-  const { categories } = await res.json();
+  const data = menuData || await fetch("./data/menu.json").then(res => res.json());
+  const { categories } = data;
 
   // Calorie toggle row + category list
   container.innerHTML = `

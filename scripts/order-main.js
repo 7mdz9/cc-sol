@@ -26,11 +26,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("orderContext").textContent = `${branchData.name} · Table ${tableNum}`;
   app.hidden = false;
 
-  // initOrderMenu fetches its own data; fetch separately for preview + cart
-  const [menuData] = await Promise.all([
-    fetch("./data/menu.json").then(r => r.json()),
-    initOrderMenu()
-  ]);
+  const menuData = await fetch("./data/menu.json").then(r => r.json());
+  await initOrderMenu(menuData);
 
   initCart({ branch, table });
   initOrderPreview(menuData);

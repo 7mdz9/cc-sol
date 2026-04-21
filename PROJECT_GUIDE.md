@@ -13,9 +13,10 @@
 - [10. Conventions & Gotchas](#10-conventions--gotchas)
 - [11. Version History](#11-version-history)
 - [12. Next Steps / Roadmap](#12-next-steps--roadmap)
+- [13. Order Flow Addendum](#13-order-flow-addendum)
 
 ## 1. Project Overview
-Soléa is a premium UAE juice and dessert brand marketing site. This repository contains the frontend mockup as a single-page site built with plain HTML, CSS, JavaScript, JSON, and static assets, with no build step. It is not a Next.js app, not a backend service, and not a CMS integration.
+Soléa is a premium UAE juice and dessert brand marketing site. This repository contains the frontend mockup as a plain HTML/CSS/JS project with no build step. It now includes both the marketing site (`index.html`) and a QR-gated dine-in ordering flow (`order.html` + `checkout.html`). It is not a Next.js app, not a backend service, and not a CMS integration.
 
 Tech stack:
 - HTML5
@@ -65,6 +66,8 @@ Open:
 ```text
 Proj/
 ├── index.html                          # HTML shell; static layout plus empty runtime mount points
+├── order.html                          # QR-gated dine-in ordering entry point
+├── checkout.html                       # dedicated checkout page for table orders
 ├── README.md                           # quick-start guide
 ├── PROJECT_GUIDE.md                    # deep project reference
 ├── favicon.ico                         # root favicon used by browsers during local/static serving
@@ -86,7 +89,9 @@ Proj/
 │   ├── 11-footer.css                   # footer layout and link styling
 │   ├── 12-utilities.css                # reveal helper classes and stagger delay helpers
 │   ├── 13-animations.css               # shared keyframes
-│   └── 14-responsive.css               # responsive behavior at the 1024px breakpoint
+│   ├── 14-responsive.css               # shared marketing-site responsive behavior
+│   ├── 15-order-page.css               # order-page layout, preview, cart, mobile bar, toast
+│   └── 16-checkout.css                 # checkout page styling, payment tiles, confirmation state
 ├── scripts/
 │   ├── main.js                         # entry point; runs all init functions
 │   ├── cursor.js                       # custom cursor movement and hover enlargement
@@ -97,10 +102,19 @@ Proj/
 │   ├── marquee.js                      # marquee JSON fetch and duplicated strip render
 │   ├── branches.js                     # branches JSON fetch and card render
 │   ├── support.js                      # support JSON fetch and channels/hours render
-│   └── merch.js                        # merch JSON fetch, SVG fetch, card render
+│   ├── merch.js                        # merch JSON fetch, SVG fetch, card render
+│   ├── branch-context.js               # reads and validates branch/table URL context
+│   ├── order-main.js                   # order-page entry point and QR guard
+│   ├── order-menu.js                   # order-page menu accordion renderer
+│   ├── order-preview.js                # order-page preview panel + add-to-cart hook
+│   ├── cart.js                         # localStorage-backed cart state scoped by branch+table
+│   ├── order-cart-ui.js                # cart rendering, totals, mobile cart bar wiring
+│   ├── checkout.js                     # checkout page state, payment method flow, inline errors
+│   ├── payment-stub.js                 # mock payment processor contract for card/apple-pay
+│   └── order-submit.js                 # mock order submission + confirmation screen
 ├── data/
 │   ├── menu.json                       # 6 menu categories and 33 items
-│   ├── branches.json                   # 5 branch records
+│   ├── branches.json                   # 5 branch records, each with a slug for QR URLs
 │   ├── marquee.json                    # 6 marquee labels
 │   ├── contact.json                    # 4 support channels and 3 support-hour lines
 │   └── merch.json                      # 8 merch entries plus SVG filenames and reveal classes
@@ -169,6 +183,28 @@ index.html
 - **Depends on:** `styles/main.css`, `scripts/main.js`, `public/assets/logo.png`
 - **Referenced by:** browser entry point; JS modules query its IDs and classes
 - **Edit this file when:** changing static copy like the hero headline or footer text; adding a new section shell or a new mount point
+
+### `order.html`
+- **Purpose:** QR-gated dine-in ordering entry point.
+- **What's inside:**
+  - order nav with shared Soléa logo and branch/table context
+  - invalid-context guard state
+  - order layout with menu, preview, cart, mobile cart bar, and toast
+  - one module script tag for `scripts/order-main.js`
+- **Depends on:** `styles/main.css`, `styles/15-order-page.css`, `scripts/order-main.js`, `data/menu.json`, `data/branches.json`
+- **Referenced by:** QR links and manual local test URLs
+- **Edit this file when:** changing order-shell layout, guard copy, or mobile cart/toast mount points
+
+### `checkout.html`
+- **Purpose:** Dedicated checkout page for the dine-in order flow.
+- **What's inside:**
+  - shared top bar with branch/table context
+  - invalid-context / empty-cart guard state
+  - payment method tiles, dynamic payment panel, and order summary
+  - one module script tag for `scripts/checkout.js`
+- **Depends on:** `styles/main.css`, `styles/16-checkout.css`, `scripts/checkout.js`, `scripts/cart.js`
+- **Referenced by:** `scripts/order-cart-ui.js` checkout CTA
+- **Edit this file when:** changing checkout layout, payment-panel mount points, or confirmation-shell structure
 
 ### `README.md`
 - **Purpose:** Quick-start reference for running the site and locating major folders.
@@ -360,6 +396,30 @@ index.html
 - **Referenced by:** `styles/main.css`
 - **Edit this file when:** changing tablet/mobile behavior or adding responsive layout overrides
 
+### `styles/15-order-page.css`
+- **Purpose:** Styles the dine-in ordering page.
+- **What's inside:**
+  - order layout grid
+  - order nav treatment
+  - preview panel and add-to-cart CTA
+  - cart panel styling, mobile cart bar, and order toast
+  - order-page-specific breakpoints for stacked mobile layouts
+- **Depends on:** shared tokens and shared menu styles
+- **Referenced by:** `order.html`
+- **Edit this file when:** changing order-page layout, mobile behavior, or cart/preview presentation
+
+### `styles/16-checkout.css`
+- **Purpose:** Styles the dedicated checkout page.
+- **What's inside:**
+  - checkout page shell and summary card
+  - payment tile selection states
+  - dynamic payment method panel
+  - inline error banner and confirmation screen
+  - mobile full-height checkout adjustments
+- **Depends on:** shared tokens and nav/logo styles
+- **Referenced by:** `checkout.html`
+- **Edit this file when:** changing checkout UX, payment panel treatment, or confirmation styling
+
 ### `scripts/`
 
 ### `scripts/main.js`
@@ -468,6 +528,101 @@ index.html
 - **Depends on:** `data/merch.json`; all eight SVG files; `.merch-grid`
 - **Referenced by:** `scripts/main.js`
 - **Edit this file when:** changing merch card markup or how SVG files are inlined
+
+### `scripts/branch-context.js`
+- **Purpose:** Reads `branch` and `table` from the URL and validates them.
+- **What's inside:**
+  - `readBranchContext()`
+  - `validateBranch()`
+  - `validateTable()`
+- **Depends on:** `data/branches.json`
+- **Referenced by:** `scripts/order-main.js`, `scripts/checkout.js`, `scripts/order-submit.js`
+- **Edit this file when:** changing QR URL rules or table validation rules
+
+### `scripts/order-main.js`
+- **Purpose:** Boots `order.html`.
+- **What's inside:**
+  - QR guard logic
+  - branch/table context label rendering
+  - one `menu.json` fetch shared between menu and preview
+  - cart initialization and expiry-toast trigger
+- **Depends on:** `scripts/order-menu.js`, `scripts/order-preview.js`, `scripts/cart.js`, `data/branches.json`, `data/menu.json`
+- **Referenced by:** `order.html`
+- **Edit this file when:** changing order boot order or URL-guard behavior
+
+### `scripts/order-menu.js`
+- **Purpose:** Renders the order-page category accordion.
+- **What's inside:**
+  - calorie toggle row
+  - six categories and thirty-three items
+  - accordion behavior scoped to `#orderMenu`
+- **Depends on:** `data/menu.json` shape and order-menu shell selectors
+- **Referenced by:** `scripts/order-main.js`
+- **Edit this file when:** changing order-page menu markup or accordion behavior
+
+### `scripts/order-preview.js`
+- **Purpose:** Updates the selected item preview and add-to-cart action.
+- **What's inside:**
+  - preview image/name/calorie/price updates
+  - active item highlighting
+  - add-to-cart button wiring
+- **Depends on:** order-page menu item markup, preview shell selectors, local optimized menu assets
+- **Referenced by:** `scripts/order-main.js`
+- **Edit this file when:** changing preview rendering or item-selection behavior
+
+### `scripts/cart.js`
+- **Purpose:** Stores and synchronizes cart state for the dine-in flow.
+- **What's inside:**
+  - localStorage-backed cart per branch/table
+  - 2-hour expiry logic
+  - quantity cap of 20
+  - cross-tab sync via `storage` event
+  - cart notice consumption for expiry messaging
+- **Depends on:** browser localStorage
+- **Referenced by:** `scripts/order-main.js`, `scripts/order-preview.js`, `scripts/order-cart-ui.js`, `scripts/checkout.js`, `scripts/order-submit.js`
+- **Edit this file when:** changing cart persistence, expiry, or synchronization behavior
+
+### `scripts/order-cart-ui.js`
+- **Purpose:** Renders the cart UI on the order page.
+- **What's inside:**
+  - empty and populated cart states
+  - quantity controls and subtotal
+  - checkout CTA link
+  - mobile fixed cart summary bar
+- **Depends on:** `scripts/cart.js` and `order.html` cart/mobile bar selectors
+- **Referenced by:** `scripts/order-main.js`
+- **Edit this file when:** changing cart rendering, mobile cart behavior, or checkout-link treatment
+
+### `scripts/checkout.js`
+- **Purpose:** Boots the dedicated checkout page.
+- **What's inside:**
+  - QR/context guard for checkout
+  - order summary render
+  - payment tile selection and dynamic method panels
+  - inline error handling
+  - cash/card/apple-pay submission wiring
+- **Depends on:** `scripts/cart.js`, `scripts/payment-stub.js`, `scripts/order-submit.js`
+- **Referenced by:** `checkout.html`
+- **Edit this file when:** changing checkout flow, payment-form behavior, or error handling
+
+### `scripts/payment-stub.js`
+- **Purpose:** Simulates payment processor behavior for the demo flow.
+- **What's inside:**
+  - `mockCreatePayment()` with artificial latency and a small failure rate
+- **Depends on:** nothing external at runtime
+- **Referenced by:** `scripts/checkout.js`
+- **Edit this file when:** changing the mocked payment contract for demo/testing purposes
+
+### `scripts/order-submit.js`
+- **Purpose:** Simulates order submission and renders confirmation.
+- **What's inside:**
+  - order payload assembly
+  - console logging of the mock backend payload
+  - order-number generation
+  - confirmation screen rendering and cart clearing
+- **Depends on:** `scripts/cart.js`, `scripts/branch-context.js`
+- **Referenced by:** `scripts/checkout.js`
+- **Edit this file when:** changing the mock order payload or confirmation screen behavior
 
 ### `data/`
 
@@ -610,6 +765,7 @@ index.html
 Array<{
   index: string;
   name: string;
+  slug: string;
   region: string;
   district: string;
   address: string;
@@ -841,3 +997,32 @@ Magic numbers currently hard-coded:
 
 ## 12. Next Steps / Roadmap
 No roadmap items captured in code. Future direction is tracked separately.
+
+## 13. Order Flow Addendum
+Order entry:
+- Primary order entry pattern: `order.html?branch={slug}&table={n}`
+- Example: `order.html?branch=yas-bay&table=7`
+- Invalid or missing `branch` / `table` params show the guard state instead of the menu
+
+Order runtime:
+1. `order.html` loads `scripts/order-main.js`
+2. `order-main.js` validates `branch` and `table` through `scripts/branch-context.js`
+3. `order-main.js` fetches `data/menu.json` once, then initializes:
+   - `initOrderMenu(menuData)`
+   - `initCart(...)`
+   - `initOrderPreview(menuData)`
+   - `initCartUI()`
+4. `order-cart-ui.js` links to `checkout.html` with the same `branch` / `table` query params
+5. `checkout.js` reads the same context, renders the summary, and runs the selected mock payment path
+6. `order-submit.js` logs the payload and swaps in the confirmation screen
+
+Cart persistence:
+- localStorage key format: `solea_cart_{branch}_{table}`
+- Example: `solea_cart_yas-bay_7`
+- Cart expires after 2 hours
+- Cross-tab updates are synchronized through the browser `storage` event
+
+Payment note:
+- `payment-stub.js` is intentionally a mock backend contract
+- Card and Apple Pay are simulated only
+- Real Stripe/Telr integration is a separate future project
