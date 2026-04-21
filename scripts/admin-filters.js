@@ -9,6 +9,10 @@ try {
   }
 } catch {}
 
+if (state.range === "this-month" || state.range === "last-month") {
+  state.range = "30d";
+}
+
 export function initAdminFilters() {}
 
 export function getFilters() {
@@ -42,8 +46,6 @@ export function renderFilterBar() {
         <option value="yesterday">Yesterday</option>
         <option value="7d">Last 7 days</option>
         <option value="30d">Last 30 days</option>
-        <option value="this-month">This month</option>
-        <option value="last-month">Last month</option>
         <option value="this-year">This year</option>
         <option value="all">All time</option>
       </select>
@@ -110,13 +112,6 @@ function rangeToBounds(range) {
       return { from: daysAgo(7), to: now };
     case "30d":
       return { from: daysAgo(30), to: now };
-    case "this-month":
-      return { from: new Date(now.getFullYear(), now.getMonth(), 1), to: now };
-    case "last-month": {
-      const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-      const end = new Date(now.getFullYear(), now.getMonth(), 0, 23, 59, 59, 999);
-      return { from: lastMonth, to: end };
-    }
     case "this-year":
       return { from: new Date(now.getFullYear(), 0, 1), to: now };
     case "all":
