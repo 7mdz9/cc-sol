@@ -4,6 +4,7 @@ let currentItemId = null;
 let itemsById = {};
 
 export function initOrderPreview(menuData) {
+  const menu = document.getElementById("orderMenu");
   const empty = document.querySelector(".preview-empty");
   const populated = document.querySelector(".preview-populated");
   const webpSource = document.getElementById("previewWebp");
@@ -21,19 +22,14 @@ export function initOrderPreview(menuData) {
     populated.hidden = false;
   }
 
-  document.getElementById("orderMenu").addEventListener("click", e => {
-    const btn = e.target.closest(".item");
-    if (!btn) return;
-
+  function selectItem(btn) {
     const id = btn.dataset.itemId;
     const item = itemsById[id];
     if (!item) return;
     currentItemId = id;
 
-    // Swap empty → populated
     showPreview();
 
-    // Responsive images using local optimized variants
     const base = `public/assets/menu/optimized/${item.image}`;
     webpSource.srcset = `${base}-480.webp 480w, ${base}-800.webp 800w, ${base}-1200.webp 1200w`;
     webpSource.sizes = "(max-width: 640px) 480px, (max-width: 1024px) 600px, 800px";
@@ -46,10 +42,18 @@ export function initOrderPreview(menuData) {
     calEl.textContent = item.calories;
     priceEl.textContent = item.priceAed;
 
-    // Highlight active item
-    document.getElementById("orderMenu").querySelectorAll(".item").forEach(b => b.classList.remove("active"));
+    menu.querySelectorAll(".item").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
+  }
+
+  menu.addEventListener("click", e => {
+    const btn = e.target.closest(".item");
+    if (!btn) return;
+    selectItem(btn);
   });
+
+  const firstItem = menu.querySelector(".item");
+  if (firstItem) selectItem(firstItem);
 
   // Add to Cart
   btnAdd.addEventListener("click", () => {

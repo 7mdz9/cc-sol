@@ -13,8 +13,8 @@
   align-self: start;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-height: calc(100vh - 120px);
+  gap: 18px;
+  max-height: calc(100vh - 116px);
   overflow-y: auto;
   padding-right: 6px;
   scrollbar-width: thin;
@@ -54,6 +54,8 @@
 }
 /* Preview panel */
 .order-preview {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--border);
   background: var(--cream);
   overflow: hidden;
@@ -82,10 +84,11 @@
 /* Populated state */
 .preview-image-wrap {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  height: clamp(240px, 34vh, 360px);
   overflow: hidden;
   background: var(--gold-p);
   position: relative;
+  flex-shrink: 0;
 }
 .preview-image-wrap::before {
   content: "";
@@ -115,14 +118,14 @@
     var(--cream);
 }
 .preview-details {
-  padding: 1.5rem 1.6rem 1rem;
+  padding: 1.15rem 1.25rem .85rem;
 }
 .preview-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.55rem;
+  font-size: 1.4rem;
   font-weight: 300;
   color: var(--text);
-  margin-bottom: .7rem;
+  margin-bottom: .5rem;
   line-height: 1.2;
 }
 .preview-meta {
@@ -184,9 +187,9 @@
 /* Add to Cart button */
 .btn-add-cart {
   display: block;
-  width: calc(100% - 3.2rem);
-  margin: 0 1.6rem 1.6rem;
-  padding: .95rem 1.5rem;
+  width: calc(100% - 2.5rem);
+  margin: 0 1.25rem 1.25rem;
+  padding: .9rem 1.2rem;
   background: var(--gold);
   color: var(--darker);
   border: none;
@@ -373,6 +376,7 @@
     padding-right: 0;
   }
   .preview-image-wrap {
+    height: auto;
     aspect-ratio: 4 / 5;
   }
 }
