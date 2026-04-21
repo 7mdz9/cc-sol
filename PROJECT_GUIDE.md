@@ -14,9 +14,10 @@
 - [11. Version History](#11-version-history)
 - [12. Next Steps / Roadmap](#12-next-steps--roadmap)
 - [13. Order Flow Addendum](#13-order-flow-addendum)
+- [14. Admin Dashboard Addendum](#14-admin-dashboard-addendum)
 
 ## 1. Project Overview
-Soléa is a premium UAE juice and dessert brand marketing site. This repository contains the frontend mockup as a plain HTML/CSS/JS project with no build step. It now includes both the marketing site (`index.html`) and a QR-gated dine-in ordering flow (`order.html` + `checkout.html`). It is not a Next.js app, not a backend service, and not a CMS integration.
+Soléa is a premium UAE juice and dessert brand marketing site. This repository contains the frontend mockup as a plain HTML/CSS/JS project with no build step. It now includes the marketing site (`index.html`), the QR-gated dine-in ordering flow (`order.html` + `checkout.html`), and a local-only admin dashboard (`admin-login.html` + `admin.html`). It is not a Next.js app, not a backend service, and not a CMS integration.
 
 Tech stack:
 - HTML5
@@ -68,6 +69,8 @@ Proj/
 ├── index.html                          # HTML shell; static layout plus empty runtime mount points
 ├── order.html                          # QR-gated dine-in ordering entry point
 ├── checkout.html                       # dedicated checkout page for table orders
+├── admin-login.html                    # fake-auth login entry for the local admin dashboard
+├── admin.html                          # local admin dashboard entry point
 ├── README.md                           # quick-start guide
 ├── PROJECT_GUIDE.md                    # deep project reference
 ├── favicon.ico                         # root favicon used by browsers during local/static serving
@@ -91,7 +94,10 @@ Proj/
 │   ├── 13-animations.css               # shared keyframes
 │   ├── 14-responsive.css               # shared marketing-site responsive behavior
 │   ├── 15-order-page.css               # order-page layout, preview, cart, mobile bar, toast
-│   └── 16-checkout.css                 # checkout page styling, payment tiles, confirmation state
+│   ├── 16-checkout.css                 # checkout page styling, payment tiles, confirmation state
+│   ├── 17-admin-base.css               # admin shell, sidebar, login page, sticky header
+│   ├── 18-admin-components.css         # admin cards, tables, filters, drawers, export actions
+│   └── 19-admin-charts.css             # admin analytics chart layouts and chart card sizing
 ├── scripts/
 │   ├── main.js                         # entry point; runs all init functions
 │   ├── cursor.js                       # custom cursor movement and hover enlargement
@@ -111,7 +117,19 @@ Proj/
 │   ├── order-cart-ui.js                # cart rendering, totals, mobile cart bar wiring
 │   ├── checkout.js                     # checkout page state, payment method flow, inline errors
 │   ├── payment-stub.js                 # mock payment processor contract for card/apple-pay
-│   └── order-submit.js                 # mock order submission + confirmation screen
+│   ├── order-submit.js                 # mock order submission + confirmation screen + solea_orders persistence
+│   ├── admin-config.js                 # fake admin credentials, admin session key, orders storage key
+│   ├── admin-auth.js                   # login handling, session guard, logout redirect
+│   ├── admin-data.js                   # solea_orders loader, validation, aggregations, live sync
+│   ├── admin-filters.js                # shared global filter bar and persisted filter state
+│   ├── admin-overview.js               # KPI cards and recent orders feed
+│   ├── admin-orders.js                 # searchable orders table and detail drawer
+│   ├── admin-sales.js                  # revenue charts powered by Chart.js
+│   ├── admin-products.js               # best/least sellers and category chart
+│   ├── admin-payments.js               # payment split analytics and branch matrix
+│   ├── admin-branches.js               # branch ranking table and callouts
+│   ├── admin-export.js                 # CSV export actions for filtered data
+│   └── admin-main.js                   # admin shell boot, routing, and section initialization
 ├── data/
 │   ├── menu.json                       # 6 menu categories and 33 items
 │   ├── branches.json                   # 5 branch records, each with a slug for QR URLs
@@ -135,7 +153,12 @@ Runtime sequence:
 1. `index.html` parses and builds the static shell.
 2. The browser loads `styles/main.css`.
 3. `styles/main.css` loads all 14 CSS partials in numbered order.
-4. The browser loads `scripts/main.js` as an ES module.
+4. The browser loads the page-specific entry module as an ES module:
+   - `scripts/main.js` for `index.html`
+   - `scripts/order-main.js` for `order.html`
+   - `scripts/checkout.js` for `checkout.html`
+   - `scripts/admin-auth.js` for `admin-login.html`
+   - `scripts/admin-main.js` for `admin.html`
 5. `main.js` waits for `DOMContentLoaded`.
 6. `main.js` runs init functions in this order:
    1. `initCursor()`
@@ -205,6 +228,29 @@ index.html
 - **Depends on:** `styles/main.css`, `styles/16-checkout.css`, `scripts/checkout.js`, `scripts/cart.js`
 - **Referenced by:** `scripts/order-cart-ui.js` checkout CTA
 - **Edit this file when:** changing checkout layout, payment-panel mount points, or confirmation-shell structure
+
+### `admin-login.html`
+- **Purpose:** Fake-auth entry point for the local demo admin dashboard.
+- **What's inside:**
+  - shared Soléa logo and cursor elements
+  - centered admin login card
+  - fake-auth email/password form
+  - one module script tag for `scripts/admin-auth.js`
+- **Depends on:** `styles/main.css`, `styles/17-admin-base.css`, `scripts/admin-auth.js`
+- **Referenced by:** direct browser entry and auth redirects from `admin.html`
+- **Edit this file when:** changing the login shell or fake-auth form structure
+
+### `admin.html`
+- **Purpose:** Founder-facing local analytics dashboard driven by real completed local orders.
+- **What's inside:**
+  - fixed left sidebar with grouped navigation
+  - sticky header with global filters
+  - seven admin sections: Overview, Orders, Sales, Products, Payments, Branches, Export
+  - one module script tag for `scripts/admin-main.js`
+  - Chart.js CDN include for analytics sections
+- **Depends on:** `styles/main.css`, `scripts/admin-main.js`, `localStorage["solea_orders"]`
+- **Referenced by:** auth redirect from `admin-login.html`
+- **Edit this file when:** changing shell structure, section mount points, or sidebar groups
 
 ### `README.md`
 - **Purpose:** Quick-start reference for running the site and locating major folders.
@@ -420,6 +466,40 @@ index.html
 - **Referenced by:** `checkout.html`
 - **Edit this file when:** changing checkout UX, payment panel treatment, or confirmation styling
 
+### `styles/17-admin-base.css`
+- **Purpose:** Styles the admin shell and admin login page.
+- **What's inside:**
+  - admin login card and form
+  - fixed admin sidebar and grouped navigation
+  - sticky admin header
+  - shared admin page spacing rules
+- **Depends on:** shared tokens and the admin page shells
+- **Referenced by:** `admin-login.html`, `admin.html`
+- **Edit this file when:** changing admin shell layout, sidebar behavior, or login treatment
+
+### `styles/18-admin-components.css`
+- **Purpose:** Styles reusable admin dashboard components.
+- **What's inside:**
+  - filter bar and select controls
+  - KPI cards
+  - admin panels
+  - recent order feed rows
+  - admin tables and order drawer
+  - export cards and payment/branch/product component states
+- **Depends on:** admin section markup from the admin JS modules
+- **Referenced by:** `admin.html`
+- **Edit this file when:** changing dashboard density, cards, tables, filters, export cards, or drawers
+
+### `styles/19-admin-charts.css`
+- **Purpose:** Styles chart-specific admin layouts.
+- **What's inside:**
+  - sales grid
+  - chart canvas wrappers
+  - chart-panel responsive sizing
+- **Depends on:** analytics sections rendered by admin JS modules
+- **Referenced by:** `admin.html`
+- **Edit this file when:** changing admin chart panel sizing or chart layout grids
+
 ### `scripts/`
 
 ### `scripts/main.js`
@@ -618,11 +698,137 @@ index.html
 - **What's inside:**
   - order payload assembly
   - console logging of the mock backend payload
+  - persistence into `localStorage["solea_orders"]`
   - order-number generation
   - confirmation screen rendering and cart clearing
 - **Depends on:** `scripts/cart.js`, `scripts/branch-context.js`
 - **Referenced by:** `scripts/checkout.js`
 - **Edit this file when:** changing the mock order payload or confirmation screen behavior
+
+### `scripts/admin-config.js`
+- **Purpose:** Centralizes fake admin credentials and storage keys.
+- **What's inside:**
+  - hardcoded local-demo email/password pair
+  - `solea_admin_session` key
+  - `solea_orders` key
+- **Depends on:** nothing
+- **Referenced by:** `scripts/admin-auth.js`, `scripts/order-submit.js`, `scripts/admin-data.js`
+- **Edit this file when:** changing local demo credentials or admin storage keys
+
+### `scripts/admin-auth.js`
+- **Purpose:** Handles fake admin auth and session guarding.
+- **What's inside:**
+  - login form submit handling
+  - localStorage-backed session creation
+  - `requireSession()`
+  - `logout()`
+- **Depends on:** `scripts/admin-config.js`
+- **Referenced by:** `admin-login.html`, `scripts/admin-main.js`
+- **Edit this file when:** changing the fake-auth experience or session lifetime
+
+### `scripts/admin-data.js`
+- **Purpose:** Loads and normalizes admin order data from localStorage.
+- **What's inside:**
+  - `loadOrders()`
+  - `subscribeOrders()`
+  - storage-event live sync
+  - query helpers for branch, item, category, payment, day, and hour aggregation
+- **Depends on:** `localStorage["solea_orders"]`
+- **Referenced by:** all analytics admin modules
+- **Edit this file when:** changing the order contract or adding a new aggregate helper
+
+### `scripts/admin-filters.js`
+- **Purpose:** Owns the shared admin filter bar and persisted filter state.
+- **What's inside:**
+  - global filter state
+  - localStorage persistence under `solea_admin_filters`
+  - date-range bounds logic
+  - branch/payment dropdown rendering
+- **Depends on:** `data/branches.json`
+- **Referenced by:** `scripts/admin-main.js` and all analytics modules
+- **Edit this file when:** changing global dashboard filters or their persistence
+
+### `scripts/admin-overview.js`
+- **Purpose:** Renders the overview KPI cards and live recent orders feed.
+- **What's inside:**
+  - filtered KPI calculation
+  - top-branch summary
+  - relative-time recent order rows
+- **Depends on:** `scripts/admin-data.js`, `scripts/admin-filters.js`
+- **Referenced by:** `scripts/admin-main.js`
+- **Edit this file when:** changing overview KPI logic or the recent feed presentation
+
+### `scripts/admin-orders.js`
+- **Purpose:** Renders the searchable orders ledger and order detail drawer.
+- **What's inside:**
+  - order-number search
+  - sortable columns
+  - fixed right-side drawer with full order detail
+- **Depends on:** `scripts/admin-data.js`, `scripts/admin-filters.js`
+- **Referenced by:** `scripts/admin-main.js`
+- **Edit this file when:** changing order-table fields, sorting, or drawer detail content
+
+### `scripts/admin-sales.js`
+- **Purpose:** Renders revenue analytics with Chart.js.
+- **What's inside:**
+  - daily revenue line chart
+  - revenue by branch bar chart
+  - revenue by category bar chart
+- **Depends on:** `scripts/admin-data.js`, `scripts/admin-filters.js`, Chart.js CDN
+- **Referenced by:** `scripts/admin-main.js`
+- **Edit this file when:** changing sales charts or chart theming
+
+### `scripts/admin-products.js`
+- **Purpose:** Renders product performance analytics.
+- **What's inside:**
+  - best-selling item table
+  - least-selling item table
+  - category quantity chart
+- **Depends on:** `scripts/admin-data.js`, `scripts/admin-filters.js`, Chart.js CDN
+- **Referenced by:** `scripts/admin-main.js`
+- **Edit this file when:** changing product ranking logic or category-chart behavior
+
+### `scripts/admin-payments.js`
+- **Purpose:** Renders payment analytics.
+- **What's inside:**
+  - revenue-share donut chart
+  - per-method KPI cards
+  - payment-by-branch table
+- **Depends on:** `scripts/admin-data.js`, `scripts/admin-filters.js`, Chart.js CDN
+- **Referenced by:** `scripts/admin-main.js`
+- **Edit this file when:** changing payment metrics or payment-chart presentation
+
+### `scripts/admin-branches.js`
+- **Purpose:** Renders branch comparison analytics.
+- **What's inside:**
+  - best/weakest branch callouts
+  - sortable branch ranking table
+  - AOV calculation
+- **Depends on:** `scripts/admin-data.js`, `scripts/admin-filters.js`
+- **Referenced by:** `scripts/admin-main.js`
+- **Edit this file when:** changing branch ranking rules or callout logic
+
+### `scripts/admin-export.js`
+- **Purpose:** Renders export actions and downloads filtered CSV files.
+- **What's inside:**
+  - Orders CSV export
+  - Revenue-by-day CSV export
+  - Branch performance CSV export
+  - inline export status message
+- **Depends on:** `scripts/admin-data.js`, `scripts/admin-filters.js`
+- **Referenced by:** `scripts/admin-main.js`
+- **Edit this file when:** changing export shape, filenames, or CSV fields
+
+### `scripts/admin-main.js`
+- **Purpose:** Boots the admin dashboard shell.
+- **What's inside:**
+  - session guard call
+  - logout wiring
+  - hash-route switching across sections
+  - initialization of all admin sections
+- **Depends on:** all admin feature modules
+- **Referenced by:** `admin.html`
+- **Edit this file when:** changing admin boot order or section routing
 
 ### `data/`
 
@@ -641,7 +847,7 @@ index.html
 - **Purpose:** Stores branch records.
 - **What's inside:**
   - array of five branch objects
-  - fields: `index`, `name`, `region`, `district`, `address`, `hours`
+  - fields: `index`, `name`, `slug`, `region`, `district`, `address`, `hours`
 - **Depends on:** nothing
 - **Referenced by:** `scripts/branches.js`
 - **Edit this file when:** changing branch addresses, regions, or operating hours
@@ -825,6 +1031,11 @@ Cascade order:
   12. `12-utilities.css`
   13. `13-animations.css`
   14. `14-responsive.css`
+  15. `15-order-page.css`
+  16. `16-checkout.css`
+  17. `17-admin-base.css`
+  18. `18-admin-components.css`
+  19. `19-admin-charts.css`
 
 Where to find things:
 
@@ -844,6 +1055,11 @@ Where to find things:
 | Change reveal transitions | `styles/12-utilities.css` |
 | Change keyframes | `styles/13-animations.css` |
 | Change responsive breakpoint behavior | `styles/14-responsive.css` |
+| Change order page layout | `styles/15-order-page.css` |
+| Change checkout layout | `styles/16-checkout.css` |
+| Change admin shell/sidebar/header | `styles/17-admin-base.css` |
+| Change admin cards/tables/filters | `styles/18-admin-components.css` |
+| Change admin chart layout | `styles/19-admin-charts.css` |
 
 Observed naming patterns:
 - Short utility-style names: `rv`, `rl`, `rr`, `d1` to `d5`
@@ -1026,3 +1242,71 @@ Payment note:
 - `payment-stub.js` is intentionally a mock backend contract
 - Card and Apple Pay are simulated only
 - Real Stripe/Telr integration is a separate future project
+
+## 14. Admin Dashboard Addendum
+Admin entry:
+- Login entry: `admin-login.html`
+- Dashboard entry: `admin.html`
+- Fake local-demo credentials live in `scripts/admin-config.js`
+- Current demo credentials:
+  - email: `admin@solea.ae`
+  - password: `solea2026`
+
+Admin runtime:
+1. `admin-login.html` loads `scripts/admin-auth.js`
+2. Successful login writes a session object to `localStorage["solea_admin_session"]`
+3. `admin.html` loads `scripts/admin-main.js`
+4. `admin-main.js` requires a valid session, mounts the shared filter bar, and initializes all admin sections
+5. Every analytics module reads through `scripts/admin-data.js`
+6. `admin-data.js` listens for browser `storage` events, so new completed orders in another tab refresh the dashboard live
+
+Admin storage keys:
+- Session key: `solea_admin_session`
+- Shared orders key: `solea_orders`
+- Persisted filter key: `solea_admin_filters`
+
+Orders contract:
+```ts
+type Order = {
+  orderNumber: string;
+  branch: string;
+  branchName: string;
+  table: number;
+  customer: { name: string; phone: string };
+  items: Array<{
+    id: string;
+    name: string;
+    category: string;
+    priceAed: number;
+    quantity: number;
+  }>;
+  subtotal: number;
+  paymentMethod: "card" | "apple-pay" | "cash";
+  payment: null | {
+    paymentId: string;
+    method: string;
+    amount: number;
+    currency: string;
+    paidAt: string;
+  };
+  submittedAt: string;
+};
+```
+
+Admin sections:
+- Overview
+- Orders
+- Sales
+- Products
+- Payments
+- Branches
+- Export
+
+Chart dependency:
+- `admin.html` includes Chart.js from CDN
+- Current analytics charts are local-browser only and depend on real local order data
+
+Auth note:
+- Admin auth in this repo is intentionally fake and local-only
+- It is not production auth and should not be deployed as-is
+- Real auth and real backend persistence are separate future projects

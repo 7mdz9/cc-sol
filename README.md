@@ -43,12 +43,41 @@ Useful URLs:
 - Invalid branch: `http://localhost:8000/order.html?branch=fake&table=1`
 - Missing params: `http://localhost:8000/order.html`
 
+## Admin Dashboard
+
+The repo also includes a local-only admin dashboard for reviewing real completed table orders from the same browser profile.
+
+- Entry flow: `http://localhost:8000/admin-login.html` -> `http://localhost:8000/admin.html`
+- Auth is fake local-demo auth only, with hardcoded credentials in `scripts/admin-config.js`
+- Dashboard data comes from `localStorage["solea_orders"]`
+- Cross-tab sync is live via the browser `storage` event
+- Charting uses Chart.js via CDN on `admin.html` only
+
+Admin demo credentials:
+
+- Email: `admin@solea.ae`
+- Password: `solea2026`
+
+Local admin-flow test:
+
+1. Open `order.html?branch=yas-bay&table=7` in one tab
+2. Complete one or more orders with any mocked payment path
+3. Open `admin-login.html` in another tab and sign in
+4. Confirm Overview, Orders, Sales, Products, Payments, Branches, and Export all reflect the same real local order data
+5. Change filters in the admin header and verify all sections update together
+
+Important notes:
+
+- This is local-only demo infrastructure, not production auth or production analytics
+- Orders and sessions are browser-local, so admin and order tabs must be opened in the same browser profile
+- Real backend storage, real auth, and real payment providers are separate future work
+
 ## Folder structure
 
 - **`index.html`** — HTML shell. Section scaffolds only; content is rendered from JSON at runtime.
 - **`public/assets/`** — static binary assets (logo.png, etc.). Add images here.
-- **`styles/`** — CSS split into 14 numbered partials by concern + `main.css` that imports them in cascade order. To change a color token, edit `01-tokens.css`. To adjust menu styling, edit `07-menu.css`. To add a breakpoint, edit `14-responsive.css`.
-- **`scripts/`** — JS split into feature modules (`cursor.js`, `nav.js`, `menu.js`, etc.) plus `main.js` and the order-flow modules (`order-main.js`, `order-menu.js`, `order-preview.js`, `cart.js`, `order-cart-ui.js`, `checkout.js`, `payment-stub.js`, `order-submit.js`, `branch-context.js`).
+- **`styles/`** — CSS split into shared numbered partials plus flow-specific partials. Shared marketing and base files run through `14-responsive.css`, the order flow uses `15-order-page.css` and `16-checkout.css`, and the admin dashboard uses `17-admin-base.css`, `18-admin-components.css`, and `19-admin-charts.css`.
+- **`scripts/`** — JS split into feature modules (`cursor.js`, `nav.js`, `menu.js`, etc.), the order-flow modules (`order-main.js`, `order-menu.js`, `order-preview.js`, `cart.js`, `order-cart-ui.js`, `checkout.js`, `payment-stub.js`, `order-submit.js`, `branch-context.js`), and the admin modules (`admin-config.js`, `admin-auth.js`, `admin-data.js`, `admin-filters.js`, `admin-overview.js`, `admin-orders.js`, `admin-sales.js`, `admin-products.js`, `admin-payments.js`, `admin-branches.js`, `admin-export.js`, `admin-main.js`).
 - **`data/`** — site content as JSON. Edit menu items in `menu.json`, branch details in `branches.json`, merch pricing in `merch.json`, contact info in `contact.json`, marquee strip in `marquee.json`.
 - **`components/merch-svgs/`** — 8 standalone SVG product illustrations, one per merch card. Loaded by `scripts/merch.js` at runtime.
 
