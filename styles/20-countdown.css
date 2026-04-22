@@ -13,22 +13,25 @@
 .countdown{
   position:relative;
   background:
-    radial-gradient(ellipse 82% 58% at 50% 0%, rgba(201,168,76,.055), transparent 68%),
+    linear-gradient(to bottom, rgba(14,12,8,1) 0, rgba(14,12,8,.92) 7%, rgba(14,12,8,.38) 15%, rgba(253,250,243,.96) 29%, var(--cream) 46%),
+    radial-gradient(ellipse 82% 58% at 50% 24%, rgba(201,168,76,.065), transparent 68%),
     radial-gradient(ellipse 40% 32% at 18% 78%, rgba(201,168,76,.04), transparent 72%),
-    radial-gradient(ellipse 42% 34% at 84% 20%, rgba(201,168,76,.035), transparent 74%),
+    radial-gradient(ellipse 42% 34% at 84% 18%, rgba(201,168,76,.038), transparent 74%),
     var(--cream);
-  padding:6.35rem 5rem 6.8rem;
+  padding:7.6rem 5rem 6.8rem;
   overflow:hidden;
 }
 
-.countdown::after{
+.countdown::before{
   content:'';
   position:absolute;
   left:0;
   right:0;
-  bottom:0;
-  height:118px;
-  background:linear-gradient(to bottom, rgba(253,250,243,0) 0%, rgba(253,250,243,.86) 28%, rgba(253,250,243,.34) 58%, rgba(14,12,8,.48) 100%);
+  top:0;
+  height:180px;
+  background:
+    linear-gradient(to bottom, rgba(14,12,8,.82), rgba(14,12,8,0) 72%),
+    radial-gradient(circle at 50% 0, rgba(201,168,76,.1), rgba(201,168,76,0) 60%);
   pointer-events:none;
   z-index:1;
 }
@@ -38,7 +41,7 @@
   z-index:2;
   max-width:1100px;
   margin:0 auto;
-  padding:3.85rem 2.75rem 3.4rem;
+  padding:4rem 2.75rem 3.6rem;
   text-align:center;
 }
 
@@ -59,9 +62,9 @@
 
 .cd-aura{
   position:absolute;
-  inset:12% 18% auto;
-  height:260px;
-  background:radial-gradient(circle, rgba(255,255,255,.5), rgba(255,255,255,0) 68%);
+  inset:18% 18% auto;
+  height:280px;
+  background:radial-gradient(circle, rgba(255,255,255,.56), rgba(255,255,255,0) 68%);
   pointer-events:none;
   z-index:0;
 }
@@ -83,15 +86,15 @@
 }
 
 .cd-ring-1{
-  width:500px;
-  height:500px;
+  width:540px;
+  height:540px;
   border-style:dashed;
   animation:spin 88s linear infinite;
 }
 
 .cd-ring-2{
-  width:710px;
-  height:710px;
+  width:760px;
+  height:760px;
   border-color:rgba(201,168,76,.05);
   animation:spin 124s linear infinite reverse;
 }
@@ -125,17 +128,17 @@
 .cd-head{
   position:relative;
   z-index:1;
-  margin-bottom:3.45rem;
+  margin-bottom:3.65rem;
 }
 
 .countdown .ey{
   justify-content:center;
-  margin-bottom:1.5rem;
+  margin-bottom:1.45rem;
 }
 
 .cd-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.2rem,4.4vw,3.45rem);
+  font-size:clamp(2.2rem,4.2vw,3.3rem);
   font-weight:300;
   line-height:1.03;
   letter-spacing:.03em;
@@ -150,11 +153,11 @@
 }
 
 .cd-copy{
-  max-width:660px;
+  max-width:640px;
   margin:0 auto;
-  font-size:.61rem;
-  letter-spacing:.07em;
-  line-height:2.2;
+  font-size:.6rem;
+  letter-spacing:.08em;
+  line-height:2.18;
   color:var(--muted);
 }
 
@@ -167,7 +170,7 @@
   display:flex;
   align-items:flex-start;
   justify-content:center;
-  gap:clamp(1rem,2.2vw,2.3rem);
+  gap:clamp(1rem,2vw,2rem);
   margin:0 auto;
 }
 
@@ -183,7 +186,7 @@
   display:block;
   min-width:2ch;
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3.35rem,7.35vw,5.95rem);
+  font-size:clamp(3.45rem,7.2vw,5.75rem);
   font-weight:300;
   line-height:.88;
   letter-spacing:.045em;
@@ -236,14 +239,14 @@
 }
 
 @media(max-width:1024px){
-  .countdown{padding:5.15rem 2.4rem 5.7rem;}
+  .countdown{padding:6.7rem 2.4rem 5.9rem;}
   .cd-inner{padding:3rem 1.75rem 2.75rem;}
-  .cd-ring-1{width:430px;height:430px;}
-  .cd-ring-2{width:620px;height:620px;}
+  .cd-ring-1{width:450px;height:450px;}
+  .cd-ring-2{width:650px;height:650px;}
 }
 
 @media(max-width:768px){
-  .countdown{padding:4.2rem 1.5rem 4.85rem;}
+  .countdown{padding:5.4rem 1.5rem 4.75rem;}
   .cd-inner{padding:2.25rem 0 2rem;}
   .cd-inner::before,
   .cd-inner::after{width:86px;}
@@ -256,8 +259,9 @@
 }
 
 @media(max-width:480px){
-  .countdown{padding:3.45rem 1rem 4rem;}
-  .cd-aura{inset:10% 6% auto;height:220px;}
+  .countdown{padding:4.55rem 1rem 3.8rem;}
+  .countdown::before{height:138px;}
+  .cd-aura{inset:14% 6% auto;height:220px;}
   .cd-ring-1{width:300px;height:300px;}
   .countdown .ey{margin-bottom:1rem;}
   .cd-title{font-size:clamp(1.9rem,9vw,2.45rem);line-height:1.02;}
