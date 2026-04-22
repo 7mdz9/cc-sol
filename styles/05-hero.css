@@ -1,5 +1,5 @@
 /* ── HERO ──────────────────────────────── */
-#hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:var(--cream);padding:5.5rem 1.5rem 2.25rem;}
+#hero{min-height:clamp(820px,88vh,890px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:var(--cream);padding:5.5rem 1.5rem 2.25rem;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 105%,rgba(201,168,76,.09),transparent 70%),radial-gradient(ellipse 50% 40% at 80% 10%,rgba(201,168,76,.06),transparent 65%),radial-gradient(ellipse 40% 30% at 15% 80%,rgba(201,168,76,.04),transparent 60%);pointer-events:none;}
 .hero-canvas{position:absolute;inset:0;pointer-events:none;}
 .hero-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
@@ -20,3 +20,8 @@
 .btn-p:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(201,168,76,.32);}
 .btn-g{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;padding:.92rem 2.2rem;min-width:200px;min-height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,168,76,.35);color:var(--muted);cursor:pointer;transition:all .4s;text-decoration:none;text-align:center;}
 .btn-g:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.scroll-hint{margin:4.5rem auto 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;opacity:0;animation:fadeUp .8s 1.8s forwards;cursor:pointer;z-index:2;position:relative;background:none;border:0;padding:0;font:inherit;}
+.scroll-hint span{font-size:.52rem;letter-spacing:.52em;text-transform:uppercase;color:var(--gold);opacity:.78;transition:opacity .35s cubic-bezier(.4,0,.2,1);}
+.scroll-ln{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);transform-origin:top center;animation:scrollPulse 2.5s ease-in-out infinite;transition:height .35s cubic-bezier(.4,0,.2,1),opacity .35s cubic-bezier(.4,0,.2,1);}
+.scroll-hint:hover span{opacity:1;}
+.scroll-hint:hover .scroll-ln{height:56px;opacity:.92;}
