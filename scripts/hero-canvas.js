@@ -3,7 +3,18 @@ const cv=document.getElementById('hCanvas');
 if(!cv||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 const cx2=cv.getContext('2d');
 let W,H,pts=[],rafId=0,running=false;
-function rsz(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
+function rsz(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const cssW=cv.offsetWidth;
+  const cssH=cv.offsetHeight;
+  cv.width=Math.floor(cssW*dpr);
+  cv.height=Math.floor(cssH*dpr);
+  cv.style.width=cssW+'px';
+  cv.style.height=cssH+'px';
+  cx2.setTransform(1,0,0,1,0,0);
+  cx2.scale(dpr,dpr);
+  W=cssW;H=cssH;
+}
 function mkPts(){
   pts=[];
   const count=window.innerWidth<640?25:60;
