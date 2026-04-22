@@ -46,23 +46,7 @@
   .foot-links{gap:1.25rem;}
 }
 
-@media(max-width:768px){
-  .countdown-sec { padding: 80px 24px; }
-  .countdown-timer { gap: 16px; }
-  .cd-unit { min-width: 72px; }
-  .cd-sep { margin-top: 4px; }
-}
-
 @media(max-width:480px){
-  .countdown-sec { padding: 64px 20px; }
-  .countdown-title { margin-bottom: 28px; }
-  .countdown-rule { margin-bottom: 40px; }
-  .countdown-timer { gap: 12px; }
-  .cd-unit { min-width: 60px; }
-  .cd-value { font-size: 44px; margin-bottom: 10px; }
-  .cd-label { font-size: 9px; letter-spacing: 0.2em; }
-  .cd-sep { font-size: 32px; }
-
   nav{padding:0 .875rem;height:68px;}
   nav.scrolled{height:58px;}
   .nav-logo img{height:34px;}
