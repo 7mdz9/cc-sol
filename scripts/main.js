@@ -1,5 +1,6 @@
 import { initCursor } from "./cursor.js";
 import { initNav } from "./nav.js";
+import { initCountdown } from "./countdown.js";
 import { initReveal } from "./reveal.js";
 import { initMenu } from "./menu.js";
 import { initHeroCanvas } from "./hero-canvas.js";
@@ -11,6 +12,7 @@ import { initMerch } from "./merch.js";
 document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
   initNav();
+  initCountdown();
   await initMarquee();
   await initBranches();
   await initMenu();
