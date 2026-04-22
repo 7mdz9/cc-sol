@@ -15,6 +15,7 @@
 - [12. Next Steps / Roadmap](#12-next-steps--roadmap)
 - [13. Order Flow Addendum](#13-order-flow-addendum)
 - [14. Admin Dashboard Addendum](#14-admin-dashboard-addendum)
+- [15. Backend Handoff Note](#15-backend-handoff-note)
 
 ## 1. Project Overview
 Soléa is a premium UAE juice and dessert brand marketing site. This repository contains the frontend mockup as a plain HTML/CSS/JS project with no build step. It now includes the marketing site (`index.html`), the QR-gated dine-in ordering flow (`order.html` + `checkout.html`), and a local-only admin dashboard (`admin-login.html` + `admin.html`). It is not a Next.js app, not a backend service, and not a CMS integration.
@@ -71,6 +72,7 @@ Proj/
 ├── checkout.html                       # dedicated checkout page for table orders
 ├── admin-login.html                    # fake-auth login entry for the local admin dashboard
 ├── admin.html                          # local admin dashboard entry point
+├── BACKEND_HANDOFF.md                  # frontend-to-backend implementation handoff note
 ├── README.md                           # quick-start guide
 ├── PROJECT_GUIDE.md                    # deep project reference
 ├── favicon.ico                         # root favicon used by browsers during local/static serving
@@ -270,6 +272,17 @@ index.html
 - **Depends on:** every runtime file in the repo
 - **Referenced by:** developers needing more than the quick-start
 - **Edit this file when:** the architecture, file layout, or data shapes change
+
+### `BACKEND_HANDOFF.md`
+- **Purpose:** Short backend-facing implementation map for replacing frontend mocks and localStorage with real APIs.
+- **What's inside:**
+  - order submission contract
+  - payment integration replacement points
+  - admin auth replacement points
+  - suggested API endpoint map
+- **Depends on:** current frontend contracts in the order/admin flows
+- **Referenced by:** backend developers starting integration work
+- **Edit this file when:** frontend contracts or expected API boundaries change
 
 ### `favicon.ico`
 - **Purpose:** Root favicon served automatically by browsers.
@@ -1310,3 +1323,11 @@ Auth note:
 - Admin auth in this repo is intentionally fake and local-only
 - It is not production auth and should not be deployed as-is
 - Real auth and real backend persistence are separate future projects
+
+## 15. Backend Handoff Note
+- The backend handoff companion for this repo lives in `BACKEND_HANDOFF.md`
+- It is the shortest path for a backend developer to understand:
+  - what is still mocked
+  - what is still browser-local
+  - what payload shapes the frontend already expects
+  - which API endpoints should replace those mocked/frontend-only behaviors

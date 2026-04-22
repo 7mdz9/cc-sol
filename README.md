@@ -2,6 +2,14 @@
 
 A premium UAE juice & dessert brand marketing site. Single-page, plain HTML/CSS/JS, no build step.
 
+This repository is now organized as a clean frontend handoff package for backend integration:
+
+- marketing site
+- QR-gated dine-in ordering flow
+- checkout flow
+- local-demo admin dashboard
+- documented frontend-to-backend handoff contract
+
 ## Running locally
 
 ES modules require HTTP, so open via a static server, not file://:
@@ -17,6 +25,12 @@ npx serve .
 ```
 
 Then open http://localhost:8000.
+
+Recommended handoff reading order:
+
+1. `README.md`
+2. `PROJECT_GUIDE.md`
+3. `BACKEND_HANDOFF.md`
 
 ## Order Flow
 
@@ -72,6 +86,21 @@ Important notes:
 - Orders and sessions are browser-local, so admin and order tabs must be opened in the same browser profile
 - Real backend storage, real auth, and real payment providers are separate future work
 
+## Backend Handoff
+
+The repo includes a dedicated backend handoff note:
+
+- [BACKEND_HANDOFF.md](/Users/mohamed.alteneiji/Proj/BACKEND_HANDOFF.md)
+
+It maps each mocked or browser-local behavior to the backend/API work needed next, including:
+
+- branch/table validation
+- cart persistence strategy
+- payment endpoints
+- order submission contract
+- admin auth replacement
+- admin analytics endpoints
+
 ## Folder structure
 
 - **`index.html`** — HTML shell. Section scaffolds only; content is rendered from JSON at runtime.
@@ -79,6 +108,7 @@ Important notes:
 - **`styles/`** — CSS split into shared numbered partials plus flow-specific partials. Shared marketing and base files run through `14-responsive.css`, the order flow uses `15-order-page.css` and `16-checkout.css`, and the admin dashboard uses `17-admin-base.css`, `18-admin-components.css`, and `19-admin-charts.css`.
 - **`scripts/`** — JS split into feature modules (`cursor.js`, `nav.js`, `menu.js`, etc.), the order-flow modules (`order-main.js`, `order-menu.js`, `order-preview.js`, `cart.js`, `order-cart-ui.js`, `checkout.js`, `payment-stub.js`, `order-submit.js`, `branch-context.js`), and the admin modules (`admin-config.js`, `admin-auth.js`, `admin-data.js`, `admin-filters.js`, `admin-overview.js`, `admin-orders.js`, `admin-sales.js`, `admin-products.js`, `admin-payments.js`, `admin-branches.js`, `admin-export.js`, `admin-main.js`).
 - **`data/`** — site content as JSON. Edit menu items in `menu.json`, branch details in `branches.json`, merch pricing in `merch.json`, contact info in `contact.json`, marquee strip in `marquee.json`.
+- **`BACKEND_HANDOFF.md`** — backend integration note mapping local/mock frontend behavior to real API responsibilities.
 - **`components/merch-svgs/`** — 8 standalone SVG product illustrations, one per merch card. Loaded by `scripts/merch.js` at runtime.
 
 ## Editing content

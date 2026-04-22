@@ -74,65 +74,6 @@
   gap: 16px;
 }
 
-.admin-demo-tools {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(201, 168, 76, 0.12);
-}
-
-.admin-demo-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: .58rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--gold-d);
-}
-
-.admin-demo-copy,
-.admin-demo-status {
-  color: var(--muted);
-  line-height: 1.65;
-  font-size: .68rem;
-}
-
-.admin-demo-copy {
-  margin-top: 8px;
-}
-
-.admin-demo-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
-
-.admin-demo-button {
-  min-height: 44px;
-  padding: 0 18px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #d8bf76 0%, #c9a84c 100%);
-  color: #17130c;
-  font-family: 'Montserrat', sans-serif;
-  font-size: .52rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  box-shadow: 0 12px 22px rgba(201,168,76,.14);
-}
-
-.admin-demo-button-subtle {
-  border: 1px solid rgba(201, 168, 76, 0.18);
-  background: rgba(255,255,255,.8);
-  color: var(--gold-d);
-  box-shadow: none;
-}
-
-.admin-demo-status {
-  margin-top: 12px;
-}
-
 .admin-login-field {
   display: grid;
   gap: 8px;
