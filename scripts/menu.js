@@ -31,10 +31,34 @@ function buildMenuPicture(id, name) {
 export async function initMenu(){
 const resp=await fetch('./data/menu.json');
 const data=await resp.json();
-document.getElementById('menuCats').innerHTML=data.categories.map(cat=>
-`<div class="cat"><div class="cat-hd"><span class="cat-nm">${cat.name}</span><span class="cat-ct">${cat.items.length} items</span><div class="cat-ic">+</div></div><div class="cat-body">${cat.items.map(item=>
-`<div class="item" data-img="${item.image}" data-name="${item.name}" data-cal="${item.calories}" data-price="${item.priceAed} AED"><div class="item-dot"></div><div class="item-info"><div class="item-nm">${item.name}</div>${item.subtitle?`<div class="item-note">${item.subtitle}</div>`:''}</div><div class="item-r"><span class="item-kcal"><strong>${item.calories}</strong> kcal</span><span class="item-price">${item.priceAed} AED</span></div></div>`
-).join('')}</div></div>`
+document.getElementById('menuCats').innerHTML=data.categories.map((cat,index)=>
+`<div class="cat">
+  <div class="cat-hd">
+    <div class="cat-main">
+      <span class="cat-idx">${String(index+1).padStart(2,'0')}</span>
+      <div class="cat-copy">
+        <span class="cat-nm">${cat.name}</span>
+        <span class="cat-ct">${cat.items.length} items</span>
+      </div>
+    </div>
+    <div class="cat-ic-wrap"><div class="cat-ic">+</div></div>
+  </div>
+  <div class="cat-body">
+    <div class="cat-items">${cat.items.map(item=>
+`<div class="item" data-img="${item.image}" data-name="${item.name}" data-cal="${item.calories}" data-price="${item.priceAed} AED">
+  <div class="item-mark"><div class="item-dot"></div><div class="item-line"></div></div>
+  <div class="item-info">
+    <div class="item-nm">${item.name}</div>
+    ${item.subtitle?`<div class="item-note">${item.subtitle}</div>`:''}
+  </div>
+  <div class="item-r">
+    <span class="item-kcal"><strong>${item.calories}</strong> kcal</span>
+    <span class="item-price">${item.priceAed} AED</span>
+  </div>
+</div>`
+).join('')}</div>
+  </div>
+</div>`
 ).join('');
 document.querySelectorAll('.cat-hd').forEach(hd=>{
   hd.addEventListener('click',()=>{
