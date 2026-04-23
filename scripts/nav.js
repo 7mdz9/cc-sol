@@ -96,7 +96,7 @@ export function initNav() {
       const target = event.target;
       if (!(target instanceof Element)) return;
 
-      if (target.hasAttribute("data-nav-close") || target === overlay) {
+      if (target.closest("[data-nav-close]") || target === overlay) {
         closeMenu(menu);
       }
     });
