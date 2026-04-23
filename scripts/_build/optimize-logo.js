@@ -1,7 +1,7 @@
 import sharp from "sharp";
 
 const src = "public/assets/logo-original.png";
-const targetWidth = 925;
+const targetWidth = 1600;
 
 const image = sharp(src).resize({ width: targetWidth, withoutEnlargement: true });
 
