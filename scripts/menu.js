@@ -38,7 +38,7 @@ document.getElementById('menuCats').innerHTML=data.categories.map((cat,index)=>
       <span class="cat-idx">${String(index+1).padStart(2,'0')}</span>
       <div class="cat-copy">
         <span class="cat-nm">${cat.name}</span>
-        <span class="cat-ct">${cat.items.length} items</span>
+        <span class="cat-ct"><span class="cat-ct-num">${cat.items.length}</span> items</span>
       </div>
     </div>
     <div class="cat-ic-wrap"><div class="cat-ic">+</div></div>
@@ -52,7 +52,7 @@ document.getElementById('menuCats').innerHTML=data.categories.map((cat,index)=>
     ${item.subtitle?`<div class="item-note">${item.subtitle}</div>`:''}
   </div>
   <div class="item-r">
-    <span class="item-kcal"><strong>${item.calories}</strong> kcal</span>
+    <span class="item-kcal"><span class="item-kcal-num">${item.calories}</span><span class="item-kcal-unit"> kcal</span></span>
     <span class="item-price">${item.priceAed} AED</span>
   </div>
 </div>`
