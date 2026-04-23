@@ -59,31 +59,15 @@ nav.scrolled{height:70px;box-shadow:0 2px 40px rgba(0,0,0,.04);}
 .nav-overlay-note{margin-top:.4rem;font-family:'Montserrat',sans-serif;font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:rgba(138,127,110,.74);text-align:center;}
 
 html.nav-overlay-open,body.nav-overlay-open{overflow:hidden;}
-html.nav-overlay-open nav[data-nav-root],html.nav-overlay-open .admin-mobile-nav,html.nav-overlay-open .admin-login-mobile-nav{z-index:340 !important;}
+html.nav-overlay-open nav[data-nav-root]{z-index:340 !important;}
 html.nav-overlay-open [data-nav-toggle]{z-index:360 !important;}
 
-.admin-mobile-nav{display:none;}
-.admin-login-mobile-nav{display:none;}
-
 @media(max-width:1024px){
-  .nav-links,.nav-cta,.nav-context,.checkout-context{display:none !important;}
+  .nav-links,.nav-cta{display:none !important;}
   .nav-toggle{display:inline-flex;}
   .nav-overlay{display:flex;}
-  body.admin-page #adminSidebar{display:none !important;}
-  body.admin-page #adminMain{margin-left:0 !important;padding-top:96px !important;}
-  body.admin-page .admin-header{top:88px !important;}
-  .admin-mobile-nav{position:fixed;inset:0 0 auto 0;z-index:240;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:80px;}
-  .admin-mobile-nav::before{content:'';position:absolute;inset:0;background:rgba(253,250,243,.94);border-bottom:1px solid var(--border);backdrop-filter:blur(22px) saturate(180%);z-index:-1;}
-  .admin-mobile-nav .nav-logo img{height:40px;width:auto;}
-}
-
-@media(max-width:1024px){
-  body.admin-login-page .admin-login-shell{padding-top:108px !important;}
-  .admin-login-mobile-nav{position:fixed;inset:0 0 auto 0;z-index:240;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:80px;}
-  .admin-login-mobile-nav::before{content:'';position:absolute;inset:0;background:rgba(253,250,243,.94);border-bottom:1px solid var(--border);backdrop-filter:blur(22px) saturate(180%);z-index:-1;}
-  .admin-login-mobile-nav .nav-logo img{height:40px;width:auto;}
 }
 
 @media(min-width:1025px){
-  .nav-toggle,.nav-overlay,.admin-mobile-nav,.admin-login-mobile-nav{display:none !important;}
+  .nav-toggle,.nav-overlay{display:none !important;}
 }
