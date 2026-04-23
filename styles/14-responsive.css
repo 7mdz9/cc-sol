@@ -58,8 +58,8 @@
   .item::before{left:0;}
   .item-mark{min-width:1.5rem;gap:.4rem;}
   .item:hover .item-line,.item.active .item-line{width:18px;}
-  .menu-vis{display:block;position:static;max-width:420px;margin:0 auto;}
-  .img-wrap{max-width:420px;margin:0 auto;}
+  .menu-vis{display:block;position:static;max-width:420px;margin:0 auto;max-height:none;overflow:visible;}
+  .img-wrap{max-width:420px;margin:0 auto;height:auto;aspect-ratio:2/3;}
 
   .br-card{padding:2.8rem 2rem;}
 
