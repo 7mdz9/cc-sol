@@ -13,7 +13,9 @@
   .br-hint{text-align:left;}
   .br-grid{grid-template-columns:1fr;}
   .merch-grid{grid-template-columns:repeat(2,1fr);}
-  .merch-hd{flex-direction:column;gap:1.5rem;}
+  .merch-hd{flex-direction:column;align-items:center;gap:1.5rem;}
+  .merch-hd .ey{justify-content:center;}
+  .merch-note{text-align:center;}
   .sup-grid{grid-template-columns:1fr;gap:4rem;}
   .sup-deco{display:none;}
   footer{padding:2rem 1.5rem;}
