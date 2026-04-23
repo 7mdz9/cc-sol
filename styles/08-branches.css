@@ -4,6 +4,7 @@
 .br-hd{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:5rem;}
 .br-hint{font-size:.6rem;letter-spacing:.1em;color:var(--muted);line-height:2.1;text-align:right;}
 .br-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.1);}
+.br-card:last-child:nth-child(odd){grid-column:1 / -1;}
 .br-card{background:var(--white);padding:3.5rem 2.8rem;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);}
 .br-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.045),transparent);opacity:0;transition:opacity .5s;}
 .br-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(to right,var(--gold-d),var(--gold),var(--gold-l));transition:width .65s cubic-bezier(.4,0,.2,1);}
