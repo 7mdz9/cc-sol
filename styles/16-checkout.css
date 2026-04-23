@@ -228,10 +228,35 @@ body.checkout-page {
   border: 1px solid rgba(201, 168, 76, 0.24);
   border-radius: 999px;
   background: rgba(255, 250, 241, 0.94);
-  color: var(--gold);
   font-size: 0.52rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.checkout-page .checkout-context-pill {
+  color: var(--gold);
+}
+
+.checkout-page .checkout-summary-total-pill {
+  align-items: baseline;
+  gap: 6px;
+}
+
+.checkout-page .checkout-summary-total-pill-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.checkout-page .checkout-summary-total-pill-unit {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.44rem;
+  letter-spacing: 0.18em;
+  color: rgba(138,127,110,.58);
 }
 
 .checkout-page .checkout-form-section,
@@ -665,10 +690,28 @@ body.checkout-page {
 }
 
 .checkout-page .conf-summary strong {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.checkout-page .conf-money-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
-  color: var(--gold);
-  white-space: nowrap;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.checkout-page .conf-money-unit {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.44rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(138,127,110,.58);
 }
 
 .checkout-page .conf-total {
@@ -680,12 +723,15 @@ body.checkout-page {
 }
 
 .checkout-page .conf-total strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--text);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.34rem;
   letter-spacing: 0;
   text-transform: none;
+}
+
+.checkout-page .conf-total .conf-money-num {
+  font-size: 1.5rem;
 }
 
 .checkout-page .confirmation-btn {
@@ -802,11 +848,49 @@ body.checkout-page {
   text-transform: uppercase;
 }
 
-.checkout-page .summary-lines li > span {
-  white-space: nowrap;
-  color: var(--gold);
+.checkout-page .checkout-summary-count-num {
   font-family: 'Cormorant Garamond', serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.checkout-page .checkout-summary-count-unit {
+  color: rgba(138,127,110,.68);
+}
+
+.checkout-page .summary-lines li > span,
+.checkout-page .checkout-summary-line-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.checkout-page .checkout-summary-line-price-num,
+.checkout-page .checkout-summary-total-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.checkout-page .checkout-summary-line-price-num {
   font-size: 0.96rem;
+}
+
+.checkout-page .checkout-summary-line-price-unit,
+.checkout-page .checkout-summary-total-unit {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.44rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(138,127,110,.58);
 }
 
 .checkout-page .summary-total {
@@ -822,12 +906,15 @@ body.checkout-page {
 }
 
 .checkout-page .summary-total strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--text);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.34rem;
   letter-spacing: 0;
   text-transform: none;
+}
+
+.checkout-page .checkout-summary-total-num {
+  font-size: 1.35rem;
 }
 
 @media (max-width: 1024px) {

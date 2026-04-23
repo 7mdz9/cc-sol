@@ -165,7 +165,7 @@ function renderSummary() {
   const subtotal = getSubtotal();
 
   if (totalPill) {
-    totalPill.textContent = `${subtotal} AED`;
+    totalPill.innerHTML = `<span class="checkout-summary-total-pill-num">${subtotal}</span><span class="checkout-summary-total-pill-unit">AED</span>`;
   }
 
   el.innerHTML = `
@@ -174,15 +174,15 @@ function renderSummary() {
         <li>
           <div class="summary-line-copy">
             <strong>${line.name}</strong>
-            <span>${line.quantity} ${line.quantity === 1 ? "item" : "items"}</span>
+            <span><span class="checkout-summary-count-num">${line.quantity}</span> <span class="checkout-summary-count-unit">${line.quantity === 1 ? "item" : "items"}</span></span>
           </div>
-          <span>${line.priceAed * line.quantity} AED</span>
+          <span class="checkout-summary-line-price"><span class="checkout-summary-line-price-num">${line.priceAed * line.quantity}</span><span class="checkout-summary-line-price-unit">AED</span></span>
         </li>
       `).join("")}
     </ul>
     <div class="summary-total">
       <span>Total</span>
-      <strong>${subtotal} AED</strong>
+      <strong><span class="checkout-summary-total-num">${subtotal}</span><span class="checkout-summary-total-unit">AED</span></strong>
     </div>
   `;
 }

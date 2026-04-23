@@ -18,7 +18,7 @@ export async function initOrderMenu(menuData) {
       <div class="cat${idx === 0 ? " open" : ""}" data-cat-id="${cat.id}">
         <div class="cat-hd">
           <span class="cat-nm">${cat.name}</span>
-          <span class="cat-ct">${cat.items.length} items</span>
+          <span class="cat-ct"><span class="cat-ct-num">${cat.items.length}</span><span class="cat-ct-unit">items</span></span>
           <div class="cat-ic">+</div>
         </div>
         <div class="cat-body">
@@ -35,8 +35,8 @@ export async function initOrderMenu(menuData) {
                 ${item.subtitle ? `<div class="item-note">${item.subtitle}</div>` : ""}
               </div>
               <div class="item-r">
-                <span class="item-kcal"><strong>${item.calories}</strong> kcal</span>
-                <span class="item-price">${item.priceAed} AED</span>
+                <span class="item-kcal"><span class="item-kcal-num">${item.calories}</span><span class="item-kcal-unit">kcal</span></span>
+                <span class="item-price"><span class="item-price-num">${item.priceAed}</span><span class="item-price-unit">AED</span></span>
               </div>
             </div>
           `).join("")}

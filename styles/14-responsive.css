@@ -96,7 +96,8 @@
   .cat-hd{padding:1rem 0;}
   .item{align-items:flex-start;gap:.65rem;}
   .item-r{gap:.75rem;}
-  .item-price{font-size:1rem;min-width:auto;}
+  .item-price{min-width:auto;}
+  .item-price-num{font-size:1rem;}
 
   .br-hd{margin-bottom:3rem;}
   .br-card{padding:2.4rem 1.5rem;}

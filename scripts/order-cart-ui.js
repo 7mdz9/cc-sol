@@ -33,7 +33,7 @@ export function initCartUI() {
 
     if (mobileBar && mobileSummary) {
       if (cart.length > 0 && mobileQuery.matches) {
-        mobileSummary.textContent = `${totalItems} ${totalItems === 1 ? "item" : "items"} · ${subtotal} AED`;
+        mobileSummary.innerHTML = `<span class="mobile-cart-summary-num">${totalItems}</span><span class="mobile-cart-summary-unit">${totalItems === 1 ? "item" : "items"}</span><span class="mobile-cart-summary-sep">·</span><span class="mobile-cart-summary-num">${subtotal}</span><span class="mobile-cart-summary-unit">AED</span>`;
         mobileBar.hidden = false;
       } else {
         mobileBar.hidden = true;
@@ -59,7 +59,7 @@ export function initCartUI() {
             <li class="cart-line" data-id="${line.id}">
               <div class="cart-line-main">
                 <span class="cart-line-name">${line.name}</span>
-                <span class="cart-line-price">${line.priceAed * line.quantity} AED</span>
+                <span class="cart-line-price"><span class="cart-line-price-num">${line.priceAed * line.quantity}</span><span class="cart-line-price-unit">AED</span></span>
               </div>
               <div class="cart-line-qty">
                 <button class="qty-btn qty-dec" data-id="${line.id}">−</button>
@@ -72,7 +72,7 @@ export function initCartUI() {
         </ul>
         <div class="cart-total">
           <span>Total</span>
-          <span class="cart-total-value">${subtotal} AED</span>
+          <span class="cart-total-value"><span class="cart-total-value-num">${subtotal}</span><span class="cart-total-value-unit">AED</span></span>
         </div>
         <a class="btn-checkout" id="btnCheckout" href="./checkout.html${window.location.search}">Proceed to Checkout</a>
       </div>

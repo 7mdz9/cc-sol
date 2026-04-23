@@ -55,8 +55,14 @@
           <div class="preview-details">
             <h2 class="preview-name" id="previewName"></h2>
             <div class="preview-meta">
-              <span class="preview-cal"><span id="previewCal">—</span> kcal</span>
-              <span class="preview-price"><span id="previewPrice">—</span> AED</span>
+              <span class="preview-cal">
+                <span class="preview-cal-num" id="previewCal">—</span>
+                <span class="preview-cal-unit">kcal</span>
+              </span>
+              <span class="preview-price">
+                <span class="preview-price-num" id="previewPrice">—</span>
+                <span class="preview-price-unit">AED</span>
+              </span>
             </div>
           </div>
           <button class="btn-add-cart" id="btnAddCart">+ Add to Cart</button>
@@ -68,7 +74,13 @@
 </main>
 
 <div class="mobile-cart-bar" id="mobileCartBar" hidden>
-  <span class="mobile-cart-summary" id="mobileCartSummary">0 items · 0 AED</span>
+  <span class="mobile-cart-summary" id="mobileCartSummary">
+    <span class="mobile-cart-summary-num">0</span>
+    <span class="mobile-cart-summary-unit">items</span>
+    <span class="mobile-cart-summary-sep">·</span>
+    <span class="mobile-cart-summary-num">0</span>
+    <span class="mobile-cart-summary-unit">AED</span>
+  </span>
   <button class="mobile-cart-view" id="mobileCartView" type="button">View Cart →</button>
 </div>
 

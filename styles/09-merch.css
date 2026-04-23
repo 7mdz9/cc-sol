@@ -16,4 +16,6 @@
 .mc:hover .mc-icon{transform:scale(1.18) translateY(-5px);}
 .mc-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;transition:color .35s;}
 .mc:hover .mc-name{color:var(--gold-d);}
-.mc-price{font-size:.58rem;letter-spacing:.15em;color:var(--gold);margin-top:.25rem;}
+.mc-price{display:flex;align-items:baseline;gap:.32rem;margin-top:.25rem;}
+.mc-price-num{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;letter-spacing:.04em;color:var(--text);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
+.mc-price-unit{font-family:'Montserrat',sans-serif;font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(138,127,110,.58);}

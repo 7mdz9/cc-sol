@@ -18,7 +18,7 @@
 .sb-ic{font-size:1.1rem;flex-shrink:0;transition:all .38s;color:rgba(255,255,255,.28);}
 .sb-tx{flex:1;}
 .sb-lbl{font-size:.48rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.22);display:block;margin-bottom:.22rem;}
-.sb-val{font-family:'Cormorant Garamond',serif;font-size:1.12rem;}
+.sb-val{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:300;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
 .sb-arr{font-size:.65rem;color:rgba(255,255,255,.14);transition:all .42s cubic-bezier(.4,0,.2,1);}
 .sup-hrs{margin-top:2.8rem;padding-top:2.2rem;border-top:1px solid rgba(255,255,255,.05);}
 .sup-hrs-lbl{font-size:.48rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(201,168,76,.58);margin-bottom:.9rem;}

@@ -11,7 +11,7 @@
 .br-card:hover::before{opacity:1;}
 .br-card:hover::after{width:100%;}
 .br-card:hover .br-name{color:var(--gold-d);}
-.br-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,168,76,.08);line-height:1;margin-bottom:1.5rem;transition:color .5s;}
+.br-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,168,76,.08);line-height:1;margin-bottom:1.5rem;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;transition:color .5s;}
 .br-card:hover .br-num{color:rgba(201,168,76,.18);}
 .br-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:.3rem;transition:color .35s;}
 .br-area{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem;}

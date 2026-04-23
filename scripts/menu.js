@@ -38,22 +38,22 @@ document.getElementById('menuCats').innerHTML=data.categories.map((cat,index)=>
       <span class="cat-idx">${String(index+1).padStart(2,'0')}</span>
       <div class="cat-copy">
         <span class="cat-nm">${cat.name}</span>
-        <span class="cat-ct"><span class="cat-ct-num">${cat.items.length}</span> items</span>
+        <span class="cat-ct"><span class="cat-ct-num">${cat.items.length}</span><span class="cat-ct-unit">items</span></span>
       </div>
     </div>
     <div class="cat-ic-wrap"><div class="cat-ic">+</div></div>
   </div>
   <div class="cat-body">
     <div class="cat-items">${cat.items.map(item=>
-`<div class="item" data-img="${item.image}" data-name="${item.name}" data-cal="${item.calories}" data-price="${item.priceAed} AED">
+`<div class="item" data-img="${item.image}" data-name="${item.name}" data-cal="${item.calories}" data-price="${item.priceAed}">
   <div class="item-mark"><div class="item-dot"></div><div class="item-line"></div></div>
   <div class="item-info">
     <div class="item-nm">${item.name}</div>
     ${item.subtitle?`<div class="item-note">${item.subtitle}</div>`:''}
   </div>
   <div class="item-r">
-    <span class="item-kcal"><span class="item-kcal-num">${item.calories}</span><span class="item-kcal-unit"> kcal</span></span>
-    <span class="item-price">${item.priceAed} AED</span>
+    <span class="item-kcal"><span class="item-kcal-num">${item.calories}</span><span class="item-kcal-unit">kcal</span></span>
+    <span class="item-price"><span class="item-price-num">${item.priceAed}</span><span class="item-price-unit">AED</span></span>
   </div>
 </div>`
 ).join('')}</div>

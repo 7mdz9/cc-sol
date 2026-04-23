@@ -118,11 +118,11 @@ function showConfirmation(orderNumber, payload) {
           ${payload.items.map(item => `
             <li>
               <span>${escapeHtml(item.name)} × ${item.quantity}</span>
-              <strong>${item.priceAed * item.quantity} AED</strong>
+              <strong><span class="conf-money-num">${item.priceAed * item.quantity}</span><span class="conf-money-unit">AED</span></strong>
             </li>
           `).join("")}
         </ul>
-        <p class="conf-total"><strong>${payload.subtotal} AED</strong> · ${paymentLabel(payload.paymentMethod)}</p>
+        <p class="conf-total"><strong><span class="conf-money-num">${payload.subtotal}</span><span class="conf-money-unit">AED</span></strong> · ${paymentLabel(payload.paymentMethod)}</p>
         <button class="btn-pay confirmation-btn" onclick="window.location.href='./order.html?branch=${encodeURIComponent(payload.branch)}&table=${payload.table}'">New Order</button>
       </section>
     </div>
