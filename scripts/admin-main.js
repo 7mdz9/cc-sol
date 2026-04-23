@@ -1,6 +1,7 @@
 import { requireSession, logout } from "./admin-auth.js";
 import { renderFilterBar } from "./admin-filters.js";
 import { initCursor } from "./cursor.js";
+import { initNav } from "./nav.js";
 import { initOverview } from "./admin-overview.js";
 import { initOrders } from "./admin-orders.js";
 import { initSales } from "./admin-sales.js";
@@ -31,11 +32,13 @@ const SECTION_SUBTITLES = {
 
 document.addEventListener("DOMContentLoaded", () => {
   initCursor();
+  initNav();
 
   const session = requireSession();
   if (!session) return;
 
   document.getElementById("btnLogout")?.addEventListener("click", logout);
+  document.getElementById("mobileAdminLogout")?.addEventListener("click", logout);
   renderSectionPlaceholders();
   renderFilterBar();
   initOverview();

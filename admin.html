@@ -16,6 +16,43 @@
 <div class="cur" id="C"></div>
 <div class="cur-r" id="CR"></div>
 
+<nav id="adminMobileNav" class="admin-mobile-nav" data-nav-root>
+  <div class="nav-logo">
+    <picture>
+      <source srcset="public/assets/logo.webp" type="image/webp">
+      <img src="public/assets/logo.png" alt="Soléa" width="64" height="44" fetchpriority="high">
+    </picture>
+  </div>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="adminNavOverlay" data-nav-toggle>
+    <span class="nav-toggle-box" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+</nav>
+<div class="nav-overlay" id="adminNavOverlay" role="dialog" aria-modal="true" aria-hidden="true" data-nav-overlay>
+  <div class="nav-overlay-backdrop" data-nav-close></div>
+  <div class="nav-overlay-panel">
+    <picture class="nav-overlay-brand">
+      <source srcset="public/assets/logo.webp" type="image/webp">
+      <img src="public/assets/logo.png" alt="Soléa" width="160" height="105" loading="lazy" decoding="async">
+    </picture>
+    <nav class="nav-overlay-nav nav-overlay-nav-compact" aria-label="Admin navigation">
+      <a href="#overview" class="nav-overlay-link" data-nav-autoclose data-nav-initial-focus>Overview</a>
+      <a href="#orders" class="nav-overlay-link" data-nav-autoclose>Orders</a>
+      <a href="#sales" class="nav-overlay-link" data-nav-autoclose>Sales</a>
+      <a href="#products" class="nav-overlay-link" data-nav-autoclose>Products</a>
+      <a href="#payments" class="nav-overlay-link" data-nav-autoclose>Payments</a>
+      <a href="#branches" class="nav-overlay-link" data-nav-autoclose>Branches</a>
+      <a href="#export" class="nav-overlay-link" data-nav-autoclose>Export</a>
+    </nav>
+    <div class="nav-overlay-divider" aria-hidden="true"></div>
+    <button class="nav-overlay-cta" id="mobileAdminLogout" type="button" data-nav-autoclose><span>Logout</span></button>
+    <p class="nav-overlay-note">SOLÉA INTERNAL DASHBOARD</p>
+  </div>
+</div>
+
 <aside id="adminSidebar">
   <div class="sidebar-brand">
     <picture>

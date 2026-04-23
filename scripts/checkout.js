@@ -1,5 +1,6 @@
 import { readBranchContext, validateBranch, validateTable } from "./branch-context.js";
 import { initCursor } from "./cursor.js";
+import { initNav } from "./nav.js";
 import { consumeCartNotice, initCart, getCart, getSubtotal, onChange } from "./cart.js";
 import { mockCreatePayment } from "./payment-stub.js";
 import { submitOrder } from "./order-submit.js";
@@ -16,6 +17,7 @@ const cardDraft = {
 
 document.addEventListener("DOMContentLoaded", async () => {
   initCursor();
+  initNav();
   selectedMethod = null;
   isProcessing = false;
   suppressEmptyCartGuard = false;
