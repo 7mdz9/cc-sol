@@ -14,13 +14,15 @@ export function initNav() {
 
   const focusSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-  const unlockScroll = () => {
+  const unlockScroll = ({ restoreScroll = true } = {}) => {
     document.documentElement.classList.remove("nav-overlay-open");
     document.body.classList.remove("nav-overlay-open");
     document.body.style.removeProperty("position");
     document.body.style.removeProperty("top");
     document.body.style.removeProperty("width");
-    window.scrollTo(0, lockedScrollY);
+    if (restoreScroll) {
+      window.scrollTo(0, lockedScrollY);
+    }
   };
 
   const lockScroll = () => {
@@ -35,7 +37,7 @@ export function initNav() {
   const getFocusable = overlay =>
     Array.from(overlay.querySelectorAll(focusSelector)).filter(el => !el.hasAttribute("hidden"));
 
-  const closeMenu = (menu = activeMenu, restoreFocus = true) => {
+  const closeMenu = (menu = activeMenu, { restoreFocus = true, restoreScroll = true } = {}) => {
     if (!menu) return;
 
     menu.toggle.classList.remove("is-open");
@@ -43,7 +45,7 @@ export function initNav() {
     menu.toggle.setAttribute("aria-label", "Open menu");
     menu.overlay.classList.remove("is-open");
     menu.overlay.setAttribute("aria-hidden", "true");
-    unlockScroll();
+    unlockScroll({ restoreScroll });
 
     if (restoreFocus) {
       menu.toggle.focus();
@@ -55,7 +57,7 @@ export function initNav() {
   const openMenu = menu => {
     if (window.innerWidth > 1024) return;
     if (activeMenu && activeMenu !== menu) {
-      closeMenu(activeMenu, false);
+      closeMenu(activeMenu, { restoreFocus: false });
     }
 
     menu.toggle.classList.add("is-open");
@@ -102,8 +104,26 @@ export function initNav() {
     });
 
     overlay.querySelectorAll("[data-nav-autoclose]").forEach(el => {
-      el.addEventListener("click", () => {
-        window.setTimeout(() => closeMenu(menu, false), 0);
+      el.addEventListener("click", event => {
+        const href = el.getAttribute("href");
+
+        if (href?.startsWith("#")) {
+          event.preventDefault();
+        }
+
+        window.setTimeout(() => {
+          closeMenu(menu, { restoreFocus: false, restoreScroll: false });
+
+          if (href?.startsWith("#")) {
+            const targetSection = document.querySelector(href);
+            if (targetSection instanceof HTMLElement) {
+              history.replaceState(null, "", href);
+              window.requestAnimationFrame(() => {
+                targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+              });
+            }
+          }
+        }, 0);
       });
     });
   });
@@ -140,7 +160,7 @@ export function initNav() {
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > 1024 && activeMenu) {
-      closeMenu(activeMenu, false);
+      closeMenu(activeMenu, { restoreFocus: false });
     }
   });
 }

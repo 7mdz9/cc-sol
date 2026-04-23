@@ -67,10 +67,23 @@
 
 html.nav-overlay-open,body.nav-overlay-open{overflow:hidden;}
 
+#menu,#branches,#merch,#support{scroll-margin-top:96px;}
+
 @media(max-width:1024px){
   .nav-links,.nav-cta{display:none !important;}
   .nav-toggle{display:inline-flex;}
   .nav-overlay{display:flex;}
+}
+
+@media(max-width:425px), (max-height:760px){
+  .nav-overlay-panel{gap:1rem;padding:4.75rem 1.25rem 1.5rem;}
+  .nav-overlay-brand{margin-bottom:.2rem;}
+  .nav-overlay-brand img{width:min(126px,38vw);}
+  .nav-overlay-nav{gap:1rem;}
+  .nav-overlay-link{min-height:46px;font-size:clamp(1.85rem,9vw,2.55rem);}
+  .nav-overlay-divider{margin:0;}
+  .nav-overlay-cta{min-height:50px;padding:.9rem 1.25rem;}
+  .nav-overlay-note{margin-top:.1rem;font-size:.48rem;letter-spacing:.3em;}
 }
 
 @media(min-width:1025px){
