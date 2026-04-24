@@ -1,7 +1,6 @@
 /* ── HERO ──────────────────────────────── */
 #hero{--hero-min-h:clamp(760px,96svh,980px);--hero-top-pad:6rem;--hero-bottom-pad:2.25rem;--hero-logo-w:clamp(220px,22vw,300px);--hero-ring-1:min(650px,72vw);--hero-ring-2:min(480px,53vw);--hero-ring-3:min(310px,34vw);--hero-eyebrow-mt:1.75rem;--hero-eyebrow-mb:.8rem;--hero-actions-mt:2rem;--hero-scroll-mt:3rem;min-height:var(--hero-min-h);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:var(--cream);padding:var(--hero-top-pad) 1.5rem var(--hero-bottom-pad);}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 105%,rgba(201,168,76,.09),transparent 70%),radial-gradient(ellipse 50% 40% at 80% 10%,rgba(201,168,76,.06),transparent 65%),radial-gradient(ellipse 40% 30% at 15% 80%,rgba(201,168,76,.04),transparent 60%);pointer-events:none;}
-.hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .hero-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
 .hr{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.07);animation:spin linear infinite;}
 .hr1{width:var(--hero-ring-1);height:var(--hero-ring-1);animation-duration:90s;border-style:dashed;border-color:rgba(201,168,76,.05);}
