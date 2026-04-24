@@ -69,7 +69,7 @@
 
 html.nav-overlay-open,body.nav-overlay-open{overflow:hidden;}
 
-#menu,#branches,#merch,#support{scroll-margin-top:96px;}
+#countdown,#branches,#merch,#support{scroll-margin-top:96px;}
 
 @media(max-width:1024px){
   .nav-links,.nav-cta{display:none !important;}

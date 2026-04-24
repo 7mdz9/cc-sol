@@ -38,7 +38,6 @@
     </picture>
   </div>
   <ul class="nav-links">
-    <li><a href="#menu">Menu</a></li>
     <li><a href="#branches">Branches</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#support">Support</a></li>
@@ -66,8 +65,7 @@
       <img src="public/assets/logo.png" alt="Soléa" width="160" height="105" loading="lazy" decoding="async"/>
     </picture>
     <nav class="nav-overlay-nav" aria-label="Mobile navigation">
-      <a href="#menu" class="nav-overlay-link" data-nav-autoclose data-nav-initial-focus>Menu</a>
-      <a href="#branches" class="nav-overlay-link" data-nav-autoclose>Branches</a>
+      <a href="#branches" class="nav-overlay-link" data-nav-autoclose data-nav-initial-focus>Branches</a>
       <a href="#merch" class="nav-overlay-link" data-nav-autoclose>Merch</a>
       <a href="#support" class="nav-overlay-link" data-nav-autoclose>Support</a>
     </nav>
@@ -88,7 +86,7 @@
   <p class="hero-eyebrow">Warm &nbsp;·&nbsp; Natural &nbsp;·&nbsp; Refreshing</p>
   <h1 class="hero-title"><span class="hero-title-line">Crafted by nature,</span><span class="hero-title-line">perfected by <em>SOLÉA</em></span></h1>
   <div class="hero-actions">
-    <a href="#menu" class="btn-p">Explore the Menu</a>
+    <a href="#countdown" class="btn-p">Pre-Orders Soon</a>
     <a href="#branches" class="btn-g">Find Us</a>
   </div>
   <button class="scroll-hint" type="button" onclick="document.querySelector('.marquee').scrollIntoView({behavior:'smooth'})" aria-label="Discover more below">
@@ -103,7 +101,7 @@
 </div>
 
 <!-- ── COUNTDOWN ───────────────────────── -->
-<section class="countdown" aria-labelledby="countdownTitle">
+<section id="countdown" class="countdown" aria-labelledby="countdownTitle">
   <div class="cd-inner">
     <div class="cd-head">
       <p class="ey">A New Beginning</p>
@@ -135,49 +133,6 @@
       <p class="cd-open" id="cdOpen" hidden>Pre-Orders are now open.</p>
     </div>
   </div>
-</section>
-
-<!-- ── MENU ───────────────────────────── -->
-<section id="menu" class="sec">
-<div class="sec-in">
-  <div class="rv"><p class="ey">Our Offerings</p></div>
-  <div class="rv d1"><h2 class="hd">The <em>Menu</em></h2></div>
-  <div class="rv d2"><p class="menu-sub">Crafted from sun-ripened fruit, served across five UAE locations.</p></div>
-  <div class="menu-wrap">
-    <div class="menu-left rv d2">
-      <div class="cal-row">
-        <div class="cal-copy">
-          <span class="cal-kicker">Menu Detail</span>
-          <span class="cal-lbl">Show Calories</span>
-        </div>
-        <label class="sw"><input type="checkbox" id="calSw"/><div class="sw-track"></div><div class="sw-thumb"></div></label>
-      </div>
-      <div id="menuCats"></div>
-    </div>
-    <div class="menu-vis rv d3">
-      <div class="img-wrap">
-        <div class="ic tl"></div><div class="ic tr"></div><div class="ic bl"></div><div class="ic br"></div>
-        <div class="img-ph" id="ph"><div class="ph-ic">✦</div><p class="ph-tx">Select an item</p></div>
-        <div id="mMedia" class="menu-media hidden"></div>
-        <div class="img-ov" id="mOv">
-          <div class="ov-nm" id="ovNm"></div>
-          <div class="ov-meta">
-            <span class="ov-kcal">
-              <span class="ov-kcal-label">Calories:</span>
-              <span class="ov-kcal-num" id="ovCal"></span>
-              <span class="ov-kcal-unit">kcal</span>
-            </span>
-            <span class="ov-price">
-              <span class="ov-price-num" id="ovPr"></span>
-              <span class="ov-price-unit">AED</span>
-            </span>
-          </div>
-          <div class="cal-bar"><div class="cal-fill" id="calFill"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </section>
 
 <!-- ── BRANCHES ─────────────────────────── -->
@@ -241,7 +196,6 @@
       <img src="public/assets/logo-circle.png" alt="Soléa" class="foot-logo" width="32" height="32" loading="lazy" decoding="async"/>
     </picture>
   <ul class="foot-links">
-      <li><a href="#menu">Menu</a></li>
       <li><a href="#branches">Branches</a></li>
       <li><a href="#merch">Merch</a></li>
       <li><a href="#support">Contact</a></li>

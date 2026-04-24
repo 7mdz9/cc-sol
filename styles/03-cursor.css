@@ -6,6 +6,6 @@ body:has(a:hover) .cur,.cur.big{width:14px;height:14px;}
 body:has(a:hover) .cur-r,.cur-r.big{width:44px;height:44px;border-color:rgba(201,168,76,.25);}
 
 @media (pointer: coarse), (hover: none){
-body,a,button,.sup-btn,.item,.cat-hd,.mc,.br-card{cursor:auto!important;}
+body,a,button,.sup-btn,.mc,.br-card{cursor:auto!important;}
 .cur,.cur-r{display:none!important;}
 }
