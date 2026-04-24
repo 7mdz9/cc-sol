@@ -1,19 +1,33 @@
 export function initHeroCanvas(){
 const cv=document.getElementById('hCanvas');
 if(!cv||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const hero=cv.closest('#hero');
 const cx2=cv.getContext('2d');
-let W,H,pts=[],rafId=0,running=false;
+let W,H,pts=[],rafId=0,running=false,resizeTimer=0;
+const queueResize=()=>{
+  window.clearTimeout(resizeTimer);
+  resizeTimer=window.setTimeout(()=>{
+    rsz();
+    syncPts();
+  },150);
+};
 function rsz(){
   const dpr=Math.min(window.devicePixelRatio||1,2);
-  const cssW=cv.offsetWidth;
-  const cssH=cv.offsetHeight;
+  const cssW=Math.max(Math.round(cv.clientWidth||cv.getBoundingClientRect().width||0),1);
+  const cssH=Math.max(Math.round(cv.clientHeight||cv.getBoundingClientRect().height||0),1);
   cv.width=Math.floor(cssW*dpr);
   cv.height=Math.floor(cssH*dpr);
-  cv.style.width=cssW+'px';
-  cv.style.height=cssH+'px';
   cx2.setTransform(1,0,0,1,0,0);
   cx2.scale(dpr,dpr);
   W=cssW;H=cssH;
+}
+function syncPts(){
+  const count=window.innerWidth<640?25:60;
+  if(pts.length!==count){mkPts();return;}
+  pts.forEach((p)=>{
+    p.x=Math.min(Math.max(p.x,0),Math.max(W,1));
+    p.y=Math.min(Math.max(p.y,0),Math.max(H,1));
+  });
 }
 function mkPts(){
   pts=[];
@@ -22,6 +36,12 @@ function mkPts(){
 }
 function drawPts(){
   if(!running)return;
+  const nextW=Math.max(Math.round(cv.clientWidth||cv.getBoundingClientRect().width||0),1);
+  const nextH=Math.max(Math.round(cv.clientHeight||cv.getBoundingClientRect().height||0),1);
+  if(nextW!==W||nextH!==H){
+    rsz();
+    syncPts();
+  }
   cx2.clearRect(0,0,W,H);
   pts.forEach((p,i)=>{
     p.p+=.007;p.x+=p.vx;p.y+=p.vy;
@@ -47,6 +67,10 @@ function stop(){
 }
 rsz();
 mkPts();
-window.addEventListener('resize',()=>{rsz();mkPts();});
+window.addEventListener('resize',queueResize);
+if(window.ResizeObserver&&hero){
+  const ro=new ResizeObserver(()=>queueResize());
+  ro.observe(hero);
+}
 new IntersectionObserver(([entry])=>{if(entry?.isIntersecting)start();else stop();}).observe(cv);
 }
