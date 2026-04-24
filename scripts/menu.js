@@ -31,6 +31,7 @@ function buildMenuPicture(id, name) {
 export async function initMenu(){
 const resp=await fetch('./data/menu.json');
 const data=await resp.json();
+const desktopMq=window.matchMedia('(min-width: 1024px)');
 document.getElementById('menuCats').innerHTML=data.categories.map((cat,index)=>
 `<div class="cat">
   <div class="cat-hd">
@@ -71,8 +72,18 @@ const mMedia=document.getElementById('mMedia'),ph=document.getElementById('ph'),
       mOv=document.getElementById('mOv'),ovNm=document.getElementById('ovNm'),
       ovCal=document.getElementById('ovCal'),ovPr=document.getElementById('ovPr'),
       calFill=document.getElementById('calFill');
+function syncMenuSelectionMode(){
+  if(desktopMq.matches)return;
+  document.querySelectorAll('.item').forEach(i=>i.classList.remove('active'));
+  mMedia.classList.add('hidden');
+  mMedia.innerHTML='';
+  ph.classList.remove('gone');
+  mOv.classList.remove('show');
+  calFill.style.width='0%';
+}
 document.querySelectorAll('.item').forEach(item=>{
   item.addEventListener('click',()=>{
+    if(!desktopMq.matches)return;
     const src=item.dataset.img,name=item.dataset.name,cal=+item.dataset.cal,price=item.dataset.price;
     mMedia.classList.add('hidden');mOv.classList.remove('show');
     setTimeout(()=>{
@@ -94,6 +105,8 @@ document.querySelectorAll('.item').forEach(item=>{
     item.classList.add('active');
   });
 });
+desktopMq.addEventListener('change',syncMenuSelectionMode);
+syncMenuSelectionMode();
 document.getElementById('calSw').addEventListener('change',function(){
   document.querySelectorAll('.item-kcal').forEach(el=>el.classList.toggle('show',this.checked));
 });
