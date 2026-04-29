@@ -1,50 +1,49 @@
-# Soléa Landing Page
+# Solea
 
-Pre-launch marketing site for Soléa, built as a plain HTML/CSS/JS static site with no build step.
+Solea — A sun-inspired cafe in Abu Dhabi. Pre-orders begin May 1, 2026.
 
-## Running locally
+This is a plain static site: HTML, CSS, and JavaScript with no build step.
 
-Serve the repo over HTTP so ES modules and JSON fetches work correctly:
+## Tech Stack
+
+- HTML5
+- CSS3 with custom properties and split partials
+- JavaScript ES modules
+- Google Fonts: DM Serif Display and Inter
+- No framework, bundler, or CMS
+
+## Running Locally
+
+Open `index.html` in a browser.
+
+If your browser blocks ES modules from local files, serve the folder instead:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-or
-
-```bash
-npx serve .
-```
-
 Then open `http://localhost:8000`.
 
-## Project scope
+## Deploying
 
-This repo now contains only the Soléa landing page:
+Deploy the repository to any static host. The site does not require server-side rendering or a build command.
 
-- `index.html` — marketing homepage shell
-- `styles/` — shared landing-page CSS partials
-- `scripts/` — landing-page JavaScript modules
-- `data/` — JSON content for menu, branches, merch, support, and marquee
-- `public/assets/` — logo and image assets
-- `components/merch-svgs/` — merch artwork loaded at runtime
+Suitable hosts include Vercel, Netlify, GitHub Pages, Cloudflare Pages, or any static file server.
 
-## Content editing
+## Project Structure
 
-- `data/menu.json` — menu categories and items
-- `data/branches.json` — branch cards and hours
-- `data/merch.json` — merch cards and SVG filenames
-- `data/contact.json` — support channels and hours
-- `data/marquee.json` — marquee labels
+- `index.html` — Solea homepage markup
+- `styles/main.css` — CSS entry point and import order
+- `styles/` — numbered CSS partials for tokens, layout, sections, animation, and responsive behavior
+- `scripts/main.js` — JavaScript entry point
+- `scripts/` — countdown, navigation, and reveal modules
+- `_rebrand-source.html` — preserved source reference for the rebrand
 
-## Visual editing
+## Current Sections
 
-- `styles/01-tokens.css` — color, spacing, and typography tokens
-- `styles/main.css` — import order for the landing-page CSS stack
-- `public/assets/` — Soléa logo assets and favicon-adjacent imagery
-
-## Conventions
-
-- CSS partials are numbered in cascade order; keep `styles/main.css` aligned with the files that actually exist.
-- `scripts/main.js` is the landing-page entry point and initializes each homepage feature module.
-- JSON files are plain JSON with no comments.
+- Hero
+- Brand
+- Locations
+- Goods
+- Contact
+- Footer

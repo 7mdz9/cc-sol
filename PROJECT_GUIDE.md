@@ -1,159 +1,183 @@
-# Soléa Project Guide
+# Solea Project Guide
 
-## 1. Overview
-Soléa is a pre-launch marketing homepage built as a static HTML/CSS/JS site. The repo now contains only the landing page and its supporting assets, content data, and frontend modules.
+## Overview
 
-Core stack:
-- HTML5
-- CSS custom properties and modular partials
-- ES modules with no bundler
-- Runtime JSON fetches for content
-- Google Fonts: `Cormorant Garamond` and `Montserrat`
+Solea is a sun-inspired cafe in Abu Dhabi. The site is a static pre-order landing page for the May 1, 2026 launch.
 
-## 2. Running Locally
-Serve the repo over HTTP so ES modules and JSON requests work:
+This project was structurally rebranded from the old Soléa site to the new Solea identity. It is not a refresh of the previous gold-and-cream design. The current site uses the new Porcelain, Stone Moss, Olive, Earth, Oak, Seafoam, Terracotta, and Lemon Rind palette with DM Serif Display and Inter typography.
+
+The project remains a multi-file static site:
+
+- `index.html`
+- `styles/` partials imported by `styles/main.css`
+- `scripts/` ES modules imported by `scripts/main.js`
+
+There is no build step and no framework.
+
+## Running
+
+Open `index.html` in a browser.
+
+If the browser blocks ES modules from local files, run a static server from the repo root:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-or
+Then open `http://localhost:8000`.
 
-```bash
-npx serve .
-```
+## Deploying
 
-Open `http://localhost:8000`.
+Deploy the repo as static files to any static host. No build command is required.
 
-Quick smoke test:
-1. The hero logo and canvas appear.
-2. The marquee renders and scrolls.
-3. The countdown updates.
-4. The menu accordion opens and updates the preview.
-5. Branches, merch, support, and footer all render populated content.
+`vercel.json` is currently a simple static-host config with clean URLs and no trailing slash behavior.
 
-## 3. Folder Structure
+## Brand System
+
+### Name
+
+Use `Solea`, without the accent.
+
+### Palette
+
+The current palette is defined in `styles/01-tokens.css`:
+
+- Porcelain: `#EEE9E4`
+- Oak: `#C0AE94`
+- Stone Moss: `#6D705A`
+- Olive: `#4D4738`
+- Earth: `#755F4A`
+- Seafoam: `#BAB9A7`
+- Terracotta: `#B56A4E`
+- Lemon Rind: `#D9B86C`
+
+### Typography
+
+The current fonts are:
+
+- `DM Serif Display` for wordmark, headlines, quotes, and editorial text
+- `Inter` for navigation, labels, countdown numbers, and utility text
+
+Font preconnects and the Google Fonts stylesheet live in `index.html`.
+
+## Current Page Structure
+
+The homepage sections, in order:
+
+1. Hero
+2. Brand
+3. Locations
+4. Goods
+5. Contact
+6. Footer
+
+There are three quiet divider elements between major editorial sections.
+
+## Removed Old Sections And Concepts
+
+The rebrand removed the old Soléa structure and naming:
+
+- Marquee section removed
+- Six Pillars section is not active in the current page
+- Old Branches naming replaced by Locations
+- Old Merch naming replaced by Goods
+- Old Support naming replaced by Contact
+- Old custom cursor removed
+- Old hero canvas removed
+- Old PNG/WebP logo assets removed from the active page
+- Old JSON-driven rendering removed from the active page
+
+Locations, goods, and contact content now live inline in `index.html`.
+
+## CSS Architecture
+
+`styles/main.css` is the cascade entry point. Current import order:
+
+1. `01-tokens.css`
+2. `02-reset.css`
+3. `03-typography.css`
+4. `04-nav.css`
+5. `05-hero.css`
+6. `08-locations.css`
+7. `09-goods.css`
+8. `10-contact.css`
+9. `11-footer.css`
+10. `12-brand.css`
+11. `12-utilities.css`
+12. `13-divider.css`
+13. `13-animations.css`
+14. `14-responsive.css`
+15. `20-countdown.css`
+
+Keep this import order intentional. Later files can override earlier shared rules.
+
+## JavaScript Architecture
+
+`scripts/main.js` imports only the modules needed by the new design:
+
+- `scripts/countdown.js`
+- `scripts/nav.js`
+- `scripts/reveal.js`
+
+### Countdown
+
+`scripts/countdown.js` targets May 1, 2026 at midnight UAE time:
+
 ```text
-Proj/
-├── index.html
-├── README.md
-├── PROJECT_GUIDE.md
-├── favicon.ico
-├── vercel.json
-├── public/
-│   └── assets/
-├── styles/
-│   ├── main.css
-│   ├── 01-tokens.css
-│   ├── 02-reset.css
-│   ├── 03-cursor.css
-│   ├── 04-nav.css
-│   ├── 05-hero.css
-│   ├── 06-marquee.css
-│   ├── 07-menu.css
-│   ├── 08-branches.css
-│   ├── 09-merch.css
-│   ├── 10-support.css
-│   ├── 11-footer.css
-│   ├── 12-utilities.css
-│   ├── 13-animations.css
-│   ├── 14-responsive.css
-│   └── 20-countdown.css
-├── scripts/
-│   ├── main.js
-│   ├── branches.js
-│   ├── countdown.js
-│   ├── cursor.js
-│   ├── hero-canvas.js
-│   ├── marquee.js
-│   ├── menu.js
-│   ├── merch.js
-│   ├── nav.js
-│   ├── reveal.js
-│   └── support.js
-├── data/
-│   ├── branches.json
-│   ├── contact.json
-│   ├── marquee.json
-│   ├── menu.json
-│   └── merch.json
-└── components/
-    └── merch-svgs/
+2026-05-01T00:00:00+04:00
 ```
 
-## 4. Runtime Flow
-1. `index.html` loads the page shell.
-2. `styles/main.css` imports the landing-page CSS stack.
-3. `scripts/main.js` runs on `DOMContentLoaded`.
-4. `main.js` initializes:
-   1. `initCursor()`
-   2. `initNav()`
-   3. `initCountdown()`
-   4. `initMarquee()`
-   5. `initBranches()`
-   6. `initMenu()`
-   7. `initMerch()`
-   8. `initSupport()`
-   9. `initReveal()`
-   10. `initHeroCanvas()`
+It updates `[data-unit]` values inside `#cd-grid`, adds the `.ticked` class on changes, and swaps to `#cd-launched` when the target time has passed.
 
-## 5. Key Files
+### Navigation
 
-### `index.html`
-- Static homepage structure for nav, hero, marquee, countdown, menu, branches, merch, support, and footer.
-- Contains the mobile nav overlay markup and the `scripts/main.js` entry point.
+`scripts/nav.js` handles:
 
-### `styles/main.css`
-- Imports only the CSS partials used by the landing page.
+- transparent fixed nav
+- `.scrolled` hairline state after scrolling
+- mobile overlay open/close
+- Escape-to-close behavior
 
-### `scripts/main.js`
-- Entry point for the homepage.
-- Initializes the landing-page modules only.
+### Reveal
 
-### `data/*.json`
-- Runtime content sources for homepage sections.
+`scripts/reveal.js` handles `.rv` reveal-on-scroll behavior using `IntersectionObserver`.
 
-### `public/assets/`
-- Soléa logos and other static image assets.
+It includes:
 
-## 6. CSS Architecture
-- `01-tokens.css`: colors, typography, spacing variables
-- `02-reset.css`: base reset and shared text styling
-- `03-cursor.css`: custom cursor visuals
-- `04-nav.css`: fixed nav and mobile overlay
-- `05-hero.css`: hero layout and canvas styling
-- `06-marquee.css`: marquee bar
-- `07-menu.css`: menu accordion and preview
-- `08-branches.css`: branch cards and grid
-- `09-merch.css`: merch cards and art treatment
-- `10-support.css`: support section
-- `11-footer.css`: footer layout
-- `12-utilities.css`: reveal helpers
-- `13-animations.css`: shared keyframes
-- `14-responsive.css`: responsive behavior
-- `20-countdown.css`: countdown section styling
+- fallback behavior when `IntersectionObserver` is unavailable
+- unobserve after reveal
+- above-the-fold hardening on the next animation frame
 
-## 7. JavaScript Architecture
-- `cursor.js`: desktop-only custom cursor behavior
-- `nav.js`: sticky nav state, mobile overlay open/close, focus management, and scroll lock
-- `countdown.js`: pre-order countdown logic
-- `marquee.js`: marquee item rendering
-- `branches.js`: branch card rendering
-- `menu.js`: menu categories, items, calorie toggle, and preview
-- `merch.js`: merch rendering and SVG loading
-- `support.js`: support card and hours rendering
-- `reveal.js`: intersection-based reveal animations
-- `hero-canvas.js`: hero background animation
+## Assets
 
-## 8. Content Updates
-- Update menu content in `data/menu.json`
-- Update branch content in `data/branches.json`
-- Update merch content in `data/merch.json`
-- Update support content in `data/contact.json`
-- Update marquee labels in `data/marquee.json`
+The new page uses inline SVG marks and inline SVG goods icons. It does not depend on external logo PNG/WebP files or external goods SVG files.
 
-## 9. Conventions
-- Keep CSS partials numbered in import order.
-- Keep homepage functionality isolated to single-purpose modules.
-- Serve locally over HTTP, not `file://`.
-- Maintain landing-page-only scope unless requirements explicitly expand again.
+`favicon.ico` is still present as the browser favicon.
+
+## Source Reference
+
+`_rebrand-source.html` is preserved as the complete target reference used for the rebrand migration. Do not treat it as the runtime entry point; the runtime entry point is `index.html`.
+
+## Editing Guide
+
+- Change color tokens in `styles/01-tokens.css`.
+- Change base layout, body atmosphere, section primitives, and eyebrows in `styles/02-reset.css`.
+- Change nav behavior styles in `styles/04-nav.css`.
+- Change hero and CTA composition in `styles/05-hero.css`.
+- Change Locations in `styles/08-locations.css`.
+- Change Goods in `styles/09-goods.css`.
+- Change Contact in `styles/10-contact.css`.
+- Change Footer in `styles/11-footer.css`.
+- Change Brand in `styles/12-brand.css`.
+- Change reveal classes in `styles/12-utilities.css`.
+- Change dividers in `styles/13-divider.css`.
+- Change keyframes and reduced-motion behavior in `styles/13-animations.css`.
+- Change breakpoints in `styles/14-responsive.css`.
+- Change countdown presentation in `styles/20-countdown.css`.
+
+## Gotchas
+
+- Do not reintroduce the old Soléa accent unless intentionally reverting the brand.
+- Do not add the old Marquee, Branches, Merch, or Support section names back into navigation.
+- Do not restore the custom cursor or hero canvas unless the design direction changes.
+- `package.json` may still contain historical metadata or scripts; the site itself does not need a build command.
