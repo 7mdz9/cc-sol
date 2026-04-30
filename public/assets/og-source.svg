@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Solea — Taste the Sun">
+  <rect width="1200" height="630" fill="#EEE9E4"/>
+  <path d="M 565 246 A 35 35 0 0 1 635 246 Z" fill="#6D705A"/>
+  <line x1="340" y1="441" x2="430" y2="441" stroke="#C0AE94" stroke-width="2" opacity="0.75"/>
+  <line x1="770" y1="441" x2="860" y2="441" stroke="#C0AE94" stroke-width="2" opacity="0.75"/>
+  <g id="text-layer">
+    <text x="600" y="375" text-anchor="middle" font-family="DM Serif Display, Times New Roman, serif" font-size="140" font-weight="400" fill="#4D4738">Solea</text>
+    <text x="600" y="448" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="500" letter-spacing="8" fill="#6D705A">— TASTE THE SUN —</text>
+  </g>
+</svg>
