@@ -1,0 +1,6 @@
+.goods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(2rem,4vw,3.5rem) clamp(1.5rem,3vw,2.5rem);}
+.goods-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;padding:1rem .5rem;transition:opacity .4s ease;}
+.goods-item:hover .goods-icon{color:var(--olive);}
+.goods-icon{width:clamp(48px,7vw,64px);height:clamp(48px,7vw,64px);color:var(--stone-moss);transition:color .4s ease;margin-bottom:.4rem;}
+.goods-name{font-family:var(--serif);font-weight:400;font-size:clamp(1.05rem,1.8vw,1.25rem);line-height:1.1;color:var(--olive);}
+.goods-status{font-size:.5rem;letter-spacing:.42em;text-transform:uppercase;font-weight:500;color:var(--oak);padding-left:.42em;}

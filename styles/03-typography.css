@@ -1,0 +1,4 @@
+body{font-family:var(--sans);}
+h1,h2,h3,blockquote{font-family:var(--serif);font-weight:400;}
+strong{font-weight:500;}
+em{font-style:italic;}

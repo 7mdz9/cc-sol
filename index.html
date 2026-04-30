@@ -1,209 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Soléa — Warm · Natural · Refreshing</title>
-<link rel="icon" href="favicon.ico"/>
-<link rel="icon" type="image/png" sizes="32x32" href="public/assets/logo-circle.png"/>
-<link rel="apple-touch-icon" href="public/assets/logo-circle.png"/>
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Soléa — Crafted by Nature"/>
-<meta property="og:description" content="Premium juice and desserts across five UAE beachfront locations. Pre-orders begin May 1, 2026."/>
-<meta property="og:image" content="public/assets/logo.png"/>
-<meta property="og:image:width" content="3192"/>
-<meta property="og:image:height" content="2095"/>
-<meta property="og:url" content=""/>
-<meta property="og:site_name" content="Soléa"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Soléa — Crafted by Nature"/>
-<meta name="twitter:description" content="Premium juice and desserts across five UAE beachfront locations. Pre-orders begin May 1, 2026."/>
-<meta name="twitter:image" content="public/assets/logo.png"/>
-<link rel="preload" as="image" href="public/assets/logo.webp" type="image/webp" fetchpriority="high"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles/main.css"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solea - A sun-inspired cafe · Abu Dhabi</title>
+  <meta name="description" content="Solea is a sun-inspired cafe in Abu Dhabi. Functional, radiant, nourishing. Pre-orders begin May 1, 2026."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Solea - A sun-inspired cafe"/>
+  <meta property="og:description" content="Functional, radiant, nourishing. Pre-orders begin May 1, 2026 in Abu Dhabi."/>
+  <meta property="og:url" content=""/>
+  <meta property="og:site_name" content="Solea"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Solea - A sun-inspired cafe"/>
+  <meta name="twitter:description" content="Functional, radiant, nourishing. Pre-orders begin May 1, 2026 in Abu Dhabi."/>
+  <link rel="icon" href="favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles/main.css"/>
 </head>
 <body>
-
-<div class="cur" id="C"></div>
-<div class="cur-r" id="CR"></div>
-
-<nav id="mainNav" data-nav-root>
-  <div class="nav-logo">
-    <picture>
-      <source srcset="public/assets/logo-nav.webp" type="image/webp"/>
-      <img src="public/assets/logo-nav.png" alt="Soléa" width="67" height="44" loading="eager" decoding="async" fetchpriority="high"/>
-    </picture>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#branches">Branches</a></li>
-    <li><a href="#merch">Merch</a></li>
-    <li><a href="#support">Support</a></li>
-  </ul>
-  <a href="#support" class="nav-cta"><span>Get in Touch</span></a>
-  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNavOverlay" data-nav-toggle>
-    <span class="nav-toggle-box" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-  </button>
-</nav>
-<div class="nav-overlay" id="siteNavOverlay" role="dialog" aria-modal="true" aria-hidden="true" data-nav-overlay>
-  <div class="nav-overlay-backdrop" data-nav-close></div>
-  <div class="nav-overlay-panel">
-    <button type="button" class="nav-overlay-close" aria-label="Close menu" data-nav-close>
-      <span class="nav-overlay-close-box" aria-hidden="true">
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Solea home">
+      <svg class="nav-sun" viewBox="0 0 100 50" aria-hidden="true">
+        <path d="M 0 50 A 50 50 0 0 1 100 50 Z" fill="currentColor"/>
+      </svg>
+      <span class="nav-wordmark">Solea</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#brand" class="nav-link">The Brand</a></li>
+      <li><a href="#locations" class="nav-link">Locations</a></li>
+      <li><a href="#goods" class="nav-link">Goods</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-overlay">
+      <span class="nav-toggle-box" aria-hidden="true">
+        <span></span>
         <span></span>
         <span></span>
       </span>
     </button>
-    <picture class="nav-overlay-brand">
-      <source srcset="public/assets/logo.webp" type="image/webp"/>
-      <img src="public/assets/logo.png" alt="Soléa" width="160" height="105" loading="lazy" decoding="async"/>
-    </picture>
-    <nav class="nav-overlay-nav" aria-label="Mobile navigation">
-      <a href="#branches" class="nav-overlay-link" data-nav-autoclose data-nav-initial-focus>Branches</a>
-      <a href="#merch" class="nav-overlay-link" data-nav-autoclose>Merch</a>
-      <a href="#support" class="nav-overlay-link" data-nav-autoclose>Support</a>
-    </nav>
-    <div class="nav-overlay-divider" aria-hidden="true"></div>
-    <a href="#support" class="nav-overlay-cta" data-nav-autoclose><span>Get In Touch</span></a>
-    <p class="nav-overlay-note">WARM · NATURAL · REFRESHING</p>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <ul class="nav-overlay-list">
+      <li><a href="#brand" class="nav-overlay-link" data-nav-close>The Brand</a></li>
+      <li><a href="#locations" class="nav-overlay-link" data-nav-close>Locations</a></li>
+      <li><a href="#goods" class="nav-overlay-link" data-nav-close>Goods</a></li>
+      <li><a href="#contact" class="nav-overlay-link" data-nav-close>Contact</a></li>
+    </ul>
   </div>
-</div>
 
-<!-- ── HERO ─────────────────────────────── -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <canvas class="hero-canvas" id="hCanvas"></canvas>
-  <picture>
-    <source srcset="public/assets/logo.webp" type="image/webp"/>
-    <img src="public/assets/logo.png" alt="Soléa" class="hero-logo" width="300" height="206" loading="eager" decoding="async" fetchpriority="high"/>
-  </picture>
-  <p class="hero-eyebrow">Warm &nbsp;·&nbsp; Natural &nbsp;·&nbsp; Refreshing</p>
-  <h1 class="hero-title"><span class="hero-title-line">Crafted by nature,</span><span class="hero-title-line">perfected by <em>SOLÉA</em></span></h1>
-  <div class="hero-actions">
-    <a href="#countdown" class="btn-p">Pre-Orders Soon</a>
-    <a href="#branches" class="btn-g">Find Us</a>
-  </div>
-  <button class="scroll-hint" type="button" onclick="document.querySelector('.marquee').scrollIntoView({behavior:'smooth'})" aria-label="Discover more below">
-    <span>Discover</span>
-    <div class="scroll-ln"></div>
-  </button>
-</section>
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <svg class="hero-logo-sun" viewBox="0 0 100 50" aria-hidden="true">
+          <path d="M 0 50 A 50 50 0 0 1 100 50 Z" fill="currentColor"/>
+        </svg>
+        <h1 class="hero-wordmark">Solea</h1>
+        <p class="hero-tagline"><span>Taste the Sun</span></p>
+      </div>
 
-<!-- ── MARQUEE ─────────────────────────── -->
-<div class="marquee">
-  <div class="marquee-track"></div>
-</div>
+      <p class="hero-promise">Eating like you're absorbing the sun.</p>
 
-<!-- ── COUNTDOWN ───────────────────────── -->
-<section id="countdown" class="countdown" aria-labelledby="countdownTitle">
-  <div class="cd-inner">
-    <div class="cd-head">
-      <p class="ey">A New Beginning</p>
-      <h2 class="cd-title" id="countdownTitle">Pre-Orders <span class="cd-dot" aria-hidden="true">·</span> <em>Coming Soon</em></h2>
+      <div class="hero-pre-order" aria-live="polite">
+        <p class="eyebrow"><span>Pre-orders Begin</span></p>
+        <div class="hero-countdown" id="cd-grid">
+          <div class="cd-unit">
+            <span class="cd-value" data-unit="days">--</span>
+            <span class="cd-label">Days</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-unit">
+            <span class="cd-value" data-unit="hours">--</span>
+            <span class="cd-label">Hours</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-unit">
+            <span class="cd-value" data-unit="minutes">--</span>
+            <span class="cd-label">Minutes</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-unit">
+            <span class="cd-value" data-unit="seconds">--</span>
+            <span class="cd-label">Seconds</span>
+          </div>
+        </div>
+        <p class="cd-launched" id="cd-launched" hidden>The doors are open.</p>
+        <p class="hero-date">May 1, 2026<span class="dot">·</span>Abu Dhabi</p>
+      </div>
+
+      <a href="#locations" class="btn">Find Us</a>
     </div>
+  </section>
 
-    <div class="cd-timer-wrap">
-      <div class="cd-timer" id="cdTimer" aria-live="polite">
-        <div class="cd-unit">
-          <span class="cd-value" data-unit="days">--</span>
-          <span class="cd-label">Days</span>
-        </div>
-        <span class="cd-sep" aria-hidden="true">:</span>
-        <div class="cd-unit">
-          <span class="cd-value" data-unit="hours">--</span>
-          <span class="cd-label">Hours</span>
-        </div>
-        <span class="cd-sep" aria-hidden="true">:</span>
-        <div class="cd-unit">
-          <span class="cd-value" data-unit="minutes">--</span>
-          <span class="cd-label">Minutes</span>
-        </div>
-        <span class="cd-sep" aria-hidden="true">:</span>
-        <div class="cd-unit cd-unit-live">
-          <span class="cd-value" data-unit="seconds">--</span>
-          <span class="cd-label">Seconds</span>
+  <section class="section" id="brand">
+    <div class="section-inner">
+      <div class="brand-content">
+        <p class="eyebrow rv"><span>Core Idea</span></p>
+        <h2 class="section-headline rv d2">A taste of <em>the sun.</em></h2>
+        <p class="brand-body rv d2">
+          Solea is a sun-inspired cafe where food is not just healthy - it is functional, radiant, and nourishing from within. The name comes from the Spanish <em>sol</em>: the sun as a source of life.
+        </p>
+        <p class="brand-body rv d3">
+          Every drink, dish, and gesture is designed to give something back: nutrients, energy, glow, vitality. Not boring health food. Not flashy wellness. Quiet, confident nourishment.
+        </p>
+        <blockquote class="brand-quote rv d4">Eating like you're absorbing the sun.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <section class="section" id="locations">
+    <div class="section-inner">
+      <div class="section-header center">
+        <p class="eyebrow rv"><span>Our Cafes</span></p>
+        <h2 class="section-headline rv d2">Five <em>locations.</em></h2>
+        <p class="section-subhead rv d2">A modern Menorcan courtyard, by the sea.</p>
+      </div>
+
+      <div class="locations-list">
+        <article class="location rv">
+          <p class="location-num">01</p>
+          <div class="location-body">
+            <h3 class="location-name">Bluewaters Island</h3>
+            <p class="location-region">Dubai · Beachfront</p>
+            <p class="location-detail">The Promenade, Ground Floor</p>
+          </div>
+          <p class="location-hours">8:00 am - 12:00 am</p>
+        </article>
+
+        <article class="location rv">
+          <p class="location-num">02</p>
+          <div class="location-body">
+            <h3 class="location-name">Mamsha Al Saadiyat</h3>
+            <p class="location-region">Abu Dhabi · Cultural District</p>
+            <p class="location-detail">Mamsha Al Saadiyat Promenade</p>
+          </div>
+          <p class="location-hours">8:00 am - 12:00 am</p>
+        </article>
+
+        <article class="location rv">
+          <p class="location-num">03</p>
+          <div class="location-body">
+            <h3 class="location-name">Kite Beach</h3>
+            <p class="location-region">Dubai · Jumeirah</p>
+            <p class="location-detail">Kite Beach Boardwalk</p>
+          </div>
+          <p class="location-hours">7:00 am - 12:00 am</p>
+        </article>
+
+        <article class="location rv">
+          <p class="location-num">04</p>
+          <div class="location-body">
+            <h3 class="location-name">Yas Bay</h3>
+            <p class="location-region">Abu Dhabi · Yas Island</p>
+            <p class="location-detail">Yas Bay Waterfront</p>
+          </div>
+          <p class="location-hours">9:00 am - 12:00 am</p>
+        </article>
+
+        <article class="location rv">
+          <p class="location-num">05</p>
+          <div class="location-body">
+            <h3 class="location-name">Al Bateen Ladies Club</h3>
+            <p class="location-region">Abu Dhabi · Al Bateen</p>
+            <p class="location-detail">Al Bateen Ladies Club, Abu Dhabi</p>
+          </div>
+          <p class="location-hours">8:00 am - 10:00 pm</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <section class="section" id="goods">
+    <div class="section-inner">
+      <div class="section-header center">
+        <p class="eyebrow rv"><span>Solea Goods</span></p>
+        <h2 class="section-headline rv d2">Beautiful enough <em>to keep.</em></h2>
+        <p class="section-subhead rv d2">Pre-orders open with the menu.</p>
+      </div>
+
+      <div class="goods-grid">
+        <article class="goods-item rv">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="28" y="6" width="8" height="6" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M 28 12 L 28 22 C 28 24 26 26 26 28 L 26 56 C 26 58 27 60 29 60 L 35 60 C 37 60 38 58 38 56 L 38 28 C 38 26 36 24 36 22 L 36 12 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <line x1="26" y1="38" x2="38" y2="38" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+            <line x1="26" y1="48" x2="38" y2="48" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          </svg>
+          <h3 class="goods-name">Glass Bottle</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+
+        <article class="goods-item rv d2">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M 12 22 L 14 56 L 50 56 L 52 22 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M 20 22 C 20 12 26 8 32 8 C 38 8 44 12 44 22" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <line x1="22" y1="34" x2="42" y2="34" stroke="currentColor" stroke-width="0.85" opacity="0.35"/>
+            <line x1="20" y1="44" x2="44" y2="44" stroke="currentColor" stroke-width="0.85" opacity="0.35"/>
+          </svg>
+          <h3 class="goods-name">Linen Tote</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+
+        <article class="goods-item rv d3">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M 22 12 C 16 12 12 16 12 24 L 12 50 C 12 56 16 58 22 58 L 42 58 C 48 58 52 56 52 50 L 52 24 C 52 16 48 12 42 12 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M 14 30 L 50 30" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M 14 36 L 50 36" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <h3 class="goods-name">Solea Slides</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+
+        <article class="goods-item rv d4">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M 16 38 C 16 26 22 18 32 18 C 42 18 48 26 48 38 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M 8 38 L 56 38 C 56 41 52 44 48 44 L 16 44 C 12 44 8 41 8 38 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M 32 18 L 32 38" stroke="currentColor" stroke-width="0.85" opacity="0.45"/>
+            <circle cx="32" cy="20" r="1" fill="currentColor"/>
+          </svg>
+          <h3 class="goods-name">Sun Cap</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+
+        <article class="goods-item rv">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M 8 28 C 8 24 11 22 15 22 L 25 22 C 29 22 32 24 32 28 L 32 38 C 32 42 29 44 25 44 L 15 44 C 11 44 8 42 8 38 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M 32 28 C 32 24 35 22 39 22 L 49 22 C 53 22 56 24 56 28 L 56 38 C 56 42 53 44 49 44 L 39 44 C 35 44 32 42 32 38 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M 32 28 C 32 26 32 26 32 28" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M 8 28 L 4 26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M 56 28 L 60 26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <h3 class="goods-name">Solea Shades</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+
+        <article class="goods-item rv d2">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="10" y="20" width="44" height="9" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="10" y="29" width="44" height="9" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <rect x="10" y="38" width="44" height="9" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <line x1="14" y1="24.5" x2="50" y2="24.5" stroke="currentColor" stroke-width="0.85" opacity="0.35"/>
+            <line x1="14" y1="33.5" x2="50" y2="33.5" stroke="currentColor" stroke-width="0.85" opacity="0.35"/>
+            <line x1="14" y1="42.5" x2="50" y2="42.5" stroke="currentColor" stroke-width="0.85" opacity="0.35"/>
+          </svg>
+          <h3 class="goods-name">Linen Towel</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+
+        <article class="goods-item rv d3">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M 20 22 L 20 56 C 20 58 22 60 24 60 L 40 60 C 42 60 44 58 44 56 L 44 22" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <line x1="18" y1="22" x2="46" y2="22" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <line x1="22" y1="28" x2="42" y2="28" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+            <line x1="32" y1="22" x2="32" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M 32 14 C 30 12 30 10 32 8 C 34 10 34 12 32 14 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="currentColor" fill-opacity="0.15"/>
+          </svg>
+          <h3 class="goods-name">Soy Candle</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+
+        <article class="goods-item rv d4">
+          <svg class="goods-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M 20 14 L 12 20 L 8 28 L 16 32 L 18 28 L 18 56 L 46 56 L 46 28 L 48 32 L 56 28 L 52 20 L 44 14 C 42 18 38 20 32 20 C 26 20 22 18 20 14 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="goods-name">Cotton Tee</h3>
+          <p class="goods-status">Coming Soon</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <div class="contact-content">
+        <p class="eyebrow rv"><span>Reach Us</span></p>
+        <h2 class="section-headline rv d2"><em>Get in touch.</em></h2>
+        <p class="section-subhead rv d2">We invite. We do not sell. For partnerships, press, or curiosity - write to us.</p>
+        <div class="contact-row">
+          <div class="contact-channel rv d3">
+            <p class="contact-label">For Inquiries</p>
+            <a href="mailto:solea.ad2026@gmail.com?subject=Solea%20Inquiry" class="contact-value">solea.ad2026@gmail.com</a>
+          </div>
+          <div class="contact-channel rv d4">
+            <p class="contact-label">Hours</p>
+            <p class="contact-value">Sunday - Thursday, 9 am to 10 pm</p>
+          </div>
         </div>
       </div>
-      <p class="cd-open" id="cdOpen" hidden>Pre-Orders are now open.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── BRANCHES ─────────────────────────── -->
-<section id="branches" class="sec">
-<div class="sec-in">
-  <div class="br-hd">
-    <div>
-      <div class="rv"><p class="ey">Find Us</p></div>
-      <div class="rv d1"><h2 class="hd">Our <em>Branches</em></h2></div>
-      <div class="rv d2"><p class="st">Five stunning locations across the UAE — each a perfect summer retreat.</p></div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-mark" aria-label="Solea">
+        <svg class="footer-mark-sun" viewBox="0 0 100 50" aria-hidden="true">
+          <path d="M 0 50 A 50 50 0 0 1 100 50 Z" fill="currentColor"/>
+        </svg>
+        <span class="footer-mark-wordmark">Solea</span>
+      </div>
+
+      <p class="footer-contact">
+        <a href="tel:+97142000000">+971 4 200 0000</a>
+        <span class="sep">·</span>
+        <a href="https://wa.me/97142000000" target="_blank" rel="noopener">WhatsApp</a>
+        <span class="sep">·</span>
+        <a href="mailto:solea.ad2026@gmail.com?subject=Solea%20Inquiry">solea.ad2026@gmail.com</a>
+      </p>
+
+      <p class="footer-line">
+        <a href="#">Instagram</a>
+        <span class="sep">·</span>
+        <a href="#">TikTok</a>
+        <span class="sep">·</span>
+        <span>© Solea 2026</span>
+        <span class="sep">·</span>
+        <span>Abu Dhabi</span>
+      </p>
     </div>
-    <div class="rv d2"><p class="br-hint">All branches open daily<br>Hours vary by location</p></div>
-  </div>
-  <div class="br-grid"></div>
-</div>
-</section>
+  </footer>
 
-<!-- ── MERCH ───────────────────────────── -->
-<section id="merch" class="sec">
-<div class="sec-in">
-  <div class="merch-hd">
-    <div>
-      <div class="rv"><p class="ey">Carry the Summer</p></div>
-      <div class="rv d1"><h2 class="hd">Soléa <em>Merch</em></h2></div>
-    </div>
-    <div class="rv d2"><p class="merch-note">Limited edition pieces.<br>Available in-store &amp; online.</p></div>
-  </div>
-  <div class="merch-grid"></div>
-</div>
-</section>
-
-<!-- ── SUPPORT ─────────────────────────── -->
-<section id="support">
-<div class="sup-grid">
-  <div class="rv">
-    <p class="sup-ey">We're Here</p>
-    <h2 class="sup-title">Always here<br>to <em>help you.</em></h2>
-    <p class="sup-sub">Our team is available across all channels.<br>Expect a response within minutes.</p>
-    <div class="sup-btns"></div>
-    <div class="sup-hrs">
-      <p class="sup-hrs-lbl">Support Hours</p>
-      <p class="sup-hrs-tx"></p>
-    </div>
-  </div>
-  <div class="sup-deco rv d2">
-    <div class="dr dr3"><div class="dr-dot"></div></div>
-    <div class="dr dr2"><div class="dr-dot"></div></div>
-    <div class="dr dr1"><div class="dr-dot"></div></div>
-    <picture>
-      <source srcset="public/assets/logo.webp" type="image/webp"/>
-      <img src="public/assets/logo.png" alt="Soléa" class="deco-logo" width="260" height="178" loading="lazy" decoding="async"/>
-    </picture>
-  </div>
-</div>
-</section>
-
-<footer>
-  <div class="foot-in">
-    <picture>
-      <source srcset="public/assets/logo-circle.webp" type="image/webp"/>
-      <img src="public/assets/logo-circle.png" alt="Soléa" class="foot-logo" width="32" height="32" loading="lazy" decoding="async"/>
-    </picture>
-  <ul class="foot-links">
-      <li><a href="#branches">Branches</a></li>
-      <li><a href="#merch">Merch</a></li>
-      <li><a href="#support">Contact</a></li>
-    </ul>
-    <p class="foot-copy">© 2026 Soléa UAE · All rights reserved.</p>
-  </div>
-</footer>
-
-<script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

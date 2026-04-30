@@ -1,21 +1,9 @@
-import { initCursor } from "./cursor.js";
-import { initNav } from "./nav.js";
 import { initCountdown } from "./countdown.js";
+import { initNav } from "./nav.js";
 import { initReveal } from "./reveal.js";
-import { initHeroCanvas } from "./hero-canvas.js";
-import { initMarquee } from "./marquee.js";
-import { initBranches } from "./branches.js";
-import { initSupport } from "./support.js";
-import { initMerch } from "./merch.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
-  initCursor();
-  initNav();
+document.addEventListener("DOMContentLoaded", () => {
   initCountdown();
-  await initMarquee();
-  await initBranches();
-  await initMerch();
-  await initSupport();
+  initNav();
   initReveal();
-  initHeroCanvas();
 });

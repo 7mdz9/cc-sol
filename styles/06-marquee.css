@@ -1,9 +1,0 @@
-/* ── MARQUEE ───────────────────────────── */
-.marquee{background:var(--dark);height:50px;display:flex;align-items:center;overflow:hidden;position:relative;}
-.marquee::before,.marquee::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;}
-.marquee::before{left:0;background:linear-gradient(to right,var(--dark),transparent);}
-.marquee::after{right:0;background:linear-gradient(to left,var(--dark),transparent);}
-.marquee-track{display:flex;gap:3rem;animation:marqueeScroll 22s linear infinite;white-space:nowrap;align-items:center;}
-.marquee-track:hover{animation-play-state:paused;}
-.mi{font-size:.5rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(232,213,163,.55);flex-shrink:0;}
-.md{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.3;flex-shrink:0;}

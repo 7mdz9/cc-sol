@@ -1,5 +1,15 @@
 :root{
-  --gold:#C9A84C;--gold-l:#E8D5A3;--gold-p:#FAF5E8;--gold-d:#A8832A;--gold-xl:#F5EAC0;
-  --white:#fff;--cream:#FDFAF3;--dark:#0E0C08;--darker:#080604;
-  --text:#1a1714;--muted:#8a7f6e;--border:rgba(201,168,76,0.15);
+  --porcelain:#EEE9E4;
+  --oak:#C0AE94;
+  --stone-moss:#6D705A;
+  --olive:#4D4738;
+  --earth:#755F4A;
+  --seafoam:#BAB9A7;
+  --terracotta:#B56A4E;
+  --lemon-rind:#D9B86C;
+  --serif:"DM Serif Display","Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --hair:rgba(77,71,56,.12);
+  --hair-strong:rgba(77,71,56,.20);
+  --nav-h:72px;
 }
