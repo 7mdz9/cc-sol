@@ -14,9 +14,9 @@
 .nav-toggle-box span:nth-child(1){top:0;}
 .nav-toggle-box span:nth-child(2){top:6px;}
 .nav-toggle-box span:nth-child(3){top:12px;}
-.nav-toggle.is-open span:nth-child(1){top:6px;transform:rotate(45deg);}
+.nav-toggle.is-open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg);}
 .nav-toggle.is-open span:nth-child(2){opacity:0;}
-.nav-toggle.is-open span:nth-child(3){top:6px;transform:rotate(135deg);}
+.nav-toggle.is-open span:nth-child(3){top:50%;transform:translateY(-50%) rotate(-45deg);}
 .nav-overlay{position:fixed;inset:0;background:var(--porcelain);z-index:99;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s ease,visibility .4s ease;}
 .nav-overlay.is-open{opacity:1;visibility:visible;pointer-events:auto;}
 .nav-overlay-list{display:flex;flex-direction:column;align-items:center;gap:1.6rem;}
