@@ -2,15 +2,17 @@
 .location{background:var(--porcelain);padding:clamp(2.2rem,4vw,3rem) clamp(2rem,3.5vw,2.8rem);position:relative;overflow:hidden;transition:background .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);cursor:default;}
 .location::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(109,112,90,.045),transparent);opacity:0;transition:opacity .55s cubic-bezier(.4,0,.2,1);pointer-events:none;}
 .location::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1px;background:linear-gradient(to right,var(--earth),var(--stone-moss),var(--oak));transition:width .7s cubic-bezier(.4,0,.2,1);}
-.location:hover{background:rgba(192,174,148,.06);transform:translateY(-4px);}
-.location:hover::before{opacity:1;}
-.location:hover::after{width:100%;}
-.location:hover .location-num{color:rgba(192,174,148,.32);}
-.location:hover .location-name{color:var(--stone-moss);}
-.location:hover .location-region{color:var(--terracotta);}
 .location:last-child:nth-child(odd){grid-column:1 / -1;text-align:center;}
 .location-num{font-family:var(--serif);font-style:italic;font-size:clamp(2.5rem,5vw,3.6rem);line-height:1;color:rgba(192,174,148,.16);margin-bottom:1.2rem;transition:color .55s ease;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
 .location-name{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.6vw,1.95rem);line-height:1.1;color:var(--olive);margin-bottom:.4rem;transition:color .4s ease;}
 .location-region{font-size:.5rem;letter-spacing:.42em;text-transform:uppercase;font-weight:500;color:var(--earth);padding-left:.42em;margin-bottom:1.1rem;transition:color .45s ease;}
 .location-detail{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--earth);line-height:1.55;margin-bottom:.4rem;}
 .location-hours{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--earth);font-weight:400;opacity:.75;}
+@media (hover:hover) and (pointer:fine){
+  .location:hover{background:rgba(192,174,148,.06);transform:translateY(-4px);}
+  .location:hover::before{opacity:1;}
+  .location:hover::after{width:100%;}
+  .location:hover .location-num{color:rgba(192,174,148,.32);}
+  .location:hover .location-name{color:var(--stone-moss);}
+  .location:hover .location-region{color:var(--terracotta);}
+}

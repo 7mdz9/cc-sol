@@ -6,3 +6,6 @@
 .atm-track:hover{animation-play-state:paused;}
 .atm-phrase{font-family:var(--sans);font-weight:500;font-size:.55rem;letter-spacing:.42em;text-transform:uppercase;color:var(--stone-moss);padding:0 1.6rem 0 2rem;flex-shrink:0;white-space:nowrap;opacity:.7;}
 .atm-sep{display:flex;align-items:center;color:var(--terracotta);opacity:.6;flex-shrink:0;font-size:.45rem;user-select:none;}
+@media(max-width:600px){
+  .atmosphere::before,.atmosphere::after{width:48px;}
+}
