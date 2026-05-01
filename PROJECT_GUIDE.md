@@ -9,7 +9,7 @@ This project was structurally rebranded from the old Soléa site to the new Sole
 The project remains a multi-file static site:
 
 - `index.html`
-- `styles/` partials imported by `styles/main.css`
+- `styles/` partials loaded directly from `index.html`
 - `scripts/` ES modules imported by `scripts/main.js`
 
 There is no build step and no framework.
@@ -91,17 +91,17 @@ Locations, goods, and contact content now live inline in `index.html`.
 
 ## CSS Architecture
 
-`styles/main.css` is the cascade entry point. Current import order:
+CSS partials are loaded directly from `index.html`. Current cascade order:
 
 1. `01-tokens.css`
 2. `02-reset.css`
 3. `03-typography.css`
 4. `04-nav.css`
 5. `05-hero.css`
-6. `08-locations.css`
-7. `09-goods.css`
-8. `10-contact.css`
-9. `11-footer.css`
+6. `06-atmosphere.css`
+7. `08-locations.css`
+8. `09-goods.css`
+9. `10-reach.css`
 10. `12-brand.css`
 11. `12-utilities.css`
 12. `13-divider.css`
@@ -117,7 +117,11 @@ Keep this import order intentional. Later files can override earlier shared rule
 
 - `scripts/countdown.js`
 - `scripts/nav.js`
+- `scripts/atmosphere.js`
 - `scripts/reveal.js`
+- `scripts/hero-canvas.js`
+- `scripts/cursor.js`
+- `scripts/goods.js`
 
 ### Countdown
 

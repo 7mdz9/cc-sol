@@ -1,4 +1,4 @@
-.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:calc(var(--nav-h) + 2rem) clamp(1.5rem,5vw,3rem) 4rem;text-align:center;position:relative;z-index:2;overflow:hidden;}
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:calc(var(--nav-h) + 2rem) clamp(1.5rem,5vw,3rem) 2.5rem;text-align:center;position:relative;z-index:2;overflow:hidden;}
 .hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 .hero-content{display:flex;flex-direction:column;align-items:center;gap:clamp(2.5rem,6vh,4rem);max-width:720px;position:relative;z-index:2;}
 .hero-logo{display:flex;flex-direction:column;align-items:center;}
@@ -12,7 +12,7 @@
 .btn{display:inline-flex;align-items:center;font-family:var(--sans);font-size:.56rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;padding:.95rem 2.3rem .95rem 2.4rem;color:var(--terracotta);background:transparent;border:1px solid var(--terracotta);cursor:pointer;transition:color .4s ease,border-color .4s ease,background .4s ease,transform .4s ease;opacity:0;animation:fade-up .9s 1.7s cubic-bezier(.2,.6,.2,1) forwards;}
 .btn:focus-visible{color:var(--porcelain);background:var(--terracotta);border-color:var(--terracotta);transform:translateY(-2px);outline:0;}
 .btn:active{background:var(--terracotta);color:var(--porcelain);border-color:var(--terracotta);transform:translateY(0);}
-.scroll-hint{margin-top:clamp(2rem,4vh,3rem);display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;background:none;border:0;padding:0;cursor:pointer;opacity:0;animation:fade-up .9s 2s cubic-bezier(.2,.6,.2,1) forwards;transition:opacity .35s ease;}
+.scroll-hint{margin-top:clamp(1rem,2vh,1.5rem);display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;background:none;border:0;padding:0;cursor:pointer;opacity:0;animation:fade-up .9s 2s cubic-bezier(.2,.6,.2,1) forwards;transition:opacity .35s ease;}
 .scroll-hint span{font-family:var(--sans);font-size:.5rem;letter-spacing:.5em;text-transform:uppercase;font-weight:500;color:var(--stone-moss);opacity:.78;padding-left:.5em;transition:opacity .35s ease;}
 .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--stone-moss),transparent);transform-origin:top center;animation:scroll-pulse 2.5s ease-in-out infinite;transition:height .35s cubic-bezier(.4,0,.2,1),opacity .35s ease;}
 .scroll-hint:active span{opacity:1;}

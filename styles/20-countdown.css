@@ -1,4 +1,5 @@
 .hero-countdown{display:flex;align-items:flex-start;gap:clamp(.4rem,1.2vw,.8rem);}
+.hero-countdown,.cd-launched{min-height:clamp(64px,8vh,82px);}
 .cd-unit{display:flex;flex-direction:column;align-items:center;gap:.55rem;min-width:clamp(50px,11vw,70px);}
 .cd-value{font-family:var(--sans);font-weight:300;font-size:clamp(2rem,5.5vw,2.8rem);line-height:1;letter-spacing:-.015em;color:var(--olive);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
 .cd-value.ticked{animation:tick .4s ease;}

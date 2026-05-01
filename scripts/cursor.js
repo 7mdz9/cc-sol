@@ -15,12 +15,14 @@ export function initCursor() {
   let my = window.innerHeight / 2;
   let rx = mx;
   let ry = my;
+  let raf = 0;
 
   window.addEventListener("mousemove", event => {
     mx = event.clientX;
     my = event.clientY;
     dot.style.left = `${mx}px`;
     dot.style.top = `${my}px`;
+    if (!raf) raf = requestAnimationFrame(tick);
   });
 
   const tick = () => {
@@ -28,9 +30,8 @@ export function initCursor() {
     ry += (my - ry) * 0.12;
     ring.style.left = `${rx}px`;
     ring.style.top = `${ry}px`;
-    requestAnimationFrame(tick);
+    raf = requestAnimationFrame(tick);
   };
-  requestAnimationFrame(tick);
 
   const hoverTargets = "a,button,input,select,textarea,label,.merch-item,.location";
   document.querySelectorAll(hoverTargets).forEach(el => {

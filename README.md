@@ -33,8 +33,7 @@ Suitable hosts include Vercel, Netlify, GitHub Pages, Cloudflare Pages, or any s
 ## Project Structure
 
 - `index.html` — Solea homepage markup
-- `styles/main.css` — CSS entry point and import order
-- `styles/` — numbered CSS partials for tokens, layout, sections, animation, and responsive behavior
+- `styles/` — numbered CSS partials loaded directly by `index.html`
 - `scripts/main.js` — JavaScript entry point
 - `scripts/` — countdown, navigation, and reveal modules
 - `_rebrand-source.html` — preserved source reference for the rebrand
