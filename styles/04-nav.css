@@ -9,6 +9,7 @@
 .nav-link:focus-visible{color:var(--terracotta);letter-spacing:.42em;outline:0;}
 .nav-link:focus-visible::after{width:100%;}
 .nav-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;background:transparent;border:0;cursor:pointer;color:var(--olive);padding:0;}
+.nav-toggle.is-open{position:fixed;top:calc((var(--nav-h) - 44px)/2);right:clamp(1.25rem,4vw,2.5rem);z-index:120;display:inline-flex;color:var(--olive);}
 .nav-toggle-box{position:relative;display:block;width:22px;height:14px;}
 .nav-toggle-box::before,.nav-toggle-box::after{content:"";position:absolute;top:50%;left:0;width:22px;height:1px;background:currentColor;opacity:0;transform-origin:center;transition:opacity .2s ease,transform .4s ease;}
 .nav-toggle-box span{position:absolute;left:0;width:22px;height:1px;background:currentColor;transform-origin:center;transition:transform .4s ease,top .4s ease,opacity .3s ease;}
