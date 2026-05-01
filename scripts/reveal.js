@@ -1,5 +1,5 @@
 export function initReveal() {
-  const els = Array.from(document.querySelectorAll(".rv"));
+  const els = Array.from(document.querySelectorAll(".rv, .divider"));
 
   if (!("IntersectionObserver" in window) || els.length === 0) {
     els.forEach(el => el.classList.add("in"));

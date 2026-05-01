@@ -1,11 +1,13 @@
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,2.5rem);z-index:100;transition:border-color .5s ease;border-bottom:1px solid transparent;background:transparent;}
 .nav.scrolled{border-bottom-color:var(--hair);}
-.nav-logo{display:flex;align-items:center;gap:.5rem;color:var(--olive);}
-.nav-sun{width:20px;height:auto;color:var(--stone-moss);animation:sun-breath 8s ease-in-out infinite;}
-.nav-wordmark{font-family:var(--serif);font-size:1.4rem;letter-spacing:-.01em;line-height:1;color:var(--olive);}
+.nav-logo{display:inline-flex;align-items:center;color:var(--olive);transition:color .4s ease;}
+.nav-logo:hover,.nav-logo:focus-visible{color:var(--terracotta);}
+.nav-wordmark{font-family:var(--serif);font-size:1.45rem;letter-spacing:-.01em;line-height:1;color:inherit;}
 .nav-links{display:flex;align-items:center;gap:clamp(1.4rem,3vw,2.6rem);}
-.nav-link{font-family:var(--sans);font-size:.56rem;font-weight:500;letter-spacing:.36em;text-transform:uppercase;color:var(--earth);padding:.4rem 0;transition:color .4s ease;}
-.nav-link:hover{color:var(--olive);}
+.nav-link{font-family:var(--sans);font-size:.56rem;font-weight:500;letter-spacing:.36em;text-transform:uppercase;color:var(--earth);padding:.5rem 0;position:relative;transition:color .45s cubic-bezier(.4,0,.2,1),letter-spacing .45s cubic-bezier(.4,0,.2,1);}
+.nav-link::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--terracotta);transition:width .45s cubic-bezier(.4,0,.2,1);}
+.nav-link:hover,.nav-link:focus-visible{color:var(--terracotta);letter-spacing:.42em;outline:0;}
+.nav-link:hover::after,.nav-link:focus-visible::after{width:100%;}
 .nav-toggle{display:none;align-items:center;justify-content:center;width:40px;height:40px;background:transparent;border:0;cursor:pointer;color:var(--olive);padding:0;}
 .nav-toggle-box{position:relative;display:block;width:22px;height:14px;}
 .nav-toggle-box span{position:absolute;left:0;width:22px;height:1px;background:currentColor;transition:transform .4s ease,top .4s ease,opacity .3s ease;}

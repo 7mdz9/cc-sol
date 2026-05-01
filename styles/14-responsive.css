@@ -1,12 +1,14 @@
 @media(max-width:980px){
-  .goods-grid{grid-template-columns:repeat(3,1fr);}
+  .merch-grid{grid-template-columns:repeat(3,1fr);}
+  .reach-grid{grid-template-columns:1fr;gap:3rem;}
+  .reach-deco{display:none;}
 }
 @media(max-width:768px){
   .nav-links{display:none;}
   .nav-toggle{display:inline-flex;}
-  .goods-grid{grid-template-columns:repeat(2,1fr);}
-  .location{grid-template-columns:auto 1fr;gap:1.25rem;}
-  .location-hours{grid-column:1 / -1;text-align:left;padding-left:calc(2.5ch + 1.25rem);margin-top:.2rem;}
+  .merch-grid{grid-template-columns:repeat(2,1fr);}
+  .locations-grid{grid-template-columns:1fr;}
+  .location:last-child:nth-child(odd){text-align:left;}
 }
 @media(max-width:480px){
   .hero-countdown{gap:.3rem;}
@@ -14,7 +16,7 @@
   .cd-label{font-size:.42rem;letter-spacing:.26em;}
   .cd-sep{font-size:1.25rem;}
   .section{padding:4.5rem 1.25rem;}
-  .location{padding:1.5rem 0;}
-  .goods-grid{grid-template-columns:1fr;gap:3rem;}
-  .footer-line{letter-spacing:.28em;}
+  .reach{padding:4.5rem 1.25rem;}
+  .reach-channel{padding:1.2rem 1.1rem;gap:1rem;}
+  .reach-channel:hover{padding-left:1.7rem;}
 }
